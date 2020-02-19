@@ -1,0 +1,43 @@
+input {
+  width: 40%;
+  height: 40px;
+  padding: 12px; /* Some padding */
+  border: 1px solid darkgray; /* Gray border */
+  border-radius: 10px 0px 0px 10px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical;
+}
+
+#searchBtn {
+  padding: 4px 20px;
+  background-color: lightgray;
+  cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  border-radius: 0px 10px 10px 0px;
+  height: 40px;
+  border: 1px solid darkgray;
+}
+
+#searchBtn:hover {
+  background-color: darkgray;
+  color: white;
+}
+
+.search {
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  height: 600px;
+}
+
+.logo {
+  position: relative;
+  display: block;
+  max-width: 300px;
+  padding-top: 120px;
+  padding-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}

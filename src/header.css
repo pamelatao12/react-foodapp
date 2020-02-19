@@ -1,0 +1,47 @@
+#header {
+}
+
+#user {
+  position: absolute;
+  right: 50px;
+  float: right;
+  top: 20px;
+}
+/* #userPhoto {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: top;
+  position: relative;
+  right: 100px;
+} */
+
+.circle-crop {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  margin-left: 4%;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: cover;
+  object-position: top;
+  margin-right: 70px;
+}
+
+.circle-crop > img {
+  display: inline;
+  width: 60vw;
+  height: auto;
+  margin-left: -35px;
+  margin-top: -45px;
+  max-width: 607px;
+  max-height: 910px;
+}
+
+#accountHeader {
+  position: relative;
+  top: -70px;
+  float: right;
+}
