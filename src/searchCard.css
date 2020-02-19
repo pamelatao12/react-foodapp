@@ -1,28 +1,45 @@
 input {
-  width: 40%;
-  height: 40px;
+  width: 20%;
+  height: 50px;
   padding: 12px; /* Some padding */
-  border: 1px solid darkgray; /* Gray border */
-  border-radius: 10px 0px 0px 10px; /* Rounded borders */
+  /* border: 1px solid darkgray; /* Gray border */
+  /* border-radius: 0px 0px 0px 0px; /* Rounded borders
+  */
   box-sizing: border-box; /* Make sure that padding and width stays in place */
   margin-top: 6px; /* Add a top margin */
   margin-bottom: 16px; /* Bottom margin */
   resize: vertical;
+  font-size: 18px;
+  border: none;
+}
+
+#searchIn:before {
+  content: "";
+  position: relative;
+  width: 1px;
+  background-color: #ccc;
+  padding: 0.5px;
+  right: 10px;
+  top: 8px;
+  display: inline-block;
+  height: 30px;
 }
 
 #searchBtn {
   padding: 4px 20px;
-  background-color: lightgray;
+  background-color: peachpuff;
   cursor: pointer;
   font-family: "Quicksand", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: bolder;
   border-radius: 0px 10px 10px 0px;
-  height: 40px;
-  border: 1px solid darkgray;
+  height: 50px;
+  /* border: 1px solid darkgray; */
+  border: none;
 }
 
 #searchBtn:hover {
-  background-color: darkgray;
+  background-color: rosybrown;
   color: white;
 }
 
@@ -30,6 +47,19 @@ input {
   background-size: 100vw;
   background-repeat: no-repeat;
   height: 600px;
+}
+
+.searchFor {
+  padding: 14.5px 20px;
+  /* background-color: papayawhip; */
+  background-color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
+  height: 50px;
+  width: 100px;
+  /* border: 1px solid darkgray; */
+  display: inline;
 }
 
 .logo {

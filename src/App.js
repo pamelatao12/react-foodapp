@@ -17,8 +17,6 @@ const App = () => {
   const changeBackgroundImg = () => {
     return images[Math.floor(Math.random() * images.length)];
   };
-  console.log(Math.random(0, images.length));
-  console.log(changeBackgroundImg());
 
   return (
     <div className="App">
