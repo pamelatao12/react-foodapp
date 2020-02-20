@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./header";
 import NavBar from "./navBar";
 import SearchCard from "./searchCard";
+import Carousel from "./carousel";
 
 const App = () => {
   const images = [
@@ -23,6 +24,7 @@ const App = () => {
       <Header />
       <NavBar />
       <SearchCard img={changeBackgroundImg()} />
+      <Carousel />
     </div>
   );
 };

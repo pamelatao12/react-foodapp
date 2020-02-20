@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // function Squishy() {
 //   return (
@@ -25,11 +25,9 @@ import React from 'react';
 // ======
 
 const Squishy = () => {
-  const david = "5"
+  const david = "5";
 
-  return (
-    <div>This is squishy</div>
-  )
-}
+  return <div>This is squishy :) it me</div>;
+};
 
 export default Squishy;

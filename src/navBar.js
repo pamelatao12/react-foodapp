@@ -13,6 +13,8 @@ const NavBar = () => {
     }));
   };
 
+  // const hamburgerIcon = "&#9776;"
+
   return (
     <>
       <div id="navbtn">
