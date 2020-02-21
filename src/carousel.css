@@ -25,21 +25,27 @@ button:hover {
 .prevCarouselBtn {
   float: left;
   margin-top: 73.5px;
+  margin-right: 40px;
 }
 
 .nextCarouselBtn {
   float: right;
   margin-top: 73.5px;
+  margin-left: 40px;
 }
 
 .carouselView {
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* starting ENTER animation */
 .setTransition-enter {
   transform: translate(150%);
   position: absolute;
+  /* flex: 3; */
   /* top: 0;
   left: calc(13% + 5px);
   right: calc(13% + 5px);  */
@@ -47,7 +53,7 @@ button:hover {
 
 /* ending ENTER animation */
 .setTransition-enter-active {
-  transform: translate(14%);
+  transform: translate(5%);
   transition: transform 1000ms ease-in-out;
   /* opacity: 1;
   transform: translateY(0%) scale(1);
@@ -79,7 +85,7 @@ button:hover {
 
 /* ending ENTER animation */
 .prevTransition-enter-active {
-  transform: translate(14%);
+  transform: translate(5%);
   transition: transform 1000ms ease-in-out;
   /* opacity: 1;
   transform: translateY(0%) scale(1);
