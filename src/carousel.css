@@ -31,3 +31,71 @@ button:hover {
   float: right;
   margin-top: 73.5px;
 }
+
+.carouselView {
+  overflow-x: hidden;
+}
+
+/* starting ENTER animation */
+.setTransition-enter {
+  transform: translate(150%);
+  position: absolute;
+  /* top: 0;
+  left: calc(13% + 5px);
+  right: calc(13% + 5px);  */
+}
+
+/* ending ENTER animation */
+.setTransition-enter-active {
+  transform: translate(14%);
+  transition: transform 1000ms ease-in-out;
+  /* opacity: 1;
+  transform: translateY(0%) scale(1);
+  transition: all 1000ms ease-in-out; */
+}
+
+/* starting EXIT animation */
+.setTransition-exit {
+  transform: translate(0%);
+  /* opacity: 1;
+  transform: scale(1.01); */
+}
+
+/* ending EXIT animation */
+.setTransition-exit-active {
+  transform: translate(-100%);
+  transition: transform 1000ms ease-in-out;
+  /* opacity: 1; */
+}
+
+/* starting ENTER animation */
+.prevTransition-enter {
+  transform: translate(-100%);
+  position: absolute;
+  /* top: 0;
+  left: calc(13% + 5px);
+  right: calc(13% + 5px);  */
+}
+
+/* ending ENTER animation */
+.prevTransition-enter-active {
+  transform: translate(14%);
+  transition: transform 1000ms ease-in-out;
+  /* opacity: 1;
+  transform: translateY(0%) scale(1);
+  transition: all 1000ms ease-in-out; */
+}
+
+/* starting EXIT animation */
+.prevTransition-exit {
+  transform: translate(0%);
+  /* opacity: 1;
+  transform: scale(1.01); */
+}
+
+/* ending EXIT animation */
+.prevTransition-exit-active {
+  transform: translate(100%);
+  transition: transform 1000ms ease-in-out;
+  /* opacity: 1; */
+}
