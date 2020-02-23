@@ -4,7 +4,7 @@ import "./searchCard.css";
 const SearchCard = ({ img }) => {
   return (
     <div className="search" style={{ backgroundImage: `url("/${img}")` }}>
-      <img className="logo" src="./logo192.png" alt="logo" />
+      <img className="siteLogo" src="./logo.png" alt="logo" />
       <p className="searchFor" style={{ borderRadius: `10px 0px 0px 10px` }}>
         Find
       </p>

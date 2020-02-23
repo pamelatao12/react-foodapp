@@ -49,6 +49,8 @@ input {
   height: 600px;
   background-color: rgba(255, 255, 255, 0.2);
   background-blend-mode: lighten;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .searchFor {
@@ -64,12 +66,12 @@ input {
   display: inline;
 }
 
-.logo {
+.siteLogo {
   position: relative;
   display: block;
   max-width: 300px;
-  padding-top: 120px;
-  padding-bottom: 30px;
+  padding-top: 80px;
+  /* padding-bottom: 30px; */
   margin-left: auto;
   margin-right: auto;
 }

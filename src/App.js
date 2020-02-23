@@ -5,6 +5,7 @@ import Header from "./header";
 import NavBar from "./navBar";
 import SearchCard from "./searchCard";
 import Carousel from "./carousel";
+import Calendar from "./calendar";
 
 const App = () => {
   const images = [
@@ -21,10 +22,11 @@ const App = () => {
 
   return (
     <div className="App">
+      <SearchCard img={changeBackgroundImg()} />
       <Header />
       <NavBar />
-      <SearchCard img={changeBackgroundImg()} />
       <Carousel />
+      <Calendar />
     </div>
   );
 };
