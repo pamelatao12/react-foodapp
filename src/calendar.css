@@ -1,0 +1,23 @@
+.calendar {
+  margin-bottom: 110px;
+}
+
+.events {
+  margin-bottom: 50px;
+  /* height: 100px; */
+}
+
+h1 {
+  font-weight: bolder;
+  font-size: 18px;
+  /* padding-bottom: 20px; */
+}
+
+.eventList {
+  float: none;
+  padding-bottom: 100px;
+}
+
+.eventListUl {
+  overflow: visible;
+}

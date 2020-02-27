@@ -11,6 +11,7 @@ input {
   resize: vertical;
   font-size: 18px;
   border: none;
+  outline: none;
 }
 
 #searchIn:before {
@@ -36,6 +37,7 @@ input {
   height: 50px;
   /* border: 1px solid darkgray; */
   border: none;
+  outline: none;
 }
 
 #searchBtn:hover {
