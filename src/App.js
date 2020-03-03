@@ -1,32 +1,28 @@
-import React from "react";
-// import logo from "./logo.svg";
-import "./App.css";
-import Header from "./header";
+import React, { useState } from "react";
+import "./searchPage.css";
 import NavBar from "./navBar";
-import SearchCard from "./searchCard";
-import Carousel from "./carousel";
-import Calendar from "./calendar";
+import SearchBar from "./searchBar";
+import Header from "./header";
+import Filter from "./filter";
+
+{
+  /*SearchPage js file using as temp App*/
+}
 
 const App = () => {
-  const images = [
-    "food1.jpg",
-    "food2.jpg",
-    "food3.jpg",
-    "food4.jpg",
-    "food5.jpg"
-  ];
-
-  const changeBackgroundImg = () => {
-    return images[Math.floor(Math.random() * images.length)];
-  };
+  const [state, setState] = useState({
+    searchValue: "sushi"
+  });
 
   return (
-    <div className="App">
-      <SearchCard img={changeBackgroundImg()} />
+    <div>
       <Header />
       <NavBar />
-      <Carousel />
-      <Calendar />
+      <img className="siteLogo" src="./logo.png" alt="logo" />
+      <Filter />
+      <div className="search">
+        <SearchBar />
+      </div>
     </div>
   );
 };
