@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ details }) => {
   const triggerElement = (
     <>
-      <p className="eventTitle">Restaurant Name 1</p>
+      <p className="eventTitle">{details.name}</p>
     </>
   );
+
   return (
     <Collapsible trigger={triggerElement} triggerTagName="div">
       <p>

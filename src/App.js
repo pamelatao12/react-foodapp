@@ -12,18 +12,34 @@ import RestaurantCard from "./restaurantCard";
 
 const App = () => {
   const [state, setState] = useState({
-    searchValue: "sushi"
+    searchValue: "sushi",
+    searchResults: [
+      { name: "Restaurant 1", neighborhood: "Chelsea", price: "$$" },
+      { name: "Restaurant 2", neighborhood: "Lower east side", price: "$$" },
+      { name: "Restaurant 3", neighborhood: "Chelsea", price: "$$" }
+    ]
   });
 
   return (
-    <div>
+    <div
+      className="searchPage"
+      style={{ backgroundImage: `url("/food5.jpg")` }}
+    >
       <Header />
       <NavBar />
       <img className="siteLogo" src="./logo.png" alt="logo" />
       <div className="searchWrapper">
         <div className="search">
-          <SearchBar />
-          <RestaurantCard />
+          <div className="searchBar">
+            <SearchBar />
+          </div>
+          <ul className="restaurantListUl">
+            {state.searchResults.map((restaurantDetail, i) => (
+              <li className="restaurantList" key={i}>
+                <RestaurantCard details={restaurantDetail} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="filterWrapper">

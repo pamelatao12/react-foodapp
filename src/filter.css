@@ -7,6 +7,7 @@
   margin-bottom: 20px;
   margin-top: 20px;
   overflow: scroll;
+  height: 90vh;
   /* float: left; */
 }
 
@@ -16,4 +17,6 @@
 
 .filterHeader {
   font-size: 22px;
+  color: antiquewhite;
+  margin-bottom: 5px;
 }

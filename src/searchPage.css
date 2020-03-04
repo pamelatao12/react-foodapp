@@ -1,9 +1,22 @@
+.searchPage {
+  background-image: url("/food5.jpg");
+  background-size: 100%;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  position: absolute;
+}
+
 .search {
-  margin-top: 100px;
+  margin-top: 20px;
   margin-right: 80px;
   float: right;
   width: 70%;
   height: 100vh;
+  padding-left: 20px;
+  position: absolute;
+  left: 24vw;
 }
 
 .siteLogo {
@@ -15,4 +28,19 @@
 
 .searchWrapper {
   display: inline;
+}
+
+.searchBar {
+  margin-left: 9px;
+  width: 124.5%;
+}
+
+.restaurantList {
+  padding-bottom: 130px;
+}
+
+.restaurantListUl {
+  overflow: visible;
+  list-style-type: none;
+  padding-left: 0px;
 }
