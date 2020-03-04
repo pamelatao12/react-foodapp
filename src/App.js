@@ -4,6 +4,7 @@ import NavBar from "./navBar";
 import SearchBar from "./searchBar";
 import Header from "./header";
 import Filter from "./filter";
+import RestaurantCard from "./restaurantCard";
 
 {
   /*SearchPage js file using as temp App*/
@@ -19,9 +20,14 @@ const App = () => {
       <Header />
       <NavBar />
       <img className="siteLogo" src="./logo.png" alt="logo" />
-      <Filter />
-      <div className="search">
-        <SearchBar />
+      <div className="searchWrapper">
+        <div className="search">
+          <SearchBar />
+          <RestaurantCard />
+        </div>
+      </div>
+      <div className="filterWrapper">
+        <Filter />
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
 .search {
-  margin-top: 80px;
-  margin-left: 100px;
+  margin-top: 100px;
+  margin-right: 80px;
+  float: right;
+  width: 70%;
+  height: 100vh;
 }
 
 .siteLogo {
@@ -8,4 +11,8 @@
   position: relative;
   margin-left: 100px;
   margin-top: 20px;
+}
+
+.searchWrapper {
+  display: inline;
 }

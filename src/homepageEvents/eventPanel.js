@@ -24,11 +24,6 @@ const EventPanel = ({ eventDetails }) => {
   const day = date.substring(3, 5);
   const year = date.substring(6);
 
-  {
-    console.log(month);
-    console.log(dateMap[month]);
-  }
-
   const triggerElement = (
     <>
       <div className="date">

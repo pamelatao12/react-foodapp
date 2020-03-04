@@ -1,12 +1,15 @@
 import React from "react";
 import "./filter.css";
+import SearchCriteria from "./searchCriteria";
 
 const Filter = () => {
   return (
-    <>
-      <h1>Filter</h1>
-      <div className="filter"></div>
-    </>
+    <div className="filter">
+      <h1 className="filterHeader">Refine search results:</h1>
+      <div className="filterSections">
+        <SearchCriteria />
+      </div>
+    </div>
   );
 };
 
