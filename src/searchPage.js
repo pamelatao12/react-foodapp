@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./searchPage.css";
+import styles from "./searchPage.module.css";
 import NavBar from "./navBar";
 import SearchBar from "./searchBar";
 import Header from "./header";

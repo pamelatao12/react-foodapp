@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./calendar.css";
+import styles from "./calendar.module.css";
 import EventPanel from "./eventPanel";
 
 const Calendar = () => {

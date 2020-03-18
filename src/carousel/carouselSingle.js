@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./carouselSingle.css";
+import styles from "./carouselSingle.module.css";
 
 const CarouselSingle = ({ restaurant }) => {
   return (

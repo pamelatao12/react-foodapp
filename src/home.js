@@ -1,6 +1,6 @@
 import React from "react";
 // import logo from "./logo.svg";
-import styles from "./home.css";
+import styles from "./home.module.css";
 import Header from "./header";
 import NavBar from "./navBar";
 import SearchCard from "./searchCard";

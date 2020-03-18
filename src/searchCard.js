@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "./searchBar";
-import styles from "./searchCard.css";
+import styles from "./searchCard.module.css";
 
 const SearchCard = ({ img }) => {
   return (

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import styles from "./restaurantCard.css";
+import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
 
 const RestaurantCard = ({ details }) => {
   const triggerElement = (
     <>
-      <p className={styles.eventTitle}>{details.name}</p>
+      <p className="eventTitle">{details.name}</p>
     </>
   );
 

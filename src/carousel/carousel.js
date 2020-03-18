@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import CarouselSet from "./carouselSet";
-import styles from "./carousel.css";
+import styles from "./carousel.module.css";
 
 const Carousel = () => {
   const [state, setState] = useState({

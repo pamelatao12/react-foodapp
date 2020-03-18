@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./searchCriteria.css";
+import styles from "./searchCriteria.module.css";
 
 const SearchCriteria = () => {
   return (

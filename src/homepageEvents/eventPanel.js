@@ -1,6 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-import styles from "./eventPanel.css";
+import styles from "./eventPanel.module.css";
 
 const EventPanel = ({ eventDetails }) => {
   const dateMap = {

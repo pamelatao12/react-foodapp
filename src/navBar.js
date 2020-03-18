@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import styles from "./navBar.css";
+import styles from "./navBar.module.css";
 
 const NavBar = () => {
   const [state, setState] = useState({
@@ -26,7 +26,7 @@ const NavBar = () => {
         id={styles.mySidenav}
         className={classNames(
           styles.sidenav,
-          state.isNavOpen ? styles.isOpen : stlyes.isClosed
+          state.isNavOpen ? styles.isOpen : styles.isClosed
         )}
       >
         <a className={styles.closebtn} onClick={toggleIsNavOpen}>
