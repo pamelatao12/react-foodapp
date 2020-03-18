@@ -1,13 +1,13 @@
 import React from "react";
 // import logo from "./logo.svg";
-import "./App.css";
+import "./home.css";
 import Header from "./header";
 import NavBar from "./navBar";
 import SearchCard from "./searchCard";
 import Carousel from "./carousel/carousel";
 import Calendar from "./homepageEvents/calendar";
 
-const App = () => {
+const Home = () => {
   const images = [
     "food1.jpg",
     "food2.jpg",
@@ -31,4 +31,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
