@@ -1,6 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-import styles from "./eventPanel.module.css";
+import "./eventPanel.css";
 
 const EventPanel = ({ eventDetails }) => {
   const dateMap = {
@@ -26,17 +26,21 @@ const EventPanel = ({ eventDetails }) => {
 
   const triggerElement = (
     <>
-      <div className={styles.date}>
-        <span className={styles.binds}></span>
-        <span className={styles.month}>{dateMap[month]}</span>
+      <div className="date">
+        <span className="binds"></span>
+        <span className="month">{dateMap[month]}</span>
         {/* fill in event details with object values */}
-        <h1 className={styles.day}>28</h1>
+        <h1 className="day">28</h1>
       </div>
-      <p className={styles.eventTitle}>{eventDetails.title}</p>
+      <p className="eventTitleCard">{eventDetails.title}</p>
     </>
   );
   return (
-    <Collapsible trigger={triggerElement} triggerTagName="div">
+    <Collapsible
+      classParentString="collapsibleEvent"
+      trigger={triggerElement}
+      triggerTagName="div"
+    >
       <p>
         This is the collapsible content. It can be any element or React
         component you like.

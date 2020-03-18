@@ -5,6 +5,7 @@ import SearchBar from "./searchBar";
 import Header from "./header";
 import Filter from "./filter";
 import RestaurantCard from "./restaurantCard";
+import { useLocation } from "react-router-dom";
 
 const SearchPage = () => {
   const [state, setState] = useState({
@@ -15,6 +16,8 @@ const SearchPage = () => {
       { name: "Restaurant 3", neighborhood: "Chelsea", price: "$$" }
     ]
   });
+
+  const location = useLocation();
 
   return (
     <div
