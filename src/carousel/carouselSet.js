@@ -1,6 +1,6 @@
 import React from "react";
 import CarouselSingle from "./carouselSingle";
-import "./carouselSet.css";
+import styles from "./carouselSet.css";
 
 // const CarouselSet = ({ viewSet }) => {
 //   return (
@@ -22,7 +22,7 @@ import "./carouselSet.css";
 
 const CarouselSet = ({ viewSet }) => {
   return (
-    <div className="showSet">
+    <div className={styles.showSet}>
       <ul>
         {viewSet.map((restaurant, i) => (
           <li key={i}>

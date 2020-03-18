@@ -17,7 +17,7 @@
   right: 100px;
 } */
 
-.circle-crop {
+.circleCrop {
   width: 50px;
   height: 50px;
   overflow: hidden;
@@ -31,7 +31,7 @@
   object-position: top;
 }
 
-.circle-crop > img {
+.circleCrop > img {
   display: inline;
   width: 60vw;
   height: auto;

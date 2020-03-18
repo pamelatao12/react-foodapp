@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./calendar.css";
+import styles from "./calendar.css";
 import EventPanel from "./eventPanel";
 
 const Calendar = () => {
@@ -21,12 +21,12 @@ const Calendar = () => {
   });
 
   return (
-    <div className="calendar">
+    <div className={styles.calendar}>
       <h1>My events</h1>
-      <div className="events">
-        <ul className="eventListUl">
+      <div className={styles.events}>
+        <ul className={styles.eventListUl}>
           {state.eventsList.map((eventDetail, i) => (
-            <li className="eventList" key={i}>
+            <li className={styles.eventList} key={i}>
               <EventPanel eventDetails={eventDetail} />
             </li>
           ))}

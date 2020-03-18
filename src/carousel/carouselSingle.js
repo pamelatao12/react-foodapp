@@ -1,9 +1,9 @@
 import React from "react";
-import "./carouselSingle.css";
+import styles from "./carouselSingle.css";
 
 const CarouselSingle = ({ restaurant }) => {
   return (
-    <div className="singleSlide">
+    <div className={styles.singleSlide}>
       <p>{restaurant}</p>
       <p>$$$</p>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 // import logo from "./logo.svg";
-import "./home.css";
+import styles from "./home.css";
 import Header from "./header";
 import NavBar from "./navBar";
 import SearchCard from "./searchCard";
@@ -21,7 +21,7 @@ const Home = () => {
   };
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <SearchCard img={changeBackgroundImg()} />
       <Header />
       <NavBar />

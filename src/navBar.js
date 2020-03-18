@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./navBar.css";
+import classNames from "classnames";
+import styles from "./navBar.css";
 
 const NavBar = () => {
   const [state, setState] = useState({
@@ -17,15 +18,18 @@ const NavBar = () => {
 
   return (
     <>
-      <div id="navbtn">
+      <div id={styles.navbtn}>
         <span onClick={toggleIsNavOpen}>&#9776;</span>
       </div>
 
       <div
-        id="mySidenav"
-        className={`sidenav ${state.isNavOpen ? "isOpen" : "isClosed"}`}
+        id={styles.mySidenav}
+        className={classNames(
+          styles.sidenav,
+          state.isNavOpen ? styles.isOpen : stlyes.isClosed
+        )}
       >
-        <a className="closebtn" onClick={toggleIsNavOpen}>
+        <a className={styles.closebtn} onClick={toggleIsNavOpen}>
           &times;
         </a>
         {/*<a href="pamela.html">HOME</a>

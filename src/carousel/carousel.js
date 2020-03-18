@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import CarouselSet from "./carouselSet";
-import "./carousel.css";
+import styles from "./carousel.css";
 
 const Carousel = () => {
   const [state, setState] = useState({
@@ -38,17 +38,17 @@ const Carousel = () => {
     state.direction === "next" ? "setTransition" : "prevTransition";
 
   return (
-    <div className="carousel">
-      <p className="header">Suggested for You</p>
+    <div className={styles.carousel}>
+      <p className={styles.header}>Suggested for You</p>
 
-      <button className="prevCarouselBtn" onClick={prevSet}>
+      <button className={styles.prevCarouselBtn} onClick={prevSet}>
         &#8249;
       </button>
-      <button className="nextCarouselBtn" onClick={nextSet}>
+      <button className={styles.nextCarouselBtn} onClick={nextSet}>
         &#8250;
       </button>
 
-      <div className="carouselView">
+      <div className={styles.carouselView}>
         <TransitionGroup
           childFactory={child =>
             React.cloneElement(child, {
@@ -61,7 +61,7 @@ const Carousel = () => {
             timeout={1000}
             classNames={transitionClassName}
           >
-            <div className="carouselSet">
+            <div className={styles.carouselSet}>
               <CarouselSet viewSet={state.restaurantSet[state.index]} />
             </div>
           </CSSTransition>

@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import "./searchPage.css";
+import styles from "./searchPage.css";
 import NavBar from "./navBar";
 import SearchBar from "./searchBar";
 import Header from "./header";
 import Filter from "./filter";
 import RestaurantCard from "./restaurantCard";
-
-{
-  /*SearchPage js file using as temp App*/
-}
 
 const SearchPage = () => {
   const [state, setState] = useState({
@@ -22,27 +18,27 @@ const SearchPage = () => {
 
   return (
     <div
-      className="searchPage"
+      className={styles.searchPage}
       style={{ backgroundImage: `url("/food5.jpg")` }}
     >
       <Header />
       <NavBar />
-      <img className="siteLogo" src="./logo.png" alt="logo" />
-      <div className="searchWrapper">
-        <div className="search">
-          <div className="searchBar">
+      <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+      <div className={styles.searchWrapper}>
+        <div className={styles.search}>
+          <div className={styles.searchBar}>
             <SearchBar />
           </div>
-          <ul className="restaurantListUl">
+          <ul className={styles.restaurantListUl}>
             {state.searchResults.map((restaurantDetail, i) => (
-              <li className="restaurantList" key={i}>
+              <li className={styles.restaurantList} key={i}>
                 <RestaurantCard details={restaurantDetail} />
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <div className="filterWrapper">
+      <div className={styles.filterWrapper}>
         <Filter />
       </div>
     </div>

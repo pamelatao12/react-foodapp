@@ -1,6 +1,6 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-import "./eventPanel.css";
+import styles from "./eventPanel.css";
 
 const EventPanel = ({ eventDetails }) => {
   const dateMap = {
@@ -26,13 +26,13 @@ const EventPanel = ({ eventDetails }) => {
 
   const triggerElement = (
     <>
-      <div className="date">
-        <span className="binds"></span>
-        <span className="month">{dateMap[month]}</span>
+      <div className={styles.date}>
+        <span className={styles.binds}></span>
+        <span className={styles.month}>{dateMap[month]}</span>
         {/* fill in event details with object values */}
-        <h1 className="day">28</h1>
+        <h1 className={styles.day}>28</h1>
       </div>
-      <p className="eventTitle">{eventDetails.title}</p>
+      <p className={styles.eventTitle}>{eventDetails.title}</p>
     </>
   );
   return (
