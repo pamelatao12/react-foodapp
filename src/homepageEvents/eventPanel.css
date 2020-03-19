@@ -111,6 +111,7 @@ p {
   box-shadow: 0 2px 5px -0.2px rgba(0, 0, 0, 0.2),
     0 -2px 5px -0.2px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s ease-in-out;
+  transition: height 0.64s;
   position: absolute;
   left: 18%;
   /* padding-left: 30vw;
@@ -127,18 +128,23 @@ p {
 .collapsibleEvent__trigger.is-open {
   cursor: pointer;
   width: 60vw;
-  height: 200px;
+  height: 210px;
   /* margin-left: auto;
   margin-right: auto; */
   /* background-color: #f5f5f5; */
   border-radius: 20px;
   box-shadow: 0 2px 15px -5px rgba(0, 0, 0, 0.2),
     0 -2px 15px -5px rgba(0, 0, 0, 0.2);
-  transition: padding-bottom 0.2s;
+  transition: height 0.64s;
   position: absolute;
-  left: 20%;
+  left: 18%;
   /* padding-left: 30vw;
   padding-right: 30vw;
-  padding-bottom: 120px;
   padding-top: 10px; */
+  /* padding-bottom: 20px; */
+}
+
+.collapsibleEventContent {
+  margin-top: 100px;
+  /* margin-left: -20px; */
 }

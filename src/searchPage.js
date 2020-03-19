@@ -6,18 +6,21 @@ import Header from "./header";
 import Filter from "./filter";
 import RestaurantCard from "./restaurantCard";
 import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const SearchPage = () => {
+  const location = useLocation();
+  const parsed = queryString.parse(location.search);
+
   const [state, setState] = useState({
-    searchValue: "sushi",
+    searchKeyword: parsed.keyword,
+    searchLocation: parsed.location,
     searchResults: [
       { name: "Restaurant 1", neighborhood: "Chelsea", price: "$$" },
       { name: "Restaurant 2", neighborhood: "Lower east side", price: "$$" },
       { name: "Restaurant 3", neighborhood: "Chelsea", price: "$$" }
     ]
   });
-
-  const location = useLocation();
 
   return (
     <div
