@@ -30,11 +30,16 @@ const SearchPage = () => {
       <Header />
       <NavBar />
       <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+      <div className={styles.search}>
+        <div className={styles.searchBar}>
+          <SearchBar />
+        </div>
+      </div>
       <div className={styles.searchWrapper}>
-        <div className={styles.search}>
-          <div className={styles.searchBar}>
-            <SearchBar />
-          </div>
+        <div className={styles.filterWrapper}>
+          <Filter />
+        </div>
+        <div className={styles.restaurantListWrapper}>
           <ul className={styles.restaurantListUl}>
             {state.searchResults.map((restaurantDetail, i) => (
               <li className={styles.restaurantList} key={i}>
@@ -43,9 +48,6 @@ const SearchPage = () => {
             ))}
           </ul>
         </div>
-      </div>
-      <div className={styles.filterWrapper}>
-        <Filter />
       </div>
     </div>
   );

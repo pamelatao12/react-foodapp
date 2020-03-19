@@ -9,14 +9,9 @@
 }
 
 .search {
-  margin-top: 20px;
-  margin-right: 80px;
-  float: right;
-  width: 70%;
-  height: 100vh;
-  padding-left: 20px;
+  left: 200px;
+  top: 20px;
   position: absolute;
-  left: 24vw;
 }
 
 .siteLogo {
@@ -26,16 +21,8 @@
   margin-top: 20px;
 }
 
-.searchWrapper {
-  display: inline;
-}
-
 .searchBar {
-  margin-left: 9px;
-  width: 180%;
-  position: absolute;
-  top: -80px;
-  left: -10vw;
+  width: calc(100vw - 50px);
 }
 
 .restaurantList {
@@ -49,4 +36,11 @@
   overflow: visible;
   list-style-type: none;
   padding-left: 0px;
+}
+
+.restaurantListWrapper {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 50px;
 }
