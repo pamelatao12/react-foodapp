@@ -10,7 +10,11 @@ const RestaurantCard = ({ details }) => {
   );
 
   return (
-    <Collapsible trigger={triggerElement} triggerTagName="div">
+    <Collapsible
+      classParentString="collapsibleRestaurant"
+      trigger={triggerElement}
+      triggerTagName="div"
+    >
       <div className="collapsibleRestaurantContent">
         <p>
           This is the collapsible content. It can be any element or React

@@ -41,7 +41,7 @@ const EventPanel = ({ eventDetails }) => {
       trigger={triggerElement}
       triggerTagName="div"
     >
-      <p className="collapsibleContent">
+      <p className="collapsibleEventContent">
         Event details will appear here. Include restaurant details, maybe
         address, map image for location?
       </p>
