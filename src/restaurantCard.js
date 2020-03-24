@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
+import Rating from "./rating";
 
 const RestaurantCard = ({ details }) => {
   const triggerElement = (
     <>
-      <p className="eventTitle">{details.name}</p>
+      <div className="titleButtonWrapper">
+        <h2 className="eventTitle">{details.name}</h2>
+        <div className="restaurantActionButtons">
+          <button className="addButton">+</button>
+          <button className="heartButton">&#9829;</button>
+        </div>
+      </div>
+      <div className="rating">
+        <Rating restaurantRating={details.rating} />
+        <div className="reviewCount">{details.reviewCount}</div>
+      </div>
     </>
   );
 

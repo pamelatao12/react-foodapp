@@ -25,19 +25,6 @@
   justify-content: center;
 }
 
-.star {
-  /* background-color: #ffc999; */
-  background-color: crimson;
-  border-radius: 5px;
-  border: 1px solid white;
-  color: white;
-  padding: 2px 4px;
-}
-
-.halfStar {
-  background-size: 50%;
-}
-
 .reviewCount {
   line-height: 25px;
   margin-left: 5px;

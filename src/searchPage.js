@@ -16,9 +16,46 @@ const SearchPage = () => {
     searchKeyword: parsed.keyword,
     searchLocation: parsed.location,
     searchResults: [
-      { name: "Restaurant 1", neighborhood: "Chelsea", price: "$$" },
-      { name: "Restaurant 2", neighborhood: "Lower east side", price: "$$" },
-      { name: "Restaurant 3", neighborhood: "Chelsea", price: "$$" }
+      {
+        name: "The Halal Guys",
+        rating: 4,
+        price: "$",
+        neighborhood: "chelsea",
+        reviewCount: 820,
+        tags: ["Mediterranean", "Food Cart"]
+      },
+      {
+        name: "LoveMama",
+        rating: 4.5,
+        price: "$$",
+        neighborhood: "chelsea",
+        reviewCount: 1030,
+        tags: ["Thai", "Malaysian"]
+      },
+      {
+        name: "Tsurutontan Udon Noodle",
+        rating: 5,
+        price: "$$",
+        neighborhood: "chelsea",
+        reviewCount: 1870,
+        tags: ["Japanese", "Noodles"]
+      },
+      {
+        name: "Amelie",
+        rating: 4.5,
+        price: "$$",
+        neighborhood: "chelsea",
+        reviewCount: 820,
+        tags: ["French", "Wine Bar"]
+      },
+      {
+        name: "Rubirosa",
+        rating: 5,
+        price: "$$",
+        neighborhood: "chelsea",
+        reviewCount: 2310,
+        tags: ["Italian", "Pizza"]
+      }
     ]
   });
 
