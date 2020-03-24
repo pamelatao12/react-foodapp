@@ -3,10 +3,11 @@
 }
 
 .collapsibleRestaurant {
-  float: left;
+  /* float: left; */
   position: relative;
-  margin-left: -90px;
-  margin-top: 20px;
+  /* margin-left: -90px;
+  margin-top: 20px; */
+  width: 60vw;
 }
 
 .collapsibleRestaurant__trigger.is-closed {
@@ -24,7 +25,6 @@
   transition: box-shadow 0.2s ease-in-out;
   transition: height 0.5s;
   position: absolute;
-  left: 18%;
   /* padding-left: 30vw;
   padding-right: 30vw;
   padding-bottom: 50px;
@@ -33,7 +33,7 @@
 
 .collapsibleRestaurant__contentOuter {
   position: relative;
-  left: 128px;
+  /* left: 128px; */
   top: 50px;
 }
 
@@ -45,7 +45,7 @@
 .collapsibleRestaurant__trigger.is-open {
   cursor: pointer;
   width: 60vw;
-  height: 200px;
+  height: 400px;
   /* margin-left: auto;
   margin-right: auto; */
   background-color: antiquewhite;
@@ -54,7 +54,6 @@
     0 -2px 15px -5px rgba(0, 0, 0, 0.2);
   transition: height 0.5s;
   position: absolute;
-  left: 18%;
   /* padding-left: 30vw;
   padding-right: 30vw;
   padding-bottom: 120px;
@@ -62,4 +61,8 @@
 }
 
 .collapsibleRestaurantContent {
+  height: 300px;
+  overflow-y: scroll;
+  width: 577vw;
+  margin-left: 20px;
 }

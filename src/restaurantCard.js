@@ -24,6 +24,34 @@ const RestaurantCard = ({ details }) => {
           It can even be another Collapsible component. Check out the next
           section!
         </p>
+        <p>
+          It can even be another Collapsible component. Check out the next
+          section!
+        </p>
+        <p>
+          It can even be another Collapsible component. Check out the next
+          section!
+        </p>
+        <p>
+          It can even be another Collapsible component. Check out the next
+          section!
+        </p>
+        <p>
+          It can even be another Collapsible component. Check out the next
+          section!
+        </p>
+        <p>
+          It can even be another Collapsible component. Check out the next
+          section!
+        </p>
+        <p>
+          It can even be another Collapsible component. Check out the next
+          section!
+        </p>
+        <p>
+          It can even be another Collapsible component. Check out the next
+          section!
+        </p>
       </div>
     </Collapsible>
   );

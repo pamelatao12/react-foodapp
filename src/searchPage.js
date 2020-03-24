@@ -27,10 +27,10 @@ const SearchPage = () => {
       className={styles.searchPage}
       style={{ backgroundImage: `url("/food5.jpg")` }}
     >
-      <Header />
-      <NavBar />
-      <img className={styles.siteLogo} src="./logo.png" alt="logo" />
-      <div className={styles.search}>
+      <div className={styles.headerWrapper}>
+        <Header />
+        <NavBar />
+        <img className={styles.siteLogo} src="./logo.png" alt="logo" />
         <div className={styles.searchBar}>
           <SearchBar />
         </div>

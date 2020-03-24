@@ -1,3 +1,8 @@
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .searchPage {
   background-image: url("/food5.jpg");
   background-size: 100%;
@@ -8,11 +13,16 @@
   position: absolute;
 }
 
-.search {
-  left: 200px;
-  top: 20px;
+/* .search {
+  margin-top: 20px;
+  margin-right: 80px;
+  float: right;
+  width: 70%;
+  height: 100vh;
+  padding-left: 20px;
   position: absolute;
-}
+  left: 24vw;
+} */
 
 .siteLogo {
   width: 60px;
@@ -21,27 +31,29 @@
   margin-top: 20px;
 }
 
+.searchWrapper {
+  display: inline;
+}
+
 .searchBar {
-  width: calc(100vw - 50px);
+  margin-left: 20px;
+  width: 124.5%;
+  margin-top: 20px;
+  height: 60px;
 }
 
 .restaurantList {
   padding-bottom: 130px;
-  padding-left: 0;
-  padding-top: 0;
-  float: none;
-  /* display: inline-block; */
+  padding-top: 0px;
+  padding-left: 15px;
+  padding-top: 0px;
 }
 
 .restaurantListUl {
   overflow: visible;
   list-style-type: none;
-  padding-left: 0px;
-}
-
-.restaurantListWrapper {
-  display: inline-block;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-bottom: 50px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
 }
