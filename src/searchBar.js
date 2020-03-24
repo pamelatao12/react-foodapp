@@ -31,40 +31,42 @@ const SearchBar = () => {
 
   return (
     <div className={styles.searchBar}>
-      <p
-        className={styles.searchFor}
-        style={{ borderRadius: `10px 0px 0px 10px` }}
-      >
-        Find
-      </p>
-      <input
-        name="searchKeyword"
-        id={styles.searchKeyword}
-        type="text"
-        placeholder="Sushi... burgers... pasta..."
-        onChange={onInputChange}
-        value={state.searchKeyword}
-      />
-      <p
-        id={styles.searchIn}
-        className={styles.searchFor}
-        style={{ borderRadius: `0px 0px 0px 0px` }}
-      >
-        in
-      </p>
-      <input
-        name="searchLocation"
-        id={styles.searchLocation}
-        type="text"
-        placeholder="New York City"
-        onChange={onInputChange}
-        value={state.searchLocation}
-      />
-      <button type="search" id={styles.searchBtn} onClick={handleSearch}>
-        Search
-      </button>
-      {/* add dropdown "results for..." click to search instead of actual search
-      button */}
+      <form onSubmit={handleSearch}>
+        <p
+          className={styles.searchFor}
+          style={{ borderRadius: `10px 0px 0px 10px` }}
+        >
+          Find
+        </p>
+        <input
+          name="searchKeyword"
+          id={styles.searchKeyword}
+          type="text"
+          placeholder="Sushi... burgers... pasta..."
+          onChange={onInputChange}
+          value={state.searchKeyword}
+        />
+        <p
+          id={styles.searchIn}
+          className={styles.searchFor}
+          style={{ borderRadius: `0px 0px 0px 0px` }}
+        >
+          in
+        </p>
+        <input
+          name="searchLocation"
+          id={styles.searchLocation}
+          type="text"
+          placeholder="New York City"
+          onChange={onInputChange}
+          value={state.searchLocation}
+        />
+        <button type="search" id={styles.searchBtn}>
+          Search
+        </button>
+        {/* add dropdown "results for..." click to search instead of actual search
+    button */}
+      </form>
     </div>
   );
 };
