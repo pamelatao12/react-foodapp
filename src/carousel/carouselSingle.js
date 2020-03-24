@@ -4,8 +4,8 @@ import styles from "./carouselSingle.module.css";
 const CarouselSingle = ({ restaurant }) => {
   return (
     <div className={styles.singleSlide}>
-      <p>{restaurant}</p>
-      <p>$$$</p>
+      <p>{restaurant.name}</p>
+      <p>{restaurant.price}</p>
     </div>
   );
 };

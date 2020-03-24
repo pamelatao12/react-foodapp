@@ -1,14 +1,71 @@
 import React, { Component, useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import CarouselSet from "./carouselSet";
-import styles from "./carousel.module.css";
+import "./carousel.css";
 
 const Carousel = () => {
   const [state, setState] = useState({
     restaurantSet: [
-      ["rest1", "rest2", "rest3"],
-      ["rest4", "rest5", "rest6"],
-      ["rest7", "rest8", "rest9"]
+      [
+        {
+          name: "The Halal Guys",
+          rating: 4,
+          price: "$",
+          tags: ["Mediterranean", "Food Cart"]
+        },
+        {
+          name: "LoveMama",
+          rating: 4.5,
+          price: "$$",
+          tags: ["Thai", "Malaysian"]
+        },
+        {
+          name: "Tsurutontan Udon Noodle",
+          rating: 4,
+          price: "$$",
+          tags: ["Japanese", "Noodles"]
+        }
+      ],
+      [
+        {
+          name: "Amelie",
+          rating: 4.5,
+          price: "$$",
+          tags: ["French", "Wine Bar"]
+        },
+        {
+          name: "Rubirosa",
+          rating: 4.5,
+          price: "$$",
+          tags: ["Italian", "Pizza"]
+        },
+        {
+          name: "The Halal Guys",
+          rating: 4,
+          price: "$",
+          tags: ["Mediterranean", "Food Cart"]
+        }
+      ],
+      [
+        {
+          name: "The Halal Guys",
+          rating: 4,
+          price: "$",
+          tags: ["Mediterranean", "Food Cart"]
+        },
+        {
+          name: "The Halal Guys",
+          rating: 4,
+          price: "$",
+          tags: ["Mediterranean", "Food Cart"]
+        },
+        {
+          name: "The Halal Guys",
+          rating: 4,
+          price: "$",
+          tags: ["Mediterranean", "Food Cart"]
+        }
+      ]
     ],
     index: 0,
     direction: "next"
@@ -38,17 +95,17 @@ const Carousel = () => {
     state.direction === "next" ? "setTransition" : "prevTransition";
 
   return (
-    <div className={styles.carousel}>
-      <p className={styles.header}>Suggested for You</p>
+    <div className="carousel">
+      <p className="header">Suggested for You</p>
 
-      <button className={styles.prevCarouselBtn} onClick={prevSet}>
+      <button className="prevCarouselBtn" onClick={prevSet}>
         &#8249;
       </button>
-      <button className={styles.nextCarouselBtn} onClick={nextSet}>
+      <button className="nextCarouselBtn" onClick={nextSet}>
         &#8250;
       </button>
 
-      <div className={styles.carouselView}>
+      <div className="carouselView">
         <TransitionGroup
           childFactory={child =>
             React.cloneElement(child, {
@@ -61,7 +118,7 @@ const Carousel = () => {
             timeout={1000}
             classNames={transitionClassName}
           >
-            <div className={styles.carouselSet}>
+            <div className="carouselSet">
               <CarouselSet viewSet={state.restaurantSet[state.index]} />
             </div>
           </CSSTransition>
