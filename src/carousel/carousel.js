@@ -11,18 +11,21 @@ const Carousel = () => {
           name: "The Halal Guys",
           rating: 4,
           price: "$",
+          reviewCount: 820,
           tags: ["Mediterranean", "Food Cart"]
         },
         {
           name: "LoveMama",
           rating: 4.5,
           price: "$$",
+          reviewCount: 1030,
           tags: ["Thai", "Malaysian"]
         },
         {
           name: "Tsurutontan Udon Noodle",
-          rating: 4,
+          rating: 5,
           price: "$$",
+          reviewCount: 1870,
           tags: ["Japanese", "Noodles"]
         }
       ],
@@ -31,38 +34,44 @@ const Carousel = () => {
           name: "Amelie",
           rating: 4.5,
           price: "$$",
+          reviewCount: 820,
           tags: ["French", "Wine Bar"]
         },
         {
           name: "Rubirosa",
-          rating: 4.5,
+          rating: 5,
           price: "$$",
+          reviewCount: 2310,
           tags: ["Italian", "Pizza"]
         },
         {
           name: "The Halal Guys",
           rating: 4,
           price: "$",
+          reviewCount: 820,
           tags: ["Mediterranean", "Food Cart"]
         }
       ],
       [
         {
           name: "The Halal Guys",
-          rating: 4,
+          rating: 3,
           price: "$",
+          reviewCount: 820,
           tags: ["Mediterranean", "Food Cart"]
         },
         {
           name: "The Halal Guys",
-          rating: 4,
+          rating: 2,
           price: "$",
+          reviewCount: 820,
           tags: ["Mediterranean", "Food Cart"]
         },
         {
           name: "The Halal Guys",
-          rating: 4,
+          rating: 1,
           price: "$",
+          reviewCount: 820,
           tags: ["Mediterranean", "Food Cart"]
         }
       ]
