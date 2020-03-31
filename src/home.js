@@ -24,7 +24,7 @@ const Home = () => {
     <div className={styles.App}>
       <SearchCard img={changeBackgroundImg()} />
       <Header />
-      <NavBar />
+      {/* <NavBar /> */}
       <Carousel />
       <Calendar />
     </div>

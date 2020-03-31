@@ -16,6 +16,12 @@
   font-weight: bolder;
 }
 
+.ratingAddressWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
 .rating {
   display: flex;
   flex-direction: row;
@@ -26,6 +32,43 @@
 .reviewCount {
   line-height: 25px;
   margin-left: 5px;
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+.tags {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+.address {
+  margin-right: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.addressList {
+  padding: 2px;
+  font-size: 12px;
+  color: #4d4d4d;
+}
+
+.seeReviewsButton {
+  margin-left: 20px;
+  margin-top: -10px;
+  background-color: whitesmoke;
+  padding: 5px;
+  width: 80px;
+  justify-content: center;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px -0.2px rgba(0, 0, 5, 0.2),
+    0 -2px 5px -0.2px rgba(0, 0, 0.2, 0.2);
+  font-size: 14px;
+  color: #4d4d4d;
 }
 
 .addButton {
@@ -36,6 +79,11 @@
   color: white;
   border: 1px solid black;
   font-size: 16px;
+}
+
+.addButton:hover {
+  background-color: black;
+  color: white;
 }
 
 .heartButton {
@@ -49,6 +97,11 @@
   font-size: 16px;
 }
 
+.heartButton:hover {
+  background-color: crimson;
+  color: white;
+}
+
 .collapsibleRestaurant {
   /* float: left; */
   position: relative;
@@ -60,10 +113,10 @@
 .collapsibleRestaurant__trigger.is-closed {
   cursor: pointer;
   width: 60vw;
-  height: 150px;
+  height: 170px;
   /* margin-left: auto;
   margin-right: auto; */
-  background-color: snow;
+  background-color: white;
   border-radius: 8px;
   /* box-shadow: 0 2px 5px -0.2px rgba(0, 0, 0, 0.2),
     0 -2px 5px -0.2px rgba(0, 0, 0, 0.2); */
@@ -81,7 +134,7 @@
 .collapsibleRestaurant__contentOuter {
   position: relative;
   /* left: 128px; */
-  top: 50px;
+  top: 160px;
 }
 
 .collapsibleRestaurant__trigger.is-closed:hover {
@@ -95,7 +148,7 @@
   height: 400px;
   /* margin-left: auto;
   margin-right: auto; */
-  background-color: snow;
+  background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 15px -5px rgba(0, 0, 0, 0.2),
     0 -2px 15px -5px rgba(0, 0, 0, 0.2);
@@ -108,8 +161,12 @@
 }
 
 .collapsibleRestaurantContent {
-  height: 300px;
+  height: 200px;
   overflow-y: scroll;
-  width: 577vw;
+  width: 58vw;
   margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #4d4d4d;
 }

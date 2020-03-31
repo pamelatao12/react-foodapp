@@ -1,5 +1,14 @@
 .star {
   /* background-color: #ffc999; */
+  background-color: lightgray;
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  padding: 2px 4px;
+}
+
+.filledStar {
+  /* background-color: #ffc999; */
   background-color: crimson;
   border-radius: 5px;
   border: 1px solid white;
@@ -8,5 +17,15 @@
 }
 
 .halfStar {
-  background-size: 50%;
+  background: linear-gradient(
+    to right,
+    crimson 0%,
+    crimson 50%,
+    lightgray 50%,
+    lightgray 100%
+  );
+  border-radius: 5px;
+  border: 1px solid white;
+  color: white;
+  padding: 2px 4px;
 }

@@ -5,7 +5,7 @@ import SearchBar from "./searchBar";
 import Header from "./header";
 import Filter from "./filter";
 import RestaurantCard from "./restaurantCard";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import queryString from "query-string";
 
 const SearchPage = () => {
@@ -66,8 +66,10 @@ const SearchPage = () => {
     >
       <div className={styles.headerWrapper}>
         <Header />
-        <NavBar />
-        <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+        {/* <NavBar /> */}
+        <Link to="/" className={styles.homeLogoButton}>
+          <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+        </Link>
         <div className={styles.searchBar}>
           <SearchBar />
         </div>
@@ -80,7 +82,7 @@ const SearchPage = () => {
           <ul className={styles.restaurantListUl}>
             {state.searchResults.map((restaurantDetail, i) => (
               <li className={styles.restaurantList} key={i}>
-                <RestaurantCard details={restaurantDetail} />
+                <RestaurantCard details={restaurantDetail} index={i + 1} />
               </li>
             ))}
           </ul>
