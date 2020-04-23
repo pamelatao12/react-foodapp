@@ -7,13 +7,30 @@ const apiKey =
 const client = yelp.client(apiKey);
 
 const getSearchResults = (req, res) => {
-  const { keyword, location } = req.query;
+  const { keyword, location, price, categories, radius, sort_by } = req.query;
+  // handle if query is undefined
+  searchQueries = {};
+  if (keyword) {
+    searchQueries.term = keyword;
+  }
+  if (location) {
+    searchQueries.location = location;
+  }
+  if (price) {
+    searchQueries.price = price;
+  }
+  if (categories) {
+    searchQueries.categories = categories;
+  }
+  if (radius) {
+    searchQueries.radius = radius;
+  }
+  if (sort_by) {
+    searchQueries.sort_by = sort_by;
+  }
+  console.log(price);
   client
-    .search({
-      term: keyword,
-      location: location,
-      sort_by: "review_count"
-    })
+    .search(searchQueries)
     .then(response => {
       let searchResults = response.jsonBody;
       res.send(searchResults).status(200);
