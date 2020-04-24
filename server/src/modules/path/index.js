@@ -16,7 +16,7 @@ const getSearchResults = (req, res) => {
     sort_by, // string. Optional. Suggestion to the search algorithm that the results be sorted by one of the these modes: best_match, rating, review_count or distance. The default is best_match.
     limit // int. Optional. Number of business results to return. By default, it will return 20. Maximum is 50.
   } = req.query;
-  console.log(req.query);
+
   // handle if query is undefined
   let searchQueries = {};
   if (term) {
@@ -47,8 +47,39 @@ const getSearchResults = (req, res) => {
     .search(searchQueries)
     .then(response => {
       let searchResults = response.jsonBody;
-      res.send(searchResults).status(200);
-      console.log(response.jsonBody.businesses[0].name);
+
+      const reviewCalls = [];
+      for (let i = 0; i < 3; i++) {
+        reviewCalls.push(client.reviews(searchResults.businesses[i].id));
+      }
+
+      Promise.all(reviewCalls)
+        .then(reviewCallResponses => {
+          const reviewList = reviewCallResponses.map(
+            response => response.jsonBody.reviews
+          );
+          searchResults.reviews = reviewList; // array of arrays of three reviews each [[r1, r2, r3], [r1, r2, r3], etc.]
+          // do xtra work to combine ^
+          res.send(searchResults).status(200);
+          // console.log(searchResults);
+          // console.log(searchResults.reviews[0]);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    })
+    .catch(e => {
+      console.log(e);
+    });
+};
+
+const getReviews = (req, res) => {
+  const { id } = req.query;
+  client
+    .reviews(id)
+    .then(response => {
+      console.log(id, response.jsonBody.reviews[0].text);
+      res.send(response.jsonBody).status(200);
     })
     .catch(e => {
       console.log(e);
@@ -57,6 +88,7 @@ const getSearchResults = (req, res) => {
 
 const initializeRoutes = router => {
   router.get("/search", getSearchResults);
+  router.get("/reviews", getReviews);
 };
 
 exports.initializeRoutes = initializeRoutes;

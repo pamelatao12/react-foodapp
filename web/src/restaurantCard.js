@@ -1,9 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
 import Rating from "./rating";
 
-const RestaurantCard = ({ details, index }) => {
+const RestaurantCard = ({ details, index, reviews }) => {
+  const [restaurantReview, setReviews] = useState(reviews);
+  const [loading, setLoading] = useState(true);
+
+  const fetchReviews = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/reviews?id=${details.alias}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      setLoading(false);
+      console.log("reviews received", responseJson);
+      setReviews(responseJson.reviews);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!restaurantReview) {
+      fetchReviews();
+    }
+  }, []);
+
+  if (!restaurantReview) {
+    return <div />;
+  }
+
   const triggerElement = (
     <>
       <div className="titleButtonWrapper">
@@ -21,13 +54,28 @@ const RestaurantCard = ({ details, index }) => {
             <Rating restaurantRating={details.rating} />
             <div className="reviewCount">{details.review_count}</div>
           </div>
-          {/* todo: display categories separated by comma. use join(", ")? */}
-          <div className="tags">{details.categories[0].title}</div>
+          <div className="priceTags">
+            <div className="price">{details.price}</div>
+            {details.price && (
+              <div className="separator">{String.fromCharCode(5867)}</div>
+            )}
+            {/* todo: display categories separated by comma. use join(", ")? */}
+            <div className="tags">{details.categories[0].title}</div>
+          </div>
         </div>
         <ul className="address">
-          <li className="addressList">(718)123-4567</li>
-          <li className="addressList">123 34th St</li>
-          <li className="addressList">Koreatown</li>
+          <li className="addressList">
+            {details.phone &&
+              "(" +
+                details.phone.substring(2, 5) +
+                ") " +
+                details.phone.substring(5, 8) +
+                "-" +
+                details.phone.substring(8)}
+          </li>
+          <li className="addressList">{details.location.address1}</li>
+          <li className="addressList">{details.location.city}</li>
+          {/*use zip code to get neighborhood*/}
         </ul>
       </div>
       <div className="seeReviewsButton">Reviews &#9663;</div>
@@ -41,30 +89,9 @@ const RestaurantCard = ({ details, index }) => {
       triggerTagName="div"
     >
       <div className="collapsibleRestaurantContent">
-        <p className="reviewCollapsibleContent">
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </p>
-        <p className="reviewCollapsibleContent">
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat."
-        </p>
-        <p className="reviewCollapsibleContent">
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </p>
+        <p className="reviewCollapsibleContent">{restaurantReview[0].text}</p>
+        <p className="reviewCollapsibleContent">{restaurantReview[1].text}</p>
+        <p className="reviewCollapsibleContent">{restaurantReview[2].text}</p>
       </div>
     </Collapsible>
   );
