@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./searchPage.module.css";
 import NavBar from "./navBar";
 import SearchBar from "./searchBar";
@@ -12,52 +12,85 @@ const SearchPage = () => {
   const location = useLocation();
   const parsed = queryString.parse(location.search);
 
-  const [state, setState] = useState({
-    searchKeyword: parsed.keyword,
-    searchLocation: parsed.location,
-    searchResults: [
-      {
-        name: "The Halal Guys",
-        rating: 4,
-        price: "$",
-        neighborhood: "chelsea",
-        reviewCount: 820,
-        tags: ["Mediterranean", "Food Cart"]
-      },
-      {
-        name: "LoveMama",
-        rating: 4.5,
-        price: "$$",
-        neighborhood: "chelsea",
-        reviewCount: 1030,
-        tags: ["Thai", "Malaysian"]
-      },
-      {
-        name: "Tsurutontan Udon Noodle",
-        rating: 5,
-        price: "$$",
-        neighborhood: "chelsea",
-        reviewCount: 1870,
-        tags: ["Japanese", "Noodles"]
-      },
-      {
-        name: "Amelie",
-        rating: 4.5,
-        price: "$$",
-        neighborhood: "chelsea",
-        reviewCount: 820,
-        tags: ["French", "Wine Bar"]
-      },
-      {
-        name: "Rubirosa",
-        rating: 5,
-        price: "$$",
-        neighborhood: "chelsea",
-        reviewCount: 2310,
-        tags: ["Italian", "Pizza"]
-      }
-    ]
-  });
+  const [searchKeyword, setSearchKeyword] = useState(parsed.term);
+  const [searchLocation, setSearchLocation] = useState(parsed.location);
+  const [data, setData] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+
+  // const [state, setState] = useState({
+  //   searchResults: [
+  //     {
+  //       name: "The Halal Guys",
+  //       rating: 4,
+  //       price: "$",
+  //       neighborhood: "chelsea",
+  //       reviewCount: 820,
+  //       tags: ["Mediterranean", "Food Cart"]
+  //     },
+  //     {
+  //       name: "LoveMama",
+  //       rating: 4.5,
+  //       price: "$$",
+  //       neighborhood: "chelsea",
+  //       reviewCount: 1030,
+  //       tags: ["Thai", "Malaysian"]
+  //     },
+  //     {
+  //       name: "Tsurutontan Udon Noodle",
+  //       rating: 5,
+  //       price: "$$",
+  //       neighborhood: "chelsea",
+  //       reviewCount: 1870,
+  //       tags: ["Japanese", "Noodles"]
+  //     },
+  //     {
+  //       name: "Amelie",
+  //       rating: 4.5,
+  //       price: "$$",
+  //       neighborhood: "chelsea",
+  //       reviewCount: 820,
+  //       tags: ["French", "Wine Bar"]
+  //     },
+  //     {
+  //       name: "Rubirosa",
+  //       rating: 5,
+  //       price: "$$",
+  //       neighborhood: "chelsea",
+  //       reviewCount: 2310,
+  //       tags: ["Italian", "Pizza"]
+  //     }
+  //   ]
+  // });
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/search?term=${searchKeyword}&location=${searchLocation}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      setLoading(false);
+      console.log(responseJson);
+      setData(responseJson.businesses);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //fetchData();
+  console.log(data);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return <div />;
+  }
 
   return (
     <div
@@ -80,7 +113,7 @@ const SearchPage = () => {
         </div>
         <div className={styles.restaurantListWrapper}>
           <ul className={styles.restaurantListUl}>
-            {state.searchResults.map((restaurantDetail, i) => (
+            {data.map((restaurantDetail, i) => (
               <li className={styles.restaurantList} key={i}>
                 <RestaurantCard details={restaurantDetail} index={i + 1} />
               </li>

@@ -7,13 +7,24 @@ const apiKey =
 const client = yelp.client(apiKey);
 
 const getSearchResults = (req, res) => {
-  const { keyword, location, price, categories, radius, sort_by } = req.query;
+  const {
+    term, // string. Optional.
+    location, // string. Required.
+    price, // string. Optional. Pricing levels to filter the search result with: 1 = $, 2 = $$, 3 = $$$, 4 = $$$$. The price filter can be a list of comma delimited pricing levels. For example, "1, 2, 3" will filter the results to show the ones that are $, $$, or $$$.
+    categories, // string. Optional.
+    radius, // int. Optional.
+    sort_by, // string. Optional. Suggestion to the search algorithm that the results be sorted by one of the these modes: best_match, rating, review_count or distance. The default is best_match.
+    limit // int. Optional. Number of business results to return. By default, it will return 20. Maximum is 50.
+  } = req.query;
+  console.log(req.query);
   // handle if query is undefined
-  searchQueries = {};
-  if (keyword) {
-    searchQueries.term = keyword;
+  let searchQueries = {};
+  if (term) {
+    console.log(term);
+    searchQueries.term = term;
   }
   if (location) {
+    console.log(location);
     searchQueries.location = location;
   }
   if (price) {
@@ -28,7 +39,10 @@ const getSearchResults = (req, res) => {
   if (sort_by) {
     searchQueries.sort_by = sort_by;
   }
-  console.log(price);
+  if (limit) {
+    searchQueries.limit = limit;
+  }
+
   client
     .search(searchQueries)
     .then(response => {

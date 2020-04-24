@@ -19,9 +19,10 @@ const RestaurantCard = ({ details, index }) => {
         <div>
           <div className="rating">
             <Rating restaurantRating={details.rating} />
-            <div className="reviewCount">{details.reviewCount}</div>
+            <div className="reviewCount">{details.review_count}</div>
           </div>
-          <div className="tags">{details.tags.join(", ")}</div>
+          {/* todo: display categories separated by comma. use join(", ")? */}
+          <div className="tags">{details.categories[0].title}</div>
         </div>
         <ul className="address">
           <li className="addressList">(718)123-4567</li>

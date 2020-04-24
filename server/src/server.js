@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express");
+var cors = require("cors");
 const http = require("http");
 var path = require("path");
 const app = express();
@@ -10,6 +11,8 @@ const bodyParser = require("body-parser");
 const router = require("./modules/router");
 
 const PORT = process.env.PORT || 4000;
+
+app.use(cors());
 
 app.use(router.router);
 
