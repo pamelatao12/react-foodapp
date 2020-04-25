@@ -9,6 +9,7 @@ const RestaurantCard = ({ details, index, reviews }) => {
 
   const fetchReviews = async () => {
     try {
+      console.log("attempting to fetch", index);
       const response = await fetch(
         `http://localhost:4000/reviews?id=${details.alias}`,
         {
@@ -20,7 +21,7 @@ const RestaurantCard = ({ details, index, reviews }) => {
       );
       const responseJson = await response.json();
       setLoading(false);
-      console.log("reviews received", responseJson);
+      console.log("reviews received for", index, responseJson);
       setReviews(responseJson.reviews);
     } catch (error) {
       console.log(error);
@@ -32,10 +33,6 @@ const RestaurantCard = ({ details, index, reviews }) => {
       fetchReviews();
     }
   }, []);
-
-  if (!restaurantReview) {
-    return <div />;
-  }
 
   const triggerElement = (
     <>
@@ -82,6 +79,18 @@ const RestaurantCard = ({ details, index, reviews }) => {
     </>
   );
 
+  if (!restaurantReview) {
+    return (
+      <Collapsible
+        classParentString="collapsibleRestaurant"
+        trigger={triggerElement}
+        triggerTagName="div"
+      ></Collapsible>
+    );
+  }
+
+  console.log("reviews returning for", index, restaurantReview);
+
   return (
     <Collapsible
       classParentString="collapsibleRestaurant"
@@ -90,8 +99,12 @@ const RestaurantCard = ({ details, index, reviews }) => {
     >
       <div className="collapsibleRestaurantContent">
         <p className="reviewCollapsibleContent">{restaurantReview[0].text}</p>
-        <p className="reviewCollapsibleContent">{restaurantReview[1].text}</p>
-        <p className="reviewCollapsibleContent">{restaurantReview[2].text}</p>
+        {restaurantReview[1] && (
+          <p className="reviewCollapsibleContent">{restaurantReview[1].text}</p>
+        )}{" "}
+        {restaurantReview[2] && (
+          <p className="reviewCollapsibleContent">{restaurantReview[2].text}</p>
+        )}
       </div>
     </Collapsible>
   );

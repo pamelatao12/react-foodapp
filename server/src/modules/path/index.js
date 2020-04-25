@@ -1,12 +1,15 @@
 const express = require("express");
 const yelp = require("yelp-fusion");
+const lodash = require("lodash");
+const fetch = require("node-fetch");
+const { createApolloFetch } = require("apollo-fetch");
 
 const apiKey =
   "8NIWbBnXI2Nlb0Oe2x5AH8lodMz4PYRanGhWITmE9D_7HpaNvrLndT8ZTqifDvEKp6BM9jEA98-Az9C_2lqGNorKBg38lD_Vdr_VXZcFQ37AaU1_4_ekGIH5xR-WXnYx";
 
 const client = yelp.client(apiKey);
 
-const getSearchResults = (req, res) => {
+const fetchSearchResults = (req, res) => {
   const {
     term, // string. Optional.
     location, // string. Required.
@@ -20,11 +23,11 @@ const getSearchResults = (req, res) => {
   // handle if query is undefined
   let searchQueries = {};
   if (term) {
-    console.log(term);
+    // console.log(term);
     searchQueries.term = term;
   }
   if (location) {
-    console.log(location);
+    // console.log(location);
     searchQueries.location = location;
   }
   if (price) {
@@ -49,7 +52,7 @@ const getSearchResults = (req, res) => {
       let searchResults = response.jsonBody;
 
       const reviewCalls = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 5; i++) {
         reviewCalls.push(client.reviews(searchResults.businesses[i].id));
       }
 
@@ -73,22 +76,124 @@ const getSearchResults = (req, res) => {
     });
 };
 
-const getReviews = (req, res) => {
+const fetchReviews = async (req, res) => {
   const { id } = req.query;
-  client
-    .reviews(id)
-    .then(response => {
-      console.log(id, response.jsonBody.reviews[0].text);
-      res.send(response.jsonBody).status(200);
-    })
-    .catch(e => {
-      console.log(e);
-    });
+  console.log("attemptimg to fetch", id);
+  try {
+    const response = await client.reviews(id);
+    client.reviews(id);
+
+    console.log("received reviews for", id);
+    // console.log(id, response.jsonBody.reviews[0].text);
+    res.send(response.jsonBody).status(200);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
+const fetchGraphQlData = (req, res) => {
+  const fetch = createApolloFetch({
+    uri: "https://api.yelp.com/v3/graphql"
+  });
+  console.log("createApolloFetch...");
+
+  fetch.use(({ request, options }, next) => {
+    if (!options.headers) {
+      options.headers = {}; // Create the headers object if needed.
+    }
+    options.headers["Authorization"] =
+      "Bearer 8NIWbBnXI2Nlb0Oe2x5AH8lodMz4PYRanGhWITmE9D_7HpaNvrLndT8ZTqifDvEKp6BM9jEA98-Az9C_2lqGNorKBg38lD_Vdr_VXZcFQ37AaU1_4_ekGIH5xR-WXnYx";
+
+    next();
+  });
+  // You can also easily pass variables for dynamic arguments
+  fetch({
+    query: `{
+    search(term: "burrito",
+            location: "san francisco",
+            limit: 5) {
+        total
+        business {
+            name
+            url
+        }
+    }
+}`
+  })
+    .then(res => {
+      console.log("got response");
+      console.log(res);
+    })
+    .catch(error => {
+      console.log("got error?", error);
+    });
+
+  // price
+  // rating
+  // review_count
+  // location {
+  //   address1
+  //   city
+  //   state
+  //   country
+  // }
+  // reviews {
+  //   text
+  //   rating
+  //   time_created
+  //   url
+  // }
+
+  // console.log("fetching graphql data");
+  // try {
+  //   const response = await fetch(
+  //     "https://api.yelp.com/v3/graphql",
+  //     {
+  //       headers: {
+  //         Authorization:
+  //           "Bearer 8NIWbBnXI2Nlb0Oe2x5AH8lodMz4PYRanGhWITmE9D_7HpaNvrLndT8ZTqifDvEKp6BM9jEA98-Az9C_2lqGNorKBg38lD_Vdr_VXZcFQ37AaU1_4_ekGIH5xR-WXnYx",
+  //         "Content-Type": "application/json",
+  //         Accept: "application/json"
+  //       },
+  //       body: JSON.stringify({
+  //   search(term:"burrito",
+  //          location:"san francisco", limit: 10): {
+  //     total
+  //     business {
+  //       name
+  //       price
+  //       rating
+  //       review_count
+  //       location {
+  //         address1
+  //         city
+  //         state
+  //         country
+  //       }
+  //       reviews {
+  //         text
+  //         rating
+  //         time_created
+  //         url
+  //       }
+  //     }
+  //   }
+  // })
+  //     }
+  //   );
+  //   const responseJson = await response.json();
+  //   console.log(responseJson);
+  //   res.send(responseJson).status(200);
+  // } catch (error) {
+  //   console.log(error);
+  // }
+};
+
+const fetchReviewsThrottled = lodash.throttle(fetchReviews, 5000);
+
 const initializeRoutes = router => {
-  router.get("/search", getSearchResults);
-  router.get("/reviews", getReviews);
+  router.get("/search", fetchGraphQlData);
+  router.get("/reviews", fetchReviewsThrottled);
 };
 
 exports.initializeRoutes = initializeRoutes;

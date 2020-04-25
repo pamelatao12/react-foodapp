@@ -12,7 +12,7 @@ const Rating = ({ restaurantRating }) => {
   });
 
   const drawHalfStar = () => {
-    if (restaurantRating % 1 != 0) {
+    if (restaurantRating % 1 !== 0) {
       return <div className={styles.halfStar}>{String.fromCharCode(9733)}</div>;
     }
   };

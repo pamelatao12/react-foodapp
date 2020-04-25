@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-fetch": "^0.7.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "node-fetch": "^2.6.0",
     "yelp-fusion": "^3.0.0"
   }

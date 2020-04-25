@@ -21,7 +21,7 @@ const SearchPage = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/search?term=${searchKeyword}&location=${searchLocation}`,
+        `http://localhost:4000/search?term=${searchKeyword}&location=${searchLocation}&limit=10`,
         {
           headers: {
             "Content-Type": "application/json",
