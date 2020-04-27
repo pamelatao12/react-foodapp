@@ -6,24 +6,34 @@ input {
   /* border-radius: 0px 0px 0px 0px; /* Rounded borders
   */
   box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
   resize: vertical;
   font-size: 18px;
   border: none;
   outline: none;
 }
 
+.searchBarForm {
+  display: flex;
+  align-items: center;
+}
+
 #searchIn:before {
-  content: "";
+  /* content: "";
   position: relative;
   width: 1px;
   background-color: #ccc;
   padding: 0.5px;
   right: 10px;
-  top: 8px;
+  top: 10px;
   display: inline-block;
+  height: 30px; */
+
+  content: "";
+  width: 1px;
+  background-color: #ccc;
+  padding: 1px;
   height: 30px;
+  margin-right: 10px;
 }
 
 #searchBtn {
@@ -52,8 +62,22 @@ input {
   font-family: "Quicksand", sans-serif;
   font-size: 18px;
   font-weight: bolder;
-  height: 50px;
+  /* height: 50px; */
   width: 100px;
   /* border: 1px solid darkgray; */
   display: inline;
+  width: 40px;
+}
+
+.searchIn {
+  padding: 0px;
+  background-color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
+  /* height: 50px; */
+  width: 100px;
+  /* border: 1px solid darkgray; */
+  display: inline;
+  width: 40px;
 }

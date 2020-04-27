@@ -97,6 +97,16 @@ const fetchGraphQlData = (req, res) => {
   });
   console.log("createApolloFetch...");
 
+  const {
+    term, // string. Optional.
+    location, // string. Required.
+    price, // string. Optional. Pricing levels to filter the search result with: 1 = $, 2 = $$, 3 = $$$, 4 = $$$$. The price filter can be a list of comma delimited pricing levels. For example, "1, 2, 3" will filter the results to show the ones that are $, $$, or $$$.
+    categories, // string. Optional.
+    radius, // int. Optional.
+    sort_by, // string. Optional. Suggestion to the search algorithm that the results be sorted by one of the these modes: best_match, rating, review_count or distance. The default is best_match.
+    limit // int. Optional. Number of business results to return. By default, it will return 20. Maximum is 50.
+  } = req.query;
+
   fetch.use(({ request, options }, next) => {
     if (!options.headers) {
       options.headers = {}; // Create the headers object if needed.
@@ -108,85 +118,65 @@ const fetchGraphQlData = (req, res) => {
   });
   // You can also easily pass variables for dynamic arguments
   fetch({
-    query: `{
-    search(term: "burrito",
-            location: "san francisco",
-            limit: 5) {
+    query: `query search($term: String,
+      $location: String!,
+      $price: String,
+      $categories: String,
+      $radius: Float,
+      $sort_by: String,
+      $limit: Int) {
+    search(term: $term,
+            location: $location,
+            price: $price,
+            categories: $categories,
+            radius: $radius,
+            sort_by: $sort_by,
+            limit: $limit) {
         total
         business {
             name
+            price
+            rating
+            review_count
+            phone
+            categories {
+              alias
+              title
+            }
             url
+            location {
+              address1
+              city
+              state
+              country
+            }
+            reviews {
+              text
+              rating
+              time_created
+              url
+            }
         }
     }
-}`
+}`,
+    variables: {
+      term: term,
+      location: location,
+      price: price,
+      categories: categories,
+      radius: radius,
+      sort_by: sort_by,
+      limit: limit
+    }
   })
-    .then(res => {
+    .then(response => {
       console.log("got response");
-      console.log(res);
+      console.log(response.data);
+      res.send(response.data);
     })
     .catch(error => {
       console.log("got error?", error);
     });
-
-  // price
-  // rating
-  // review_count
-  // location {
-  //   address1
-  //   city
-  //   state
-  //   country
-  // }
-  // reviews {
-  //   text
-  //   rating
-  //   time_created
-  //   url
-  // }
-
-  // console.log("fetching graphql data");
-  // try {
-  //   const response = await fetch(
-  //     "https://api.yelp.com/v3/graphql",
-  //     {
-  //       headers: {
-  //         Authorization:
-  //           "Bearer 8NIWbBnXI2Nlb0Oe2x5AH8lodMz4PYRanGhWITmE9D_7HpaNvrLndT8ZTqifDvEKp6BM9jEA98-Az9C_2lqGNorKBg38lD_Vdr_VXZcFQ37AaU1_4_ekGIH5xR-WXnYx",
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json"
-  //       },
-  //       body: JSON.stringify({
-  //   search(term:"burrito",
-  //          location:"san francisco", limit: 10): {
-  //     total
-  //     business {
-  //       name
-  //       price
-  //       rating
-  //       review_count
-  //       location {
-  //         address1
-  //         city
-  //         state
-  //         country
-  //       }
-  //       reviews {
-  //         text
-  //         rating
-  //         time_created
-  //         url
-  //       }
-  //     }
-  //   }
-  // })
-  //     }
-  //   );
-  //   const responseJson = await response.json();
-  //   console.log(responseJson);
-  //   res.send(responseJson).status(200);
-  // } catch (error) {
-  //   console.log(error);
-  // }
 };
 
 const fetchReviewsThrottled = lodash.throttle(fetchReviews, 5000);

@@ -31,7 +31,7 @@ const SearchBar = () => {
 
   return (
     <div className={styles.searchBar}>
-      <form onSubmit={handleSearch}>
+      <form className={styles.searchBarForm} onSubmit={handleSearch}>
         <p
           className={styles.searchFor}
           style={{ borderRadius: `10px 0px 0px 10px` }}

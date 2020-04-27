@@ -26,6 +26,28 @@ const SearchCriteria = () => {
         <span className={styles.checkmark}></span>
       </label>
 
+      <h2 className={styles.criteriaName}>Price Range</h2>
+      <label className={styles.container}>
+        $
+        <input type="checkbox" />
+        <span className={styles.checkmark}></span>
+      </label>
+      <label className={styles.container}>
+        $$
+        <input type="checkbox" />
+        <span className={styles.checkmark}></span>
+      </label>
+      <label className={styles.container}>
+        $$$
+        <input type="checkbox" />
+        <span className={styles.checkmark}></span>
+      </label>
+      <label className={styles.container}>
+        $$$$
+        <input type="checkbox" />
+        <span className={styles.checkmark}></span>
+      </label>
+
       <h2 className={styles.criteriaName}>Cuisine</h2>
       <label className={styles.container}>
         American

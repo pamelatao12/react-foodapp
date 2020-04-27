@@ -2,37 +2,41 @@ import React, { useState, useEffect } from "react";
 import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
 import Rating from "./rating";
+import Popover, { ArrowContainer } from "react-tiny-popover";
 
-const RestaurantCard = ({ details, index, reviews }) => {
-  const [restaurantReview, setReviews] = useState(reviews);
+const RestaurantCard = ({ details, index }) => {
+  const [restaurantReview, setReviews] = useState(details.reviews);
   const [loading, setLoading] = useState(true);
 
-  const fetchReviews = async () => {
-    try {
-      console.log("attempting to fetch", index);
-      const response = await fetch(
-        `http://localhost:4000/reviews?id=${details.alias}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          }
-        }
-      );
-      const responseJson = await response.json();
-      setLoading(false);
-      console.log("reviews received for", index, responseJson);
-      setReviews(responseJson.reviews);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchReviews = async () => {
+  //   try {
+  //     console.log("attempting to fetch", index);
+  //     const response = await fetch(
+  //       `http://localhost:4000/reviews?id=${details.alias}`,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Accept: "application/json"
+  //         }
+  //       }
+  //     );
+  //     const responseJson = await response.json();
+  //     setLoading(false);
+  //     console.log("reviews received for", index, responseJson);
+  //     setReviews(responseJson.reviews);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  //
+  // useEffect(() => {
+  //   if (!restaurantReview) {
+  //     fetchReviews();
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (!restaurantReview) {
-      fetchReviews();
-    }
-  }, []);
+  const popoverBody = <div>hi</div>;
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const triggerElement = (
     <>
@@ -41,7 +45,40 @@ const RestaurantCard = ({ details, index, reviews }) => {
           {index}. {details.name}
         </h2>
         <div className="restaurantActionButtons">
-          <button className="addButton">+</button>
+          <Popover
+            className="popoverStyle"
+            isOpen={isPopoverOpen}
+            position={"bottom"}
+            padding={10}
+            onClickOutside={() => setIsPopoverOpen(false)}
+            content={({ position, targetRect, popoverRect }) => (
+              <ArrowContainer
+                position={position}
+                targetRect={targetRect}
+                popoverRect={popoverRect}
+                arrowColor={"#f7f7f7"}
+                arrowSize={10}
+                arrowStyle={{
+                  borderBottom: "10px solid darkgrey"
+                }}
+              >
+                <div
+                  className="popoverContent"
+                  onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+                >
+                  Hi! I'm popover content. Here's my position: {position}.
+                </div>
+              </ArrowContainer>
+            )}
+          >
+            <button
+              className="addButton"
+              onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+            >
+              +
+            </button>
+          </Popover>
+
           <button className="heartButton">&#9829;</button>
         </div>
       </div>
@@ -79,18 +116,6 @@ const RestaurantCard = ({ details, index, reviews }) => {
     </>
   );
 
-  if (!restaurantReview) {
-    return (
-      <Collapsible
-        classParentString="collapsibleRestaurant"
-        trigger={triggerElement}
-        triggerTagName="div"
-      ></Collapsible>
-    );
-  }
-
-  console.log("reviews returning for", index, restaurantReview);
-
   return (
     <Collapsible
       classParentString="collapsibleRestaurant"
@@ -105,6 +130,9 @@ const RestaurantCard = ({ details, index, reviews }) => {
         {restaurantReview[2] && (
           <p className="reviewCollapsibleContent">{restaurantReview[2].text}</p>
         )}
+        <a className="yelpLinkBtn" target="_blank" href={details.url}>
+          See more on Yelp
+        </a>
       </div>
     </Collapsible>
   );

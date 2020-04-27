@@ -75,18 +75,48 @@
 }
 
 .seeReviewsButton {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid;
+  font-weight: 700;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.28571em;
+  border-color: #ccc;
+  color: #666;
+  background-color: #f7f7f7;
+  background: linear-gradient(#fff, #f7f7f7);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 4px 9px;
+  border-radius: 3px;
   margin-left: 20px;
   margin-top: -10px;
-  background-color: whitesmoke;
-  padding: 5px;
-  width: 80px;
-  justify-content: center;
-  display: flex;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px -0.2px rgba(0, 0, 5, 0.2),
-    0 -2px 5px -0.2px rgba(0, 0, 0.2, 0.2);
-  font-size: 14px;
-  color: #4d4d4d;
+}
+
+.react-tiny-popover-container {
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 30px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.popoverContent {
+  width: 250px;
+  height: 200px;
+  /* border: 1px solid; */
+  /* font-weight: 700; */
+  /* text-align: center; */
+  font-size: 12px;
+  /* line-height: 1.28571em; */
+  border-color: #ccc;
+  color: #666;
+  background-color: #f7f7f7;
+  background: linear-gradient(#fff, #f7f7f7);
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); */
+  padding: 8px 10px;
+  border-radius: 8px;
 }
 
 .addButton {
@@ -97,6 +127,7 @@
   color: white;
   border: 1px solid black;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .addButton:hover {
@@ -113,6 +144,7 @@
   border: 1px solid black;
   margin-left: 10px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .heartButton:hover {
@@ -180,11 +212,31 @@
 
 .collapsibleRestaurantContent {
   height: 200px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   width: 58vw;
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 30px;
   font-size: 14px;
   color: #4d4d4d;
+}
+
+.yelpLinkBtn {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 1px solid;
+  font-weight: 700;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.28571em;
+  border-color: #ccc;
+  color: #666;
+  background-color: #f7f7f7;
+  background: linear-gradient(#fff, #f7f7f7);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 8px 19px 9px;
+  border-radius: 3px;
+  text-decoration: none;
 }

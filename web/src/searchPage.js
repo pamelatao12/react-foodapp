@@ -15,13 +15,13 @@ const SearchPage = () => {
   const [searchKeyword, setSearchKeyword] = useState(parsed.term);
   const [searchLocation, setSearchLocation] = useState(parsed.location);
   const [data, setData] = useState(undefined);
-  const [reviews, setFirstThreeReviews] = useState(undefined);
+  // const [reviews, setFirstThreeReviews] = useState(undefined);
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/search?term=${searchKeyword}&location=${searchLocation}&limit=10`,
+        `http://localhost:4000/search?term=${searchKeyword}&location=${searchLocation}&limit=20`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -32,9 +32,9 @@ const SearchPage = () => {
       const responseJson = await response.json();
       setLoading(false);
       console.log("review data", responseJson.reviews);
-      console.log("data was fetched", responseJson);
-      setFirstThreeReviews(responseJson.reviews);
-      setData(responseJson.businesses);
+      console.log("data was fetched", responseJson.search.business);
+      // setFirstThreeReviews(responseJson.reviews);
+      setData(responseJson.search.business);
     } catch (error) {
       console.log(error);
     }
@@ -71,11 +71,7 @@ const SearchPage = () => {
           <ul className={styles.restaurantListUl}>
             {data.map((restaurantDetail, i) => (
               <li className={styles.restaurantList} key={i}>
-                <RestaurantCard
-                  details={restaurantDetail}
-                  index={i + 1}
-                  reviews={reviews[i]}
-                />
+                <RestaurantCard details={restaurantDetail} index={i + 1} />
               </li>
             ))}
           </ul>
