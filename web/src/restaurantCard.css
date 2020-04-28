@@ -103,6 +103,7 @@
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 30px 80px rgba(0, 0, 0, 0.12);
   border-radius: 8px;
+  z-index: 5;
 }
 
 .popoverContent {
@@ -132,6 +133,7 @@
   font-size: 16px;
   cursor: pointer;
   z-index: 100;
+  outline: none;
 }
 
 .addButton:hover {
@@ -149,6 +151,7 @@
   margin-left: 10px;
   font-size: 16px;
   cursor: pointer;
+  outline: none;
 }
 
 .heartButton:hover {

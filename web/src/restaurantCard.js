@@ -34,6 +34,18 @@ const RestaurantCard = ({ details, index }) => {
   //     fetchReviews();
   //   }
   // }, []);
+  const restCategories = () => {
+    let categories = "";
+    details.categories.forEach(category => {
+      if (categories === "") {
+        categories += category.title;
+      } else {
+        categories += `, ${category.title}`;
+      }
+    });
+    console.log("categories: ", categories);
+    return categories;
+  };
 
   const popoverBody = <div>hi</div>;
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -57,7 +69,7 @@ const RestaurantCard = ({ details, index }) => {
               <div className="separator">{String.fromCharCode(5867)}</div>
             )}
             {/* todo: display categories separated by comma. use join(", ")? */}
-            <div className="tags">{details.categories[0].title}</div>
+            <div className="tags">{restCategories()}</div>
           </div>
         </div>
         <ul className="address">
