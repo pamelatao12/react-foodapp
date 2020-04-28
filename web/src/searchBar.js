@@ -12,9 +12,12 @@ const SearchBar = () => {
     location: ""
   });
 
-  const handleSearch = () => {
+  const handleSearch = e => {
+    if (state.location === "") {
+      e.preventDefault();
+    }
+    console.log("searching");
     // history.push("/search");
-
     history.push({
       pathname: "/search",
       search: `?term=${state.term}&location=${state.location}`
@@ -44,7 +47,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Sushi... burgers... pasta..."
           onChange={onInputChange}
-          value={state.searchKeyword}
+          value={state.term}
         />
         <p
           id={styles.searchIn}
@@ -59,7 +62,7 @@ const SearchBar = () => {
           type="text"
           placeholder="New York City"
           onChange={onInputChange}
-          value={state.searchLocation}
+          value={state.location}
         />
         <button type="search" id={styles.searchBtn}>
           Search
