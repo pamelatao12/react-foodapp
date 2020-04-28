@@ -8,8 +8,8 @@ const SearchBar = () => {
   const history = useHistory();
 
   const [state, setState] = useState({
-    searchKeyword: "",
-    searchLocation: ""
+    term: "",
+    location: ""
   });
 
   const handleSearch = () => {
@@ -17,7 +17,7 @@ const SearchBar = () => {
 
     history.push({
       pathname: "/search",
-      search: `?keyword=${state.searchKeyword}&location=${state.searchLocation}`
+      search: `?term=${state.term}&location=${state.location}`
     });
   };
 
@@ -39,7 +39,7 @@ const SearchBar = () => {
           Find
         </p>
         <input
-          name="searchKeyword"
+          name="term"
           id={styles.searchKeyword}
           type="text"
           placeholder="Sushi... burgers... pasta..."
@@ -54,7 +54,7 @@ const SearchBar = () => {
           in
         </p>
         <input
-          name="searchLocation"
+          name="location"
           id={styles.searchLocation}
           type="text"
           placeholder="New York City"
