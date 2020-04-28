@@ -44,43 +44,6 @@ const RestaurantCard = ({ details, index }) => {
         <h2 className="eventTitle">
           {index}. {details.name}
         </h2>
-        <div className="restaurantActionButtons">
-          <Popover
-            className="popoverStyle"
-            isOpen={isPopoverOpen}
-            position={"bottom"}
-            padding={10}
-            onClickOutside={() => setIsPopoverOpen(false)}
-            content={({ position, targetRect, popoverRect }) => (
-              <ArrowContainer
-                position={position}
-                targetRect={targetRect}
-                popoverRect={popoverRect}
-                arrowColor={"#f7f7f7"}
-                arrowSize={10}
-                arrowStyle={{
-                  borderBottom: "10px solid darkgrey"
-                }}
-              >
-                <div
-                  className="popoverContent"
-                  onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-                >
-                  Hi! I'm popover content. Here's my position: {position}.
-                </div>
-              </ArrowContainer>
-            )}
-          >
-            <button
-              className="addButton"
-              onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-            >
-              +
-            </button>
-          </Popover>
-
-          <button className="heartButton">&#9829;</button>
-        </div>
       </div>
       <div className="ratingAddressWrapper">
         <div>
@@ -117,24 +80,67 @@ const RestaurantCard = ({ details, index }) => {
   );
 
   return (
-    <Collapsible
-      classParentString="collapsibleRestaurant"
-      trigger={triggerElement}
-      triggerTagName="div"
-    >
-      <div className="collapsibleRestaurantContent">
-        <p className="reviewCollapsibleContent">{restaurantReview[0].text}</p>
-        {restaurantReview[1] && (
-          <p className="reviewCollapsibleContent">{restaurantReview[1].text}</p>
-        )}{" "}
-        {restaurantReview[2] && (
-          <p className="reviewCollapsibleContent">{restaurantReview[2].text}</p>
-        )}
-        <a className="yelpLinkBtn" target="_blank" href={details.url}>
-          See more on Yelp
-        </a>
+    <>
+      <div className="restaurantActionButtons">
+        <Popover
+          className="popoverStyle"
+          isOpen={isPopoverOpen}
+          position={"bottom"}
+          padding={10}
+          onClickOutside={() => setIsPopoverOpen(false)}
+          content={({ position, targetRect, popoverRect }) => (
+            <ArrowContainer
+              position={position}
+              targetRect={targetRect}
+              popoverRect={popoverRect}
+              arrowColor={"#f7f7f7"}
+              arrowSize={10}
+              arrowStyle={{
+                borderBottom: "10px solid darkgrey"
+              }}
+            >
+              <div
+                className="popoverContent"
+                onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+              >
+                Hi! I'm popover content. Here's my position: {position}.
+              </div>
+            </ArrowContainer>
+          )}
+        >
+          <button
+            className="addButton"
+            onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+          >
+            +
+          </button>
+        </Popover>
+
+        <button className="heartButton">&#9829;</button>
       </div>
-    </Collapsible>
+      <Collapsible
+        classParentString="collapsibleRestaurant"
+        trigger={triggerElement}
+        triggerTagName="div"
+      >
+        <div className="collapsibleRestaurantContent">
+          <p className="reviewCollapsibleContent">{restaurantReview[0].text}</p>
+          {restaurantReview[1] && (
+            <p className="reviewCollapsibleContent">
+              {restaurantReview[1].text}
+            </p>
+          )}{" "}
+          {restaurantReview[2] && (
+            <p className="reviewCollapsibleContent">
+              {restaurantReview[2].text}
+            </p>
+          )}
+          <a className="yelpLinkBtn" target="_blank" href={details.url}>
+            See more on Yelp
+          </a>
+        </div>
+      </Collapsible>
+    </>
   );
 };
 
