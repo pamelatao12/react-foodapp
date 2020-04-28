@@ -141,6 +141,15 @@
   color: white;
 }
 
+.eventsListPopover {
+  display: flex;
+  flex-direction: column;
+}
+
+.eventPopover {
+  padding: 10px;
+}
+
 .heartButton {
   border-radius: 50%;
   font-weight: bolder;

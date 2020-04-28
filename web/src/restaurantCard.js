@@ -115,7 +115,12 @@ const RestaurantCard = ({ details, index }) => {
                 className="popoverContent"
                 onClick={() => setIsPopoverOpen(!isPopoverOpen)}
               >
-                Hi! I'm popover content. Here's my position: {position}.
+                <h2>Add to upcoming events:</h2>
+                <ul className="eventsListPopover">
+                  <li className="eventPopover">Event 1</li>
+                  <li className="eventPopover">Event 2</li>
+                  <li className="eventPopover">Event 3</li>
+                </ul>
               </div>
             </ArrowContainer>
           )}

@@ -15,13 +15,12 @@ const SearchBar = () => {
   const handleSearch = e => {
     if (state.location === "") {
       e.preventDefault();
+    } else {
+      history.push({
+        pathname: "/search",
+        search: `?term=${state.term}&location=${state.location}`
+      });
     }
-    console.log("searching");
-    // history.push("/search");
-    history.push({
-      pathname: "/search",
-      search: `?term=${state.term}&location=${state.location}`
-    });
   };
 
   const onInputChange = event => {
