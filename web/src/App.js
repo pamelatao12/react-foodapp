@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./home";
 import SearchPage from "./searchPage";
+import MyEvents from "./myEvents";
 
 const App = () => {
   return (
@@ -12,6 +13,9 @@ const App = () => {
         </Route>
         <Route exact path="/search">
           <SearchPage />
+        </Route>
+        <Route exact path="/events">
+          <MyEvents />
         </Route>
       </Switch>
     </Router>

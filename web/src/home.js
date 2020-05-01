@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import logo from "./logo.svg";
 import styles from "./home.module.css";
 import Header from "./header";
@@ -16,43 +16,48 @@ const Home = () => {
     "food5.jpg"
   ];
 
+  const [suggestedRestaurants, setSuggestedRestaurants] = useState(undefined);
+  const [eventRestaurants, setEventRestaurants] = useState(undefined);
+
   const changeBackgroundImg = () => {
     return images[Math.floor(Math.random() * images.length)];
   };
 
-  // const location = "NYC";
-  // const keyword = "sushi";
-  //
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://api.yelp.com/v3/businesses/search?term=${keyword}&location=${location}`,
-  //         {
-  //           header: {
-  //             Authorization:
-  //               "Bearer 8NIWbBnXI2Nlb0Oe2x5AH8lodMz4PYRanGhWITmE9D_7HpaNvrLndT8ZTqifDvEKp6BM9jEA98-Az9C_2lqGNorKBg38lD_Vdr_VXZcFQ37AaU1_4_ekGIH5xR-WXnYx"
-  //           }
-  //         }
-  //       );
-  //       const responseJson = await response.json();
-  //       setLoading(false);
-  //       setData(responseJson);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //
-  //   fetchData();
-  // }, []);
+  const fetchData = async (term, location) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/search?term=${term}&location=${location}&limit=20`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      console.log("review data", responseJson.reviews);
+      console.log("data was fetched", responseJson.search.business);
+      // setFirstThreeReviews(responseJson.reviews);
+      setSuggestedRestaurants(responseJson.search.business);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData("restaurants", "nyc");
+  }, []);
+
+  if (!suggestedRestaurants) {
+    return <div />;
+  }
 
   return (
     <div className={styles.App}>
       <SearchCard img={changeBackgroundImg()} />
       <Header />
       {/* <NavBar /> */}
-      <Carousel />
+      <Carousel restaurants={suggestedRestaurants} />
       <Calendar />
     </div>
   );

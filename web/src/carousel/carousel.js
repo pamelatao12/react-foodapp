@@ -3,77 +3,23 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import CarouselSet from "./carouselSet";
 import "./carousel.css";
 
-const Carousel = () => {
+const Carousel = restaurants => {
   const [state, setState] = useState({
     restaurantSet: [
       [
-        {
-          name: "The Halal Guys",
-          rating: 5,
-          price: "$",
-          reviewCount: 820,
-          tags: ["Mediterranean", "Food Cart"]
-        },
-        {
-          name: "LoveMama",
-          rating: 4.5,
-          price: "$$",
-          reviewCount: 1030,
-          tags: ["Thai", "Malaysian"]
-        },
-        {
-          name: "Tsurutontan Udon Noodle",
-          rating: 4,
-          price: "$$",
-          reviewCount: 1870,
-          tags: ["Japanese", "Noodles"]
-        }
+        restaurants.restaurants[0],
+        restaurants.restaurants[1],
+        restaurants.restaurants[2]
       ],
       [
-        {
-          name: "Amelie",
-          rating: 3.5,
-          price: "$$",
-          reviewCount: 820,
-          tags: ["French", "Wine Bar"]
-        },
-        {
-          name: "Rubirosa",
-          rating: 3,
-          price: "$$",
-          reviewCount: 2310,
-          tags: ["Italian", "Pizza"]
-        },
-        {
-          name: "The Halal Guys",
-          rating: 2.5,
-          price: "$",
-          reviewCount: 820,
-          tags: ["Mediterranean", "Food Cart"]
-        }
+        restaurants.restaurants[3],
+        restaurants.restaurants[4],
+        restaurants.restaurants[5]
       ],
       [
-        {
-          name: "The Halal Guys",
-          rating: 2,
-          price: "$",
-          reviewCount: 820,
-          tags: ["Mediterranean", "Food Cart"]
-        },
-        {
-          name: "The Halal Guys",
-          rating: 1.5,
-          price: "$",
-          reviewCount: 820,
-          tags: ["Mediterranean", "Food Cart"]
-        },
-        {
-          name: "The Halal Guys",
-          rating: 1,
-          price: "$",
-          reviewCount: 820,
-          tags: ["Mediterranean", "Food Cart"]
-        }
+        restaurants.restaurants[6],
+        restaurants.restaurants[7],
+        restaurants.restaurants[8]
       ]
     ],
     index: 0,

@@ -43,7 +43,6 @@ const RestaurantCard = ({ details, index }) => {
         categories += `, ${category.title}`;
       }
     });
-    console.log("categories: ", categories);
     return categories;
   };
 
@@ -117,6 +116,9 @@ const RestaurantCard = ({ details, index }) => {
               >
                 <h2>Add to upcoming events:</h2>
                 <ul className="eventsListPopover">
+                  <li className="eventPopover">Event 1</li>
+                  <li className="eventPopover">Event 2</li>
+                  <li className="eventPopover">Event 3</li>
                   <li className="eventPopover">Event 1</li>
                   <li className="eventPopover">Event 2</li>
                   <li className="eventPopover">Event 3</li>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className={styles.header}>
-      <Link to="/" className={styles.redirectHeaderButton}>
+      <Link to="/events" className={styles.redirectHeaderButton}>
         <button className={styles.redirectMyEventsBtn}>My Events</button>
       </Link>
       <Link to="/" className={styles.redirectHeaderButton}>

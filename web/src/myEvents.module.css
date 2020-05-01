@@ -1,0 +1,66 @@
+.siteLogo {
+  height: 70px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.eventPageWrapper {
+  box-shadow: inset -1px 2px 63px -8px rgba(224, 217, 224, 1);
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.eventsH1 {
+  margin-left: 80px;
+  font-size: 44px;
+  color: darkgray;
+}
+
+.eventsUl {
+  margin-left: 72px;
+}
+
+.eventsH2 {
+  color: darkgray;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-right: 15px;
+}
+
+.eventsH2:hover {
+  border-bottom: 2px solid black;
+  color: black;
+}
+
+.eventH2Active {
+  border-bottom: 2px solid black;
+  color: black;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  margin-right: 15px;
+}
+
+.eventCards {
+  min-height: 100vh;
+  width: 100vw;
+  margin-left: 50px;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}

@@ -29,10 +29,11 @@
 }
 
 .homeLogoButton {
-  width: 90px;
+  width: 70px;
   position: relative;
   margin-left: 30px;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .searchWrapper {
@@ -41,7 +42,7 @@
 
 .searchBar {
   margin-left: 20px;
-  width: 124.5%;
+  /* width: 124.5%; */
   margin-top: 20px;
   height: 60px;
 }

@@ -1,5 +1,5 @@
 input {
-  width: 20%;
+  /* width: 20%; */
   height: 50px;
   padding: 12px; /* Some padding */
   /* border: 1px solid darkgray; /* Gray border */
@@ -15,6 +15,7 @@ input {
 .searchBarForm {
   display: flex;
   align-items: center;
+  margin-top: -10px;
 }
 
 #searchIn:before {

@@ -35,7 +35,7 @@
 .priceTags {
   display: flex;
   flex-direction: row;
-  font-size: 12px;
+  font-size: 10px;
   justify-content: center;
   color: #4d4d4d;
 }
