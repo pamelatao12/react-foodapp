@@ -4,15 +4,60 @@ import Header from "./header";
 import EventCard from "./eventCard";
 
 const MyEvents = () => {
-  const [upcomingEvents, setUpcomingEventsActive] = useState(true);
-  const [pastEvents, setPastEventsActive] = useState(false);
+  const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
+  const [pastEventsTab, setPastEventsActive] = useState(false);
+
+  const [upcomingEvents, setUpcomingEvents] = useState({
+    event1: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    },
+    event2: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    },
+    event3: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    },
+    event4: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    },
+    event5: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    }
+  });
+  const [pastEvents, setPastEvents] = useState({
+    event1: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    },
+    event2: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    },
+    event3: {
+      name: "Dinner with David",
+      date: "05102020",
+      time: "06:30 PM"
+    }
+  });
 
   const handleEventClick = () => {
-    setUpcomingEventsActive(!upcomingEvents);
-    setPastEventsActive(!pastEvents);
+    setUpcomingEventsActive(!upcomingEventsTab);
+    setPastEventsActive(!pastEventsTab);
   };
 
-  return upcomingEvents ? (
+  return upcomingEventsTab ? (
     <>
       <div className={styles.eventPageWrapper}>
         <img className={styles.siteLogo} src="./logo.png" alt="logo" />
@@ -27,11 +72,9 @@ const MyEvents = () => {
           </button>
         </div>
         <div className={styles.eventCards}>
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
-          <EventCard />
+          {Object.keys(upcomingEvents).map(event => {
+            return <EventCard />;
+          })}
         </div>
       </div>
     </>
@@ -48,6 +91,11 @@ const MyEvents = () => {
           <button className={styles.eventH2Active} onClick={handleEventClick}>
             Past Events
           </button>
+        </div>
+        <div className={styles.eventCards}>
+          {Object.keys(pastEvents).map(event => {
+            return <EventCard />;
+          })}
         </div>
       </div>
     </>
