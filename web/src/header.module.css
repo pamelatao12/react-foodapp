@@ -22,6 +22,7 @@
   color: peachpuff;
   font-weight: bolder;
   padding-bottom: 10px;
+  outline: none;
 }
 .redirectMyEventsBtn:hover,
 .redirectMyRestaurantBtn:hover {

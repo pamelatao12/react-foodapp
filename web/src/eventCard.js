@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./eventCard.module.css";
+import Popover, { ArrowContainer } from "react-tiny-popover";
 
 const EventCard = () => {
   const images = [
@@ -14,9 +15,102 @@ const EventCard = () => {
     "food9.jpg"
   ];
 
+  const popoverBody = <div>hi</div>;
+  const [isFriendsPopoverOpen, setIsFriendsPopoverOpen] = useState(false);
+  const [isVotePopoverOpen, setIsVotePopoverOpen] = useState(false);
+
   const changeBackgroundImg = () => {
     return images[Math.floor(Math.random() * images.length)];
   };
+
+  const votePopover = (
+    <Popover
+      className="popoverStyle"
+      isOpen={isVotePopoverOpen}
+      position={"bottom"}
+      padding={10}
+      onClickOutside={() => setIsVotePopoverOpen(false)}
+      content={({ position, targetRect, popoverRect }) => (
+        <ArrowContainer
+          position={position}
+          targetRect={targetRect}
+          popoverRect={popoverRect}
+          arrowColor={"#f7f7f7"}
+          arrowSize={10}
+          arrowStyle={{
+            borderBottom: "10px solid darkgrey"
+          }}
+        >
+          <div
+            className="popoverContent"
+            onClick={() => setIsVotePopoverOpen(!isVotePopoverOpen)}
+          >
+            <h2>Add to upcoming events:</h2>
+            <ul className="eventsListPopover">
+              <li className="eventPopover">Event 1</li>
+              <li className="eventPopover">Event 2</li>
+              <li className="eventPopover">Event 3</li>
+              <li className="eventPopover">Event 1</li>
+              <li className="eventPopover">Event 2</li>
+              <li className="eventPopover">Event 3</li>
+            </ul>
+          </div>
+        </ArrowContainer>
+      )}
+    >
+      <button
+        className={styles.eventActionBtn}
+        onClick={() => setIsVotePopoverOpen(!isVotePopoverOpen)}
+      >
+        Vote
+      </button>
+    </Popover>
+  );
+
+  const friendsPopover = (
+    <Popover
+      className="popoverStyle"
+      isOpen={isFriendsPopoverOpen}
+      position={"bottom"}
+      padding={10}
+      onClickOutside={() => setIsFriendsPopoverOpen(false)}
+      content={({ position, targetRect, popoverRect }) => (
+        <ArrowContainer
+          position={position}
+          targetRect={targetRect}
+          popoverRect={popoverRect}
+          arrowColor={"#f7f7f7"}
+          arrowSize={10}
+          arrowStyle={{
+            borderBottom: "10px solid darkgrey"
+          }}
+        >
+          <div
+            className="popoverContent"
+            onClick={() => setIsFriendsPopoverOpen(!isFriendsPopoverOpen)}
+          >
+            <h2>Add to upcoming events:</h2>
+            <ul className="eventsListPopover">
+              <li className="eventPopover">Event 1</li>
+              <li className="eventPopover">Event 2</li>
+              <li className="eventPopover">Event 3</li>
+              <li className="eventPopover">Event 1</li>
+              <li className="eventPopover">Event 2</li>
+              <li className="eventPopover">Event 3</li>
+            </ul>
+          </div>
+        </ArrowContainer>
+      )}
+    >
+      <button
+        className={styles.eventActionBtn}
+        onClick={() => setIsFriendsPopoverOpen(!isFriendsPopoverOpen)}
+      >
+        Add friends!
+      </button>
+    </Popover>
+  );
+
   return (
     <div className={styles.eventCardWrapper}>
       <div
@@ -37,6 +131,10 @@ const EventCard = () => {
           &#128205; 1234 56th St, New York, NY
         </p>
         <p className={styles.eventDetails}>&#128221; Notes</p>
+      </div>
+      <div className={styles.eventActions}>
+        {friendsPopover}
+        {votePopover}
       </div>
     </div>
   );

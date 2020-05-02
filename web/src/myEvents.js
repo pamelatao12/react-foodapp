@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./myEvents.module.css";
 import Header from "./header";
 import EventCard from "./eventCard";
+import { Link, useLocation } from "react-router-dom";
 
 const MyEvents = () => {
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
@@ -60,7 +61,9 @@ const MyEvents = () => {
   return upcomingEventsTab ? (
     <>
       <div className={styles.eventPageWrapper}>
-        <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+        <Link to="/" className={styles.homeLogoButton}>
+          <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+        </Link>
         <Header />
         <h1 className={styles.eventsH1}>Manage Events</h1>
         <div className={styles.eventsUl}>
