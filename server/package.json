@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "http://www.pamelatao.com/react-foodapp/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +21,6 @@
     "node-fetch": "^2.6.0",
     "react-popover": "^0.5.10",
     "yelp-fusion": "^3.0.0"
-  }
+  },
+  "devDependencies": {}
 }
