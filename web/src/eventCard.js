@@ -125,12 +125,15 @@ const EventCard = () => {
       <div className={styles.eventDetailsWrapper}>
         <h1 className={styles.eventName}>Dinner with friends</h1>
         <p className={styles.eventDetails}>
-          &#128337; Friday, 17th August | 06:30 PM - 08:30 PM
+          <span role="img">&#128337;</span> Friday, 17th August | 06:30 PM -
+          08:30 PM
         </p>
         <p className={styles.eventDetails}>
-          &#128205; 1234 56th St, New York, NY
+          <span role="img">&#128205; </span>1234 56th St, New York, NY
         </p>
-        <p className={styles.eventDetails}>&#128221; Notes</p>
+        <p className={styles.eventDetails}>
+          <span role="img">&#128221;</span> Notes
+        </p>
       </div>
       <div className={styles.eventActions}>
         {friendsPopover}

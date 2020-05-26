@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styles from "./index.module.scss";
 import { AuthenticationContext } from "../common/authentication/context";
+import CreateAccount from "./createAccount";
 
 const SignedOutPage = () => {
   const [input, setInput] = useState({});
@@ -68,6 +69,7 @@ const SignedOutPage = () => {
           </button>
         </form>
       </div>
+      <CreateAccount />
     </div>
   );
 };

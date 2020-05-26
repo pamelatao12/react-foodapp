@@ -3,6 +3,7 @@ import styles from "./myEvents.module.css";
 import Header from "./header";
 import EventCard from "./eventCard";
 import { Link, useLocation } from "react-router-dom";
+import firebase from "firebase";
 
 const MyEvents = () => {
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
@@ -58,6 +59,9 @@ const MyEvents = () => {
     setPastEventsActive(!pastEventsTab);
   };
 
+  const user = firebase.auth().currentUser;
+  console.log("user: ", user);
+
   return upcomingEventsTab ? (
     <>
       <div className={styles.eventPageWrapper}>
@@ -75,8 +79,8 @@ const MyEvents = () => {
           </button>
         </div>
         <div className={styles.eventCards}>
-          {Object.keys(upcomingEvents).map(event => {
-            return <EventCard />;
+          {Object.keys(upcomingEvents).map((event, i) => {
+            return <EventCard key={i} />;
           })}
         </div>
       </div>

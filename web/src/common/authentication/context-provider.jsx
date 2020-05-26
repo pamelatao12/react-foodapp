@@ -71,11 +71,24 @@ export const AuthenticationContextProvider = ({ children }) => {
     return <div>Loading...</div>;
   }
 
+  const signOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(function() {
+        // Sign-out successful.
+      })
+      .catch(function(error) {
+        // An error happened.
+      });
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
         ...state,
-        logIn
+        logIn,
+        signOut
       }}
     >
       {children}

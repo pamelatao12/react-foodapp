@@ -1,9 +1,9 @@
 "use strict";
 
 const express = require("express");
-var cors = require("cors");
+const cors = require("cors");
 const http = require("http");
-var path = require("path");
+const path = require("path");
 const app = express();
 const fetch = require("node-fetch");
 const yelp = require("yelp-fusion");
