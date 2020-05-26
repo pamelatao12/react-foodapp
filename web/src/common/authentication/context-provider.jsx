@@ -83,11 +83,45 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
+  const createAccount = (email, password) => {
+    console.log("Attempting to create account: ", email, password);
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+    console.log("account created");
+    addUserToDatabase(email);
+  };
+
+  const addUserToDatabase = async email => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/user?email=${email}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      console.log("data was fetched", responseJson);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
         ...state,
         logIn,
+        createAccount,
         signOut
       }}
     >

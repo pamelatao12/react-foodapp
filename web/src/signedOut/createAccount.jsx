@@ -5,7 +5,7 @@ import { AuthenticationContext } from "../common/authentication/context";
 
 const CreateAccount = () => {
   const [input, setInput] = useState({});
-  const { logIn } = useContext(AuthenticationContext);
+  const { createAccount } = useContext(AuthenticationContext);
 
   const handleInputChange = e => {
     setInput({
@@ -19,15 +19,7 @@ const CreateAccount = () => {
 
     const { email, password } = input;
 
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
+    await createAccount(email, password);
   };
 
   const [pwInput, setPwInput] = useState("password");
