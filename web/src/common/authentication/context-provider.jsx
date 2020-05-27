@@ -83,9 +83,9 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const createAccount = (email, password) => {
+  const createAccount = async (email, password) => {
     console.log("Attempting to create account: ", email, password);
-    firebase
+    await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .catch(function(error) {

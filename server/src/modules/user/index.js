@@ -2,7 +2,7 @@ const database = require("../firebase/index");
 const firebaseAdmin = require("firebase-admin");
 
 const getUserRecord = async email => {
-  firebaseAdmin
+  return firebaseAdmin
     .auth()
     .getUserByEmail(email)
     .then(function(userRecord) {
@@ -23,7 +23,7 @@ const createUser = async (req, res) => {
     email: email
   });
   console.log("user added to database");
-  return user.toJSON();
+  return user;
 };
 
 const initializeUserRoutes = router => {
