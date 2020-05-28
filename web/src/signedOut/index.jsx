@@ -28,11 +28,11 @@ const SignedOutPage = () => {
   };
 
   const [pwInput, setPwInput] = useState("password");
-  const [viewSetting, setViewSetting] = useState("Show");
+  const [viewSetting, setViewSetting] = useState("🙈");
 
   const handleViewPassword = () => {
     pwInput === "password" ? setPwInput("text") : setPwInput("password");
-    viewSetting === "Show" ? setViewSetting("Hide") : setViewSetting("Show");
+    viewSetting === "🙈" ? setViewSetting("🙉") : setViewSetting("🙈");
   };
 
   return (
