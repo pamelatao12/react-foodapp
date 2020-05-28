@@ -67,6 +67,9 @@ const SignedOutPage = () => {
           <button className={styles.button} type="submit">
             Login
           </button>
+          <button className={styles.createAccountButton} type="submit">
+            Create an account
+          </button>
         </form>
       </div>
       <CreateAccount />
