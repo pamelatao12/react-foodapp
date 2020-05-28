@@ -36,9 +36,11 @@ const CreateAccount = () => {
       <div className={styles.signIn}>
         <form className={styles.form} onSubmit={handleSubmit}>
           <Link to="/login" className={styles.backButton}>
-            <button className={styles.backBtn}>Back</button>
+            <button className={styles.backBtn}>
+              <span>&#8592;</span>Back
+            </button>
           </Link>
-          <div className={styles.header}>Create Account</div>
+          <div className={styles.createAccountHeader}>Create Account</div>
           <div className={styles.inputWrapper}>
             <div className={styles.input}>
               <label className={styles.label}>First Name</label>

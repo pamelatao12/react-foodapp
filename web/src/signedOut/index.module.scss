@@ -92,6 +92,13 @@ button {
   background-color: #48d1cc;
 }
 
+.createAccountHeader {
+  font-size: 24px;
+  margin-right: 8px;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
 .createAccountButton {
   margin-top: 20px;
   margin-left: auto;
@@ -109,4 +116,15 @@ button {
 .createAccountButton:hover {
   cursor: pointer;
   filter: brightness(95%);
+}
+
+.backBtn {
+  border: none;
+  padding-left: 0;
+  position: absolute;
+  top: 130px;
+}
+
+.backBtn:hover {
+  cursor: pointer;
 }
