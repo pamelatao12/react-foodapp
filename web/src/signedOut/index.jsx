@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "./index.module.scss";
 import { AuthenticationContext } from "../common/authentication/context";
 import CreateAccount from "./createAccount";
+import { Link } from "react-router-dom";
 
 const SignedOutPage = () => {
   const [input, setInput] = useState({});
@@ -67,12 +68,13 @@ const SignedOutPage = () => {
           <button className={styles.button} type="submit">
             Login
           </button>
-          <button className={styles.createAccountButton} type="submit">
-            Create an account
-          </button>
+          <Link to="/createAccount" className={styles.backButton}>
+            <button className={styles.createAccountButton}>
+              Create an account
+            </button>
+          </Link>
         </form>
       </div>
-      <CreateAccount />
     </div>
   );
 };

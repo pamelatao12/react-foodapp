@@ -5,6 +5,7 @@ import Home from "./home";
 import SearchPage from "./searchPage";
 import MyEvents from "./myEvents";
 import SignedOutPage from "./signedOut";
+import CreateAccount from "./signedOut/createAccount";
 import { AuthenticationContextProvider } from "./common/authentication/context-provider";
 
 // const App = () => {
@@ -34,6 +35,9 @@ const AppRouter = () => {
         </Route>
         <Route path="/login">
           <SignedOutPage />
+        </Route>
+        <Route path="/createAccount">
+          <CreateAccount />
         </Route>
         <Route exact path="/search">
           <SearchPage />
