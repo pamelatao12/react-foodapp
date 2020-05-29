@@ -16,10 +16,18 @@ const CreateAccount = () => {
     });
   };
 
+  const [passwordError, setPasswordError] = useState(false);
+
   const handleSubmit = async e => {
     e.preventDefault();
 
     const { email, password } = input;
+
+    if (password && password.length < 6) {
+      setPasswordError(true);
+      return;
+    }
+    setPasswordError(false);
 
     await createAccount(email, password);
     setAccountCreated(true);
@@ -31,6 +39,45 @@ const CreateAccount = () => {
   const handleViewPassword = () => {
     pwInput === "password" ? setPwInput("text") : setPwInput("password");
     viewSetting === "🙈" ? setViewSetting("🙉") : setViewSetting("🙈");
+  };
+
+  const handlePasswordLength = () => {
+    if (passwordError) {
+      return (
+        <>
+          <div className={styles.input}>
+            <label className={styles.label}>Password*</label>
+            <input
+              className={styles.textboxError}
+              type={pwInput}
+              name="password"
+              onChange={handleInputChange}
+            />
+            <span className={styles.span} onClick={handleViewPassword}>
+              {viewSetting}
+            </span>
+          </div>
+          <div className={styles.errorMessage}>
+            *Password must be at least 6 characters
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <div className={styles.input}>
+          <label className={styles.label}>Password*</label>
+          <input
+            className={styles.textbox}
+            type={pwInput}
+            name="password"
+            onChange={handleInputChange}
+          />
+          <span className={styles.span} onClick={handleViewPassword}>
+            {viewSetting}
+          </span>
+        </div>
+      );
+    }
   };
 
   const [accountCreated, setAccountCreated] = useState(false);
@@ -45,7 +92,7 @@ const CreateAccount = () => {
       <div className={styles.createAccountHeader}>Create Account</div>
       <div className={styles.inputWrapper}>
         <div className={styles.input}>
-          <label className={styles.label}>First Name</label>
+          <label className={styles.label}>First Name*</label>
           <input
             className={styles.textbox}
             type="text"
@@ -54,7 +101,7 @@ const CreateAccount = () => {
           />
         </div>
         <div className={styles.input}>
-          <label className={styles.label}>Last Name</label>
+          <label className={styles.label}>Last Name*</label>
           <input
             className={styles.textbox}
             type="text"
@@ -63,7 +110,7 @@ const CreateAccount = () => {
           />
         </div>
         <div className={styles.input}>
-          <label className={styles.label}>Email</label>
+          <label className={styles.label}>Email*</label>
           <input
             className={styles.textbox}
             type="text"
@@ -71,19 +118,7 @@ const CreateAccount = () => {
             onChange={handleInputChange}
           />
         </div>
-
-        <div className={styles.input}>
-          <label className={styles.label}>Password</label>
-          <input
-            className={styles.textbox}
-            type={pwInput}
-            name="password"
-            onChange={handleInputChange}
-          />
-          <span className={styles.span} onClick={handleViewPassword}>
-            {viewSetting}
-          </span>
-        </div>
+        {handlePasswordLength()}
       </div>
       <button className={styles.button} type="submit">
         Create

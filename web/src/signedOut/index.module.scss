@@ -66,6 +66,7 @@ button {
 }
 
 .textbox {
+  font-size: 12px;
   width: 250px;
   height: 30px;
   border-radius: 3px;
@@ -73,6 +74,24 @@ button {
   padding-left: 10px;
   text-align: left;
   background-color: #ededed;
+}
+
+.textboxError {
+  font-size: 12px;
+  width: 250px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid red;
+  padding-left: 10px;
+  text-align: left;
+  background-color: #ededed;
+}
+
+.errorMessage {
+  font-size: 10px;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  color: red;
 }
 
 .button {
