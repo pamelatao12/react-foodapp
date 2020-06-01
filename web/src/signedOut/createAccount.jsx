@@ -235,6 +235,9 @@ const CreateAccount = () => {
 
   return (
     <div className={styles.bodyWrapper}>
+      <Link to="/" className={styles.homeLogoButton}>
+        <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+      </Link>
       <div className={styles.signIn}>
         {accountCreated ? <CreateAccountConfirmation /> : createAccountForm}
       </div>
