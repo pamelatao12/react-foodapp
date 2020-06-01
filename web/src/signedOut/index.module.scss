@@ -1,7 +1,9 @@
 .bodyWrapper {
   width: 100vw;
   height: 100vh;
-  background-color: lavender;
+  // background-color: lavender;
+  background-image: url("/loginBackground.jpg");
+  background-size: cover;
 }
 
 .signIn {
