@@ -7,7 +7,7 @@ input {
   */
   box-sizing: border-box; /* Make sure that padding and width stays in place */
   resize: vertical;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   outline: none;
 }

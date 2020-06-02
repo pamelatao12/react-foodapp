@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import styles from "./searchBar.module.css";
 import { useHistory } from "react-router-dom";
 
-const SearchBar = () => {
+const SearchBar = ({ keyword, location }) => {
   // 1. set up searchKeywordState
   // 2. set a onChange handler to call setState method ^ when input is changed
   const history = useHistory();
 
   const [state, setState] = useState({
-    term: "",
-    location: ""
+    term: keyword,
+    location: location
   });
 
   const handleSearch = e => {

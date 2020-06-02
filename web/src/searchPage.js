@@ -61,7 +61,7 @@ const SearchPage = () => {
           <img className={styles.siteLogo} src="./logo.png" alt="logo" />
         </Link>
         <div className={styles.searchBar}>
-          <SearchBar />
+          <SearchBar keyword={searchKeyword} location={searchLocation} />
         </div>
       </div>
       <div className={styles.searchWrapper}>

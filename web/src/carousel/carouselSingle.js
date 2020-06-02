@@ -22,7 +22,9 @@ const CarouselSingle = ({ restaurant }) => {
     history.push({
       pathname: "/search",
       search: `?term=${restaurant.name}&location=${restaurant.location
-        .address1 + restaurant.location.city}`
+        .address1 +
+        " " +
+        restaurant.location.city}`
     });
   };
 
