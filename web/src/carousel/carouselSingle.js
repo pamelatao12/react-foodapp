@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./carouselSingle.module.css";
-
 import Rating from "../rating.js";
+import { Link, useHistory } from "react-router-dom";
 
 const CarouselSingle = ({ restaurant }) => {
+  const history = useHistory();
+
   const restCategories = () => {
     let categories = "";
     restaurant.categories.forEach(category => {
@@ -16,8 +18,16 @@ const CarouselSingle = ({ restaurant }) => {
     return categories;
   };
 
+  const handleClick = e => {
+    history.push({
+      pathname: "/search",
+      search: `?term=${restaurant.name}&location=${restaurant.location
+        .address1 + restaurant.location.city}`
+    });
+  };
+
   return (
-    <div className={styles.singleSlide}>
+    <div className={styles.singleSlide} onClick={handleClick}>
       <h2 className={styles.restaurantName}>{restaurant.name}</h2>
       <div className={styles.rating}>
         <Rating restaurantRating={restaurant.rating} />

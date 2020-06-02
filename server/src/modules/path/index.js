@@ -135,6 +135,8 @@ const fetchGraphQlData = (req, res) => {
         total
         business {
             name
+            alias
+            id
             price
             rating
             review_count

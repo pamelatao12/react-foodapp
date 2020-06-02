@@ -47,6 +47,7 @@ const SearchPage = () => {
   if (!data) {
     return <div />;
   }
+  console.log(data);
 
   return (
     <div
