@@ -5,6 +5,7 @@ import SearchBar from "./searchBar";
 import Header from "./header";
 import Filter from "./filter";
 import RestaurantCard from "./restaurantCard";
+import SortDropdown from "./sortDropdown";
 import { Link, useLocation } from "react-router-dom";
 import queryString from "query-string";
 
@@ -14,6 +15,8 @@ const SearchPage = () => {
 
   const [searchKeyword, setSearchKeyword] = useState(parsed.term);
   const [searchLocation, setSearchLocation] = useState(parsed.location);
+  const [sortBy, setSortBy] = useState("best_match");
+  console.log(sortBy);
   const [data, setData] = useState(undefined);
   // const [reviews, setFirstThreeReviews] = useState(undefined);
   const [loading, setLoading] = useState(true);
@@ -21,7 +24,7 @@ const SearchPage = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/search?term=${searchKeyword}&location=${searchLocation}&limit=20`,
+        `http://localhost:4000/search?term=${searchKeyword}&location=${searchLocation}&sort_by=${sortBy}&limit=20`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -42,12 +45,11 @@ const SearchPage = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [sortBy]);
 
   if (!data) {
     return <div />;
   }
-  console.log(data);
 
   return (
     <div
@@ -69,6 +71,9 @@ const SearchPage = () => {
           <Filter />
         </div>
         <div className={styles.restaurantListWrapper}>
+          <div className={styles.sortBy}>
+            <SortDropdown sortBy={sortBy} setSortBy={setSortBy} />
+          </div>
           <ul className={styles.restaurantListUl}>
             {data.map((restaurantDetail, i) => (
               <li className={styles.restaurantList} key={i}>

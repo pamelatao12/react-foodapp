@@ -9,7 +9,7 @@ const SearchCard = ({ img }) => {
       style={{ backgroundImage: `url("/${img}")` }}
     >
       <img className={styles.siteLogo} src="./logo.png" alt="logo" />
-      <SearchBar />
+      <SearchBar keyword="" location="" />
       {/* add dropdown "results for..." click to search instead of actual search
       button */}
     </div>

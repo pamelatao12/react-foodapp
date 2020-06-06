@@ -133,7 +133,7 @@
   border: 1px solid black;
   font-size: 16px;
   cursor: pointer;
-  z-index: 100;
+  /* z-index: 100; */
   outline: none;
 }
 

@@ -2,12 +2,10 @@
   margin-left: 40px;
   border-right: 1px solid lightgray;
   width: 20%;
-  /* height: 80vh; */
-  /* position: fixed; */
   margin-bottom: 20px;
   margin-top: 20px;
-  overflow: scroll;
-  height: 90vh;
+  /* overflow: scroll; */
+  /* height: 90vh; */
   float: left;
 }
 

@@ -1,0 +1,26 @@
+.label {
+  font-weight: bold;
+  color: black;
+  margin-right: 10px;
+}
+
+.dropdown {
+  font-size: 12px;
+  border: solid 1px lightgray;
+  height: 40px;
+  width: 140px;
+  border-radius: 0px;
+  text-align: end;
+  text-indent: 15px;
+  outline: none;
+}
+
+.dropdownOption {
+  font-size: 12px;
+  border: solid 1px lightgray;
+  height: 40px;
+  width: 140px;
+  // border-radius: 0px;
+  text-align: end;
+  text-indent: 15px;
+}

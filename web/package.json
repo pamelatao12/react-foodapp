@@ -19,6 +19,7 @@
     "react-responsive-carousel": "^3.1.51",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-select": "^3.1.0",
     "react-tiny-popover": "^4.0.0",
     "react-transition-group": "^4.3.0"
   },
