@@ -24,11 +24,8 @@ const SortDropdown = ({ sortBy, setSortBy }) => {
     }),
     container: (provided, state) => ({
       ...provided,
-      width: 220
-    }),
-    control: (provided, state) => ({
-      ...provided,
-      borderColor: "grey"
+      width: 220,
+      marginLeft: 14
     }),
     control: (provided, state) => ({
       ...provided,

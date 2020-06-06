@@ -71,10 +71,11 @@ const SearchPage = () => {
           <Filter />
         </div>
         <div className={styles.restaurantListWrapper}>
-          <div className={styles.sortBy}>
-            <SortDropdown sortBy={sortBy} setSortBy={setSortBy} />
-          </div>
           <ul className={styles.restaurantListUl}>
+            <div className={styles.sort}>
+              <span className={styles.sortBy}>SORT BY:</span>{" "}
+              <SortDropdown sortBy={sortBy} setSortBy={setSortBy} />
+            </div>
             {data.map((restaurantDetail, i) => (
               <li className={styles.restaurantList} key={i}>
                 <RestaurantCard details={restaurantDetail} index={i + 1} />
