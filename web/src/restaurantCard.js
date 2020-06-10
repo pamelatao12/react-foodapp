@@ -3,7 +3,7 @@ import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
 import Rating from "./rating";
 import Popover, { ArrowContainer } from "react-tiny-popover";
-import { StatefulPopover } from "baseui/popover";
+import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { Input } from "baseui/input";
 import { Block } from "baseui/block";
 import CheckBox from "./checkbox";
@@ -106,8 +106,8 @@ const RestaurantCard = ({ details, index }) => {
             </Block>
           )}
           showArrow
-          returnFocus
-          autoFocus
+          dismissOnClickOutside
+          placement={PLACEMENT.bottom}
         >
           <button className="addButton">+</button>
         </StatefulPopover>
