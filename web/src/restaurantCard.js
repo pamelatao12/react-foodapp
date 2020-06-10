@@ -3,6 +3,10 @@ import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
 import Rating from "./rating";
 import Popover, { ArrowContainer } from "react-tiny-popover";
+import { StatefulPopover } from "baseui/popover";
+import { Input } from "baseui/input";
+import { Block } from "baseui/block";
+import CheckBox from "./checkbox";
 
 const RestaurantCard = ({ details, index }) => {
   const [restaurantReview, setReviews] = useState(details.reviews);
@@ -93,47 +97,20 @@ const RestaurantCard = ({ details, index }) => {
   return (
     <>
       <div className="restaurantActionButtons">
-        <Popover
-          className="popoverStyle"
-          isOpen={isPopoverOpen}
-          position={"bottom"}
-          padding={10}
-          onClickOutside={() => setIsPopoverOpen(false)}
-          content={({ position, targetRect, popoverRect }) => (
-            <ArrowContainer
-              position={position}
-              targetRect={targetRect}
-              popoverRect={popoverRect}
-              arrowColor={"#f7f7f7"}
-              arrowSize={10}
-              arrowStyle={{
-                borderBottom: "10px solid darkgrey"
-              }}
-            >
-              <div
-                className="popoverContent"
-                onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-              >
-                <h2>Add to upcoming events:</h2>
-                <ul className="eventsListPopover">
-                  <li className="eventPopover">Event 1</li>
-                  <li className="eventPopover">Event 2</li>
-                  <li className="eventPopover">Event 3</li>
-                  <li className="eventPopover">Event 1</li>
-                  <li className="eventPopover">Event 2</li>
-                  <li className="eventPopover">Event 3</li>
-                </ul>
-              </div>
-            </ArrowContainer>
+        <StatefulPopover
+          content={() => (
+            <Block padding={"20px"}>
+              Add to event:
+              <br />
+              <CheckBox checked={false} />
+            </Block>
           )}
+          showArrow
+          returnFocus
+          autoFocus
         >
-          <button
-            className="addButton"
-            onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-          >
-            +
-          </button>
-        </Popover>
+          <button className="addButton">+</button>
+        </StatefulPopover>
 
         <button className="heartButton">&#9829;</button>
       </div>

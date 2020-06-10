@@ -7,6 +7,7 @@ import MyEvents from "./myEvents";
 import SignedOutPage from "./signedOut";
 import CreateAccount from "./signedOut/createAccount";
 import { AuthenticationContextProvider } from "./common/authentication/context-provider";
+import { ThemeInitializer } from "./themeInitializer";
 
 // const App = () => {
 //   return (
@@ -53,9 +54,11 @@ const AppRouter = () => {
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" component={AppRouter} />
-      </Switch>
+      <ThemeInitializer>
+        <Switch>
+          <Route path="/" component={AppRouter} />
+        </Switch>
+      </ThemeInitializer>
     </Router>
   );
 };
