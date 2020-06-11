@@ -16,11 +16,15 @@ const getUserRecord = async email => {
 };
 
 const createUser = async (req, res) => {
-  const { email } = req.query;
+  const { first, last, email } = req.query;
   console.log("attempting to add user to database: ", email);
   const user = await getUserRecord(email);
   database.set("users/" + user.uid, {
-    email: email
+    first: first,
+    last: last,
+    email: email,
+    events: [],
+    restaurants: []
   });
   console.log("user added to database");
   return user;

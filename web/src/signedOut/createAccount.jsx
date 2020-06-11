@@ -59,7 +59,7 @@ const CreateAccount = () => {
       return;
     }
 
-    await createAccount(email, password);
+    await createAccount(first, last, email, password);
     setAccountCreated(true);
   };
 

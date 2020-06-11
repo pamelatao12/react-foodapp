@@ -83,7 +83,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
-  const createAccount = async (email, password) => {
+  const createAccount = async (first, last, email, password) => {
     console.log("Attempting to create account: ", email, password);
     await firebase
       .auth()
@@ -95,13 +95,13 @@ export const AuthenticationContextProvider = ({ children }) => {
         // ...
       });
     console.log("account created");
-    addUserToDatabase(email);
+    addUserToDatabase(first, last, email);
   };
 
   const addUserToDatabase = async email => {
     try {
       const response = await fetch(
-        `http://localhost:4000/user?email=${email}`,
+        `http://localhost:4000/user?first=${first}&last=${last}&email=${email}`,
         {
           headers: {
             "Content-Type": "application/json",
