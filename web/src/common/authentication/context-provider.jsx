@@ -98,7 +98,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     addUserToDatabase(first, last, email);
   };
 
-  const addUserToDatabase = async email => {
+  const addUserToDatabase = async (first, last, email) => {
     try {
       const response = await fetch(
         `http://localhost:4000/user?first=${first}&last=${last}&email=${email}`,
