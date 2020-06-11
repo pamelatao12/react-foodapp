@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import styles from "./myEvents.module.css";
 import Header from "./header";
 import EventCard from "./eventCard";
+import AddEvent from "./addEvent";
 import { Link, useLocation } from "react-router-dom";
 import firebase from "firebase";
 
 const MyEvents = () => {
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
   const [pastEventsTab, setPastEventsActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [upcomingEvents, setUpcomingEvents] = useState({
     event1: {
@@ -77,6 +79,13 @@ const MyEvents = () => {
           <button className={styles.eventsH2} onClick={handleEventClick}>
             Past Events
           </button>
+          <button
+            className={styles.addEventBtn}
+            onClick={() => setIsModalOpen(!isModalOpen)}
+          >
+            + Add Event
+          </button>
+          <AddEvent open={isModalOpen} setIsModalOpen={setIsModalOpen} />
         </div>
         <div className={styles.eventCards}>
           {Object.keys(upcomingEvents).map((event, i) => {

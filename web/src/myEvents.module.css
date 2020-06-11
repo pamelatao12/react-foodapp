@@ -51,6 +51,17 @@
   margin-right: 15px;
 }
 
+.addEventBtn {
+  border: 1px solid gray;
+  color: black;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  margin-right: 15px;
+}
+
 .eventCards {
   min-height: 100vh;
   /* width: 100vw; */
