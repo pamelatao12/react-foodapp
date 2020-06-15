@@ -83,7 +83,7 @@ const MyEvents = () => {
             className={styles.addEventBtn}
             onClick={() => setIsModalOpen(!isModalOpen)}
           >
-            + Add Event
+            ➕ Add Event
           </button>
           <AddEvent open={isModalOpen} setIsModalOpen={setIsModalOpen} />
         </div>

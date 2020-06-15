@@ -9,8 +9,13 @@ import {
   ROLE
 } from "baseui/modal";
 import { KIND as ButtonKind } from "baseui/button";
+import AddEventForm from "./addEventForm";
 
 const AddEvent = ({ open, setIsModalOpen }) => {
+  const close = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Modal
       onClose={() => setIsModalOpen(false)}
@@ -19,11 +24,20 @@ const AddEvent = ({ open, setIsModalOpen }) => {
       animate
       size={SIZE.default}
       role={ROLE.dialog}
+      overrides={{
+        Dialog: {
+          style: {
+            width: "60vw",
+            height: "60vh",
+            display: "flex",
+            flexDirection: "column"
+          }
+        }
+      }}
     >
       <ModalHeader>Add new event</ModalHeader>
       <ModalBody>
-        Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare
-        faucibus ex, non facilisis nisl. Maecenas aliquet mauris ut tempus.
+        <AddEventForm />
       </ModalBody>
       <ModalFooter>
         <ModalButton kind={ButtonKind.tertiary} onClick={close}>
