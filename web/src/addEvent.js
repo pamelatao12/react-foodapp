@@ -27,8 +27,8 @@ const AddEvent = ({ open, setIsModalOpen }) => {
       overrides={{
         Dialog: {
           style: {
-            width: "60vw",
-            height: "60vh",
+            width: "50vw",
+            height: "80vh",
             display: "flex",
             flexDirection: "column"
           }

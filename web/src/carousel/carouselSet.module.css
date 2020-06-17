@@ -3,14 +3,14 @@
   margin: 0 auto;
 }
 
-ul {
+.carouselList {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-li {
+.carouselListItem {
   list-style-type: none;
   float: left;
   padding: 40px;

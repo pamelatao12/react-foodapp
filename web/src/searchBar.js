@@ -42,7 +42,7 @@ const SearchBar = ({ keyword, location }) => {
         </p>
         <input
           name="term"
-          id={styles.searchKeyword}
+          className={styles.searchKeyword}
           type="text"
           placeholder="Sushi... burgers... pasta..."
           onChange={onInputChange}
@@ -57,7 +57,7 @@ const SearchBar = ({ keyword, location }) => {
         </p>
         <input
           name="location"
-          id={styles.searchLocation}
+          className={styles.searchLocation}
           type="text"
           placeholder="New York City"
           onChange={onInputChange}
