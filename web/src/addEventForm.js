@@ -17,8 +17,8 @@ const AddEventForm = ({
   setNotes,
   location,
   setLocation,
-  guests,
-  setGuests
+  value,
+  setValue
 }) => {
   const [css, theme] = useStyletron();
 
@@ -108,8 +108,8 @@ const AddEventForm = ({
         ]}
         labelKey="label"
         valueKey="id"
-        onChange={({ guests }) => setGuests(guests)}
-        value={guests}
+        onChange={({ value }) => setValue(value)}
+        value={value}
       />
       <div
         className={css({

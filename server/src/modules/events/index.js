@@ -23,7 +23,7 @@ const createEvent = async (req, res) => {
     title: title,
     date: date,
     location: location,
-    guests: guests,
+    guests: guestList,
     notes: notes
   });
   console.log("event added to database");

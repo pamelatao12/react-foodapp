@@ -23,7 +23,7 @@ const AddEvent = ({ open, setIsModalOpen }) => {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [location, setLocation] = useState("");
-  const [guests, setGuests] = useState([]);
+  const [value, setValue] = useState([]);
 
   const [eventCreated, setEventCreated] = useState(false);
   const inputsHaveError = false;
@@ -43,7 +43,7 @@ const AddEvent = ({ open, setIsModalOpen }) => {
       return;
     }
 
-    await createEvent(title, date, location, guests, notes);
+    await createEvent(title, date, location, value, notes);
     setEventCreated(true);
     close();
   };
@@ -76,8 +76,8 @@ const AddEvent = ({ open, setIsModalOpen }) => {
           setDate={setDate}
           location={location}
           setLocation={setLocation}
-          guests={guests}
-          setGuests={setGuests}
+          value={value}
+          setValue={setValue}
           notes={notes}
           setNotes={setNotes}
         />
