@@ -116,13 +116,32 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   };
 
+  const createEvent = async (title, date, location, guests, notes) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/event?title=${title}&date=${date}&location=${location}&guests=${guests}&notes=${notes}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      console.log("event data was fetched", responseJson);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
         ...state,
         logIn,
         createAccount,
-        signOut
+        signOut,
+        createEvent
       }}
     >
       {children}

@@ -8,14 +8,19 @@ import { TimezonePicker } from "baseui/timezonepicker";
 import { Input } from "baseui/input";
 import { Select } from "baseui/select";
 
-const AddEventForm = () => {
+const AddEventForm = ({
+  date,
+  setDate,
+  title,
+  setTitle,
+  notes,
+  setNotes,
+  location,
+  setLocation,
+  guests,
+  setGuests
+}) => {
   const [css, theme] = useStyletron();
-  const [date, setDate] = useState(null);
-  const [zone, setZone] = useState(null);
-  const [title, setTitle] = useState("");
-  const [notes, setNotes] = useState("");
-  const [location, setLocation] = useState("");
-  const [guests, setGuests] = useState([]);
 
   return (
     <div className={css({})}>
