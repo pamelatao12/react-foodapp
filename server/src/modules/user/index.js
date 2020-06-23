@@ -19,7 +19,7 @@ const createUser = async (req, res) => {
   const { first, last, email } = req.query;
   console.log("attempting to add user to database: ", email);
   const user = await getUserRecord(email);
-  database.push("users/", {
+  database.pushCustomKey("users/", user.uid, {
     first: first,
     last: last,
     email: email

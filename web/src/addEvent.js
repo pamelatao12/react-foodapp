@@ -17,7 +17,7 @@ const AddEvent = ({ open, setIsModalOpen }) => {
     setIsModalOpen(false);
   };
 
-  const { createEvent } = useContext(AuthenticationContext);
+  const { createEvent, state } = useContext(AuthenticationContext);
 
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState("");
@@ -43,7 +43,8 @@ const AddEvent = ({ open, setIsModalOpen }) => {
       return;
     }
 
-    await createEvent(title, date, location, value, notes);
+    const user = state.userId;
+    await createEvent(title, date, location, value, notes, user);
     setEventCreated(true);
     close();
   };

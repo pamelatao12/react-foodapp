@@ -23,9 +23,9 @@ import styles from "./carouselSet.module.css";
 const CarouselSet = ({ viewSet }) => {
   return (
     <div className={styles.showSet}>
-      <ul>
+      <ul className={styles.carouselList}>
         {viewSet.map((restaurant, i) => (
-          <li key={i}>
+          <li key={i} className={styles.carouselListItem}>
             <CarouselSingle restaurant={restaurant} />
           </li>
         ))}

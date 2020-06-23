@@ -116,15 +116,14 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   };
 
-  const createEvent = async (title, date, location, value, notes) => {
+  const createEvent = async (title, date, location, value, notes, user) => {
     try {
       const guestList = [];
       value.map(guest => {
         guestList.push(guest.id);
       });
-      console.log(guestList);
       const response = await fetch(
-        `http://localhost:4000/event?title=${title}&date=${date}&location=${location}&guests=${guestList}&notes=${notes}`,
+        `http://localhost:4000/event?title=${title}&date=${date}&location=${location}&guests=${guestList}&notes=${notes}&user=${user}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -143,6 +142,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     <AuthenticationContext.Provider
       value={{
         ...state,
+        state,
         logIn,
         createAccount,
         signOut,

@@ -62,6 +62,19 @@ const push = async (path, payload) => {
 };
 
 /**
+ * Pushes data to the path as part of a list.
+ */
+const pushCustomKey = async (path, key, payload) => {
+  await firebaseAdmin
+    .database()
+    .ref(path)
+    .child(key)
+    .set(payload);
+  // Get the unique key for the payload.
+  return key || "";
+};
+
+/**
  * Reads a static snapshot of the contents at the given database path, as they
  * existed at the time of the read event. If the path is undefined, the root
  * will be used.
@@ -81,6 +94,7 @@ const clearAll = () => {
 
 exports.set = set;
 exports.push = push;
+exports.pushCustomKey = pushCustomKey;
 exports.read = read;
 exports.clearAll = clearAll;
 

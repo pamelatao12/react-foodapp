@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./myEvents.module.css";
 import Header from "./header";
 import EventCard from "./eventCard";
 import AddEvent from "./addEvent";
 import { Link, useLocation } from "react-router-dom";
 import firebase from "firebase";
+import { AuthenticationContext } from "./common/authentication/context";
 
 const MyEvents = () => {
+  const { state } = useContext(AuthenticationContext);
+
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
   const [pastEventsTab, setPastEventsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,7 +64,7 @@ const MyEvents = () => {
     setPastEventsActive(!pastEventsTab);
   };
 
-  const user = firebase.auth().currentUser;
+  const user = state.userId;
   console.log("user: ", user);
 
   return upcomingEventsTab ? (
