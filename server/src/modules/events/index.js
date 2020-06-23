@@ -10,7 +10,6 @@ const getEventRecord = async eventId => {
 const createEvent = async (req, res) => {
   const { title, date, location, guests, notes, user } = req.query;
   console.log("attempting to add event to database: ", title);
-  // const event = await getEventRecord(email);
   const key = await database.push("events/", {
     title: title,
     date: date,
@@ -28,15 +27,13 @@ const createEvent = async (req, res) => {
 const addEventToUserRecord = async (eventId, eventRecord, user) => {
   console.log("user: ", user);
   if (user != undefined) {
-    const eventsList = (await database.read(`users/${user}/events`)).val();
+    let eventsList = (await database.read(`users/${user}/events`)).val();
     console.log("user's events: ", eventsList);
-    if (eventsList) {
-      await database.push(`users/${user}/events`, {
-        events: eventsList + "," + eventId
-      });
-    } else {
-      await database.push(`users/${user}/events/${eventId}`, eventRecord);
+    if (!eventsList) {
+      eventsList = {};
     }
+    eventsList[eventId] = eventRecord;
+    await database.pushCustomKey(`users/${user}/`, "events", eventsList);
   } else {
     console.log("Error: User not logged in");
   }
