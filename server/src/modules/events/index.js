@@ -19,9 +19,7 @@ const createEvent = async (req, res) => {
   });
   const eventRecord = await getEventRecord(key);
   console.log("event:", eventRecord);
-  addEventToUserRecord(key, eventRecord, user);
-  console.log("event added to database");
-  // return event;
+  res.send(await addEventToUserRecord(key, eventRecord, user));
 };
 
 const addEventToUserRecord = async (eventId, eventRecord, user) => {
@@ -34,6 +32,8 @@ const addEventToUserRecord = async (eventId, eventRecord, user) => {
     }
     eventsList[eventId] = eventRecord;
     await database.pushCustomKey(`users/${user}/`, "events", eventsList);
+    console.log("events list returned:", eventsList);
+    return eventsList;
   } else {
     console.log("Error: User not logged in");
   }

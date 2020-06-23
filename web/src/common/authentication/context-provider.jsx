@@ -133,6 +133,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       );
       const responseJson = await response.json();
       console.log("event data was fetched", responseJson);
+      return responseJson;
     } catch (error) {
       console.log(error);
     }
