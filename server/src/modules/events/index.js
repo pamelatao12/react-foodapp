@@ -5,6 +5,12 @@ const getEventRecord = async eventId => {
   return (await database.read(`events/${eventId}`)).val();
 };
 
+const getUserEventsList = async (req, res) => {
+  console.log("getting user events list");
+  const { user } = req.query;
+  res.send((await database.read(`users/${user}/events`)).val());
+};
+
 // create event in database, link event to user who created it
 // return list of user's events
 const createEvent = async (req, res) => {
@@ -41,6 +47,7 @@ const addEventToUserRecord = async (eventId, eventRecord, user) => {
 
 const initializeEventRoutes = router => {
   router.get("/event", createEvent);
+  router.get("/eventList", getUserEventsList);
 };
 
 exports.initializeEventRoutes = initializeEventRoutes;

@@ -12,7 +12,7 @@ import { KIND as ButtonKind } from "baseui/button";
 import AddEventForm from "./addEventForm";
 import { AuthenticationContext } from "./common/authentication/context";
 
-const AddEvent = ({ open, setIsModalOpen }) => {
+const AddEvent = ({ open, setIsModalOpen, setAllEvents }) => {
   const close = () => {
     setIsModalOpen(false);
   };
@@ -44,8 +44,16 @@ const AddEvent = ({ open, setIsModalOpen }) => {
     }
 
     const user = state.userId;
-    await createEvent(title, date, location, value, notes, user);
+    const eventsList = await createEvent(
+      title,
+      date,
+      location,
+      value,
+      notes,
+      user
+    );
     setEventCreated(true);
+    setAllEvents(eventsList);
     close();
   };
 

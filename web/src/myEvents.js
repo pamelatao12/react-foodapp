@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./myEvents.module.css";
 import Header from "./header";
 import EventCard from "./eventCard";
@@ -8,39 +8,15 @@ import firebase from "firebase";
 import { AuthenticationContext } from "./common/authentication/context";
 
 const MyEvents = () => {
-  const { state } = useContext(AuthenticationContext);
+  const { getEvents, state } = useContext(AuthenticationContext);
 
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
   const [pastEventsTab, setPastEventsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [upcomingEvents, setUpcomingEvents] = useState({
-    event1: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    },
-    event2: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    },
-    event3: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    },
-    event4: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    },
-    event5: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    }
-  });
+  const [allEvents, setAllEvents] = useState(undefined);
+
+  const [upcomingEvents, setUpcomingEvents] = useState(undefined);
   const [pastEvents, setPastEvents] = useState({
     event1: {
       name: "Dinner with David",
@@ -59,6 +35,31 @@ const MyEvents = () => {
     }
   });
 
+  const fetchEvents = async user => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/eventList?user=${user}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      console.log("event list was fetched", responseJson);
+      setAllEvents(responseJson);
+      console.log("set all events: ", allEvents);
+      //split events in past and future events
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const eventsList = () => {
+    // todo: split events into past and future events
+  };
+
   const handleEventClick = () => {
     setUpcomingEventsActive(!upcomingEventsTab);
     setPastEventsActive(!pastEventsTab);
@@ -66,6 +67,30 @@ const MyEvents = () => {
 
   const user = state.userId;
   console.log("user: ", user);
+
+  useEffect(() => {
+    fetchEvents(user);
+  }, []);
+
+  if (!allEvents && !upcomingEvents) {
+    return (
+      <>
+        <div className={styles.eventPageWrapper}>
+          <img className={styles.siteLogo} src="./logo.png" alt="logo" />
+          <Header />
+          <h1 className={styles.eventsH1}>Manage Events</h1>
+          <div className={styles.eventsUl}>
+            <button className={styles.eventsH2} onClick={handleEventClick}>
+              Upcoming Events
+            </button>
+            <button className={styles.eventH2Active} onClick={handleEventClick}>
+              Past Events
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return upcomingEventsTab ? (
     <>
@@ -88,11 +113,15 @@ const MyEvents = () => {
           >
             ➕ Add Event
           </button>
-          <AddEvent open={isModalOpen} setIsModalOpen={setIsModalOpen} />
+          <AddEvent
+            open={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            setAllEvents={setAllEvents}
+          />
         </div>
         <div className={styles.eventCards}>
-          {Object.keys(upcomingEvents).map((event, i) => {
-            return <EventCard key={i} />;
+          {Object.keys(allEvents).map((event, i) => {
+            return <EventCard key={i} event={allEvents[event]} />;
           })}
         </div>
       </div>

@@ -16,7 +16,6 @@ const SearchPage = () => {
   const [searchKeyword, setSearchKeyword] = useState(parsed.term);
   const [searchLocation, setSearchLocation] = useState(parsed.location);
   const [sortBy, setSortBy] = useState("best_match");
-  console.log(sortBy);
   const [data, setData] = useState(undefined);
   // const [reviews, setFirstThreeReviews] = useState(undefined);
   const [loading, setLoading] = useState(true);

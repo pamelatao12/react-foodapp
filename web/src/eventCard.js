@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./eventCard.module.css";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 
-const EventCard = () => {
+const EventCard = ({ event }) => {
   const images = [
     "food1.jpg",
     "food2.jpg",
@@ -14,6 +14,8 @@ const EventCard = () => {
     "food8.jpg",
     "food9.jpg"
   ];
+
+  console.log(event);
 
   const popoverBody = <div>hi</div>;
   const [isFriendsPopoverOpen, setIsFriendsPopoverOpen] = useState(false);
@@ -123,16 +125,18 @@ const EventCard = () => {
         <p className={styles.day}>10</p>
       </div>
       <div className={styles.eventDetailsWrapper}>
-        <h1 className={styles.eventName}>Dinner with friends</h1>
+        <h1 className={styles.eventName}>{event.title}</h1>
         <p className={styles.eventDetails}>
           <span role="img">&#128337;</span> Friday, 17th August | 06:30 PM -
           08:30 PM
         </p>
         <p className={styles.eventDetails}>
-          <span role="img">&#128205; </span>1234 56th St, New York, NY
+          <span role="img">&#128205; </span>
+          {event.location}
         </p>
         <p className={styles.eventDetails}>
-          <span role="img">&#128221;</span> Notes
+          <span role="img">&#128221;</span>
+          {event.notes}
         </p>
       </div>
       <div className={styles.eventActions}>
