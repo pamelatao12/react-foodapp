@@ -49,7 +49,6 @@ const MyEvents = () => {
       const responseJson = await response.json();
       console.log("event list was fetched", responseJson);
       setAllEvents(responseJson);
-      console.log("set all events: ", allEvents);
       //split events in past and future events
     } catch (error) {
       console.log(error);

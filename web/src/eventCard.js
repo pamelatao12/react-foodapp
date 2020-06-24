@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./eventCard.module.css";
 import Popover, { ArrowContainer } from "react-tiny-popover";
+import Moment from "react-moment";
 
 const EventCard = ({ event }) => {
   const images = [
@@ -23,6 +24,10 @@ const EventCard = ({ event }) => {
 
   const changeBackgroundImg = () => {
     return images[Math.floor(Math.random() * images.length)];
+  };
+
+  const toUpperCaseFilter = d => {
+    return d.toUpperCase();
   };
 
   const votePopover = (
@@ -127,8 +132,9 @@ const EventCard = ({ event }) => {
       <div className={styles.eventDetailsWrapper}>
         <h1 className={styles.eventName}>{event.title}</h1>
         <p className={styles.eventDetails}>
-          <span role="img">&#128337;</span> Friday, 17th August | 06:30 PM -
-          08:30 PM
+          <span role="img">&#128337;</span>
+          <Moment filter={toUpperCaseFilter}>{event.date}</Moment>
+          Friday, 17th August | 06:30 PM - 08:30 PM
         </p>
         <p className={styles.eventDetails}>
           <span role="img">&#128205; </span>
