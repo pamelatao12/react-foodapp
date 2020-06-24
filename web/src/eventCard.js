@@ -125,16 +125,23 @@ const EventCard = ({ event }) => {
         style={{ backgroundImage: `url("/${changeBackgroundImg()}")` }}
       ></div>
       <div className={styles.eventDate}>
-        <h1 className={styles.dateHeader}>MONDAY</h1>
-        <p className={styles.month}>May</p>
-        <p className={styles.day}>10</p>
+        <h1 className={styles.dateHeader}>
+          <Moment filter={toUpperCaseFilter} format="dddd">
+            {event.date}
+          </Moment>
+        </h1>
+        <p className={styles.month}>
+          <Moment format="MMMM">{event.date}</Moment>
+        </p>
+        <p className={styles.day}>
+          <Moment format="D">{event.date}</Moment>
+        </p>
       </div>
       <div className={styles.eventDetailsWrapper}>
         <h1 className={styles.eventName}>{event.title}</h1>
         <p className={styles.eventDetails}>
           <span role="img">&#128337;</span>
-          <Moment filter={toUpperCaseFilter}>{event.date}</Moment>
-          Friday, 17th August | 06:30 PM - 08:30 PM
+          <Moment format="dddd, D MMMM YYYY | h:mmA">{event.date}</Moment>
         </p>
         <p className={styles.eventDetails}>
           <span role="img">&#128205; </span>
