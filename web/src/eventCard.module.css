@@ -25,6 +25,48 @@
   background-size: cover;
 }
 
+.deleteButton {
+  border-radius: 50%;
+  background-color: lightgray;
+  font-size: 14px;
+  line-height: 1;
+  height: 22px;
+  opacity: 0.5;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bolder;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.editButton {
+  line-height: 1;
+  /* font-size: 12px; */
+  display: inline-block;
+  position: absolute;
+  left: 15px;
+  /*margin-left: -12%;*/
+  top: 15px;
+  /*width: 30%;*/
+  /*border: 1px solid white;*/
+  background-color: lightgray;
+  opacity: 0.7;
+  padding: 6px;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.editButton:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .eventDate {
   left: 0;
   right: 0;
@@ -68,6 +110,7 @@
   font-size: 14px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .eventActions {

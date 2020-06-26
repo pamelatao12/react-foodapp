@@ -79,6 +79,8 @@ const EventCard = ({ event }) => {
         className={styles.topHalf}
         style={{ backgroundImage: `url("/${changeBackgroundImg()}")` }}
       ></div>
+      <button className={styles.editButton}>Edit</button>
+      <button className={styles.deleteButton}>&times;</button>
       <div className={styles.eventDate}>
         <h1 className={styles.dateHeader}>
           <Moment filter={toUpperCaseFilter} format="dddd">
@@ -101,7 +103,7 @@ const EventCard = ({ event }) => {
         <p className={styles.eventDetails}>
           <span role="img">&#128205; </span>
           {event.location === "" ? "TBD" : event.location}
-          <div className={styles.eventActions}>{votePopover}</div>
+          <span className={styles.eventActions}>{votePopover}</span>
         </p>
         <p className={styles.eventDetails}>
           <span role="img">👯</span>
