@@ -19,7 +19,6 @@ const EventCard = ({ event }) => {
   console.log(event);
 
   const popoverBody = <div>hi</div>;
-  const [isFriendsPopoverOpen, setIsFriendsPopoverOpen] = useState(false);
   const [isVotePopoverOpen, setIsVotePopoverOpen] = useState(false);
 
   const changeBackgroundImg = () => {
@@ -69,51 +68,7 @@ const EventCard = ({ event }) => {
         className={styles.eventActionBtn}
         onClick={() => setIsVotePopoverOpen(!isVotePopoverOpen)}
       >
-        Vote
-      </button>
-    </Popover>
-  );
-
-  const friendsPopover = (
-    <Popover
-      className="popoverStyle"
-      isOpen={isFriendsPopoverOpen}
-      position={"bottom"}
-      padding={10}
-      onClickOutside={() => setIsFriendsPopoverOpen(false)}
-      content={({ position, targetRect, popoverRect }) => (
-        <ArrowContainer
-          position={position}
-          targetRect={targetRect}
-          popoverRect={popoverRect}
-          arrowColor={"#f7f7f7"}
-          arrowSize={10}
-          arrowStyle={{
-            borderBottom: "10px solid darkgrey"
-          }}
-        >
-          <div
-            className="popoverContent"
-            onClick={() => setIsFriendsPopoverOpen(!isFriendsPopoverOpen)}
-          >
-            <h2>Add to upcoming events:</h2>
-            <ul className="eventsListPopover">
-              <li className="eventPopover">Event 1</li>
-              <li className="eventPopover">Event 2</li>
-              <li className="eventPopover">Event 3</li>
-              <li className="eventPopover">Event 1</li>
-              <li className="eventPopover">Event 2</li>
-              <li className="eventPopover">Event 3</li>
-            </ul>
-          </div>
-        </ArrowContainer>
-      )}
-    >
-      <button
-        className={styles.eventActionBtn}
-        onClick={() => setIsFriendsPopoverOpen(!isFriendsPopoverOpen)}
-      >
-        Add friends!
+        View Options
       </button>
     </Popover>
   );
@@ -145,16 +100,17 @@ const EventCard = ({ event }) => {
         </p>
         <p className={styles.eventDetails}>
           <span role="img">&#128205; </span>
-          {event.location}
+          {event.location === "" ? "TBD" : event.location}
+          <div className={styles.eventActions}>{votePopover}</div>
+        </p>
+        <p className={styles.eventDetails}>
+          <span role="img">👯</span>
+          {event.guests === "" ? "TBD" : event.guests}
         </p>
         <p className={styles.eventDetails}>
           <span role="img">&#128221;</span>
           {event.notes}
         </p>
-      </div>
-      <div className={styles.eventActions}>
-        {friendsPopover}
-        {votePopover}
       </div>
     </div>
   );

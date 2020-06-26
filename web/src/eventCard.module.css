@@ -66,4 +66,10 @@
   margin-top: 0px;
   margin-bottom: 5px;
   font-size: 14px;
+  display: flex;
+  flex-direction: row;
+}
+
+.eventActions {
+  margin-left: 10px;
 }
