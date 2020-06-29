@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import styles from "./eventCard.module.css";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 import Moment from "react-moment";
+import DeleteEvent from "./deleteEvent";
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, isDeleteModalOpen, setIsDeleteModalOpen }) => {
   const images = [
     "food1.jpg",
     "food2.jpg",
@@ -27,6 +28,10 @@ const EventCard = ({ event }) => {
 
   const toUpperCaseFilter = d => {
     return d.toUpperCase();
+  };
+
+  const openDeleteEventModal = () => {
+    setIsDeleteModalOpen(true);
   };
 
   const votePopover = (
@@ -80,7 +85,9 @@ const EventCard = ({ event }) => {
         style={{ backgroundImage: `url("/${changeBackgroundImg()}")` }}
       ></div>
       <button className={styles.editButton}>Edit</button>
-      <button className={styles.deleteButton}>&times;</button>
+      <button className={styles.deleteButton} onClick={openDeleteEventModal}>
+        &times;
+      </button>
       <div className={styles.eventDate}>
         <h1 className={styles.dateHeader}>
           <Moment filter={toUpperCaseFilter} format="dddd">

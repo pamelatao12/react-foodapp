@@ -3,6 +3,7 @@ import styles from "./myEvents.module.css";
 import Header from "./header";
 import EventCard from "./eventCard";
 import AddEvent from "./addEvent";
+import DeleteEvent from "./deleteEvent";
 import { Link, useLocation } from "react-router-dom";
 import firebase from "firebase";
 import { AuthenticationContext } from "./common/authentication/context";
@@ -13,6 +14,7 @@ const MyEvents = () => {
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
   const [pastEventsTab, setPastEventsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const [allEvents, setAllEvents] = useState(undefined);
 
@@ -117,10 +119,22 @@ const MyEvents = () => {
             setIsModalOpen={setIsModalOpen}
             setAllEvents={setAllEvents}
           />
+          <DeleteEvent
+            open={isDeleteModalOpen}
+            setIsDeleteModalOpen={setIsDeleteModalOpen}
+            setAllEvents={setAllEvents}
+          />
         </div>
         <div className={styles.eventCards}>
           {Object.keys(allEvents).map((event, i) => {
-            return <EventCard key={i} event={allEvents[event]} />;
+            return (
+              <EventCard
+                key={i}
+                event={allEvents[event]}
+                isDeleteModalOpen={isDeleteModalOpen}
+                setIsDeleteModalOpen={setIsDeleteModalOpen}
+              />
+            );
           })}
         </div>
       </div>
