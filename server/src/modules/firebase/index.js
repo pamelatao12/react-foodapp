@@ -22,6 +22,11 @@ const set = async (path, payload) => {
   await ref.set(payload);
 };
 
+const remove = async path => {
+  const ref = firebaseAdmin.database().ref(path);
+  await ref.remove();
+};
+
 /**
  * Like set, but wraps the write in a transaction and returns whether the write
  * was committed. If the payload function aborts, nothing will be written.
@@ -96,6 +101,7 @@ exports.set = set;
 exports.push = push;
 exports.pushCustomKey = pushCustomKey;
 exports.read = read;
+exports.remove = remove;
 exports.clearAll = clearAll;
 
 exports.initializeFirebase = initializeFirebase;

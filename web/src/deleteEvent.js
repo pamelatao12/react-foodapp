@@ -11,30 +11,37 @@ import {
 import { KIND as ButtonKind } from "baseui/button";
 import { AuthenticationContext } from "./common/authentication/context";
 
-const DeleteEvent = ({ open, setIsDeleteModalOpen, setAllEvents }) => {
+const DeleteEvent = ({
+  open,
+  setIsDeleteModalOpen,
+  eventTBDeleted,
+  setAllEvents
+}) => {
   const close = () => {
     setIsDeleteModalOpen(false);
   };
 
-  const { deleteEvent, state } = useContext(AuthenticationContext);
+  const { state } = useContext(AuthenticationContext);
 
-  const [eventDeleted, setEventDeleted] = useState(false);
-
-  const handleDeleteEvent = async e => {
-    e.preventDefault();
-
-    const user = state.userId;
-    // const eventsList = await createEvent(
-    //   title,
-    //   date,
-    //   location,
-    //   value,
-    //   notes,
-    //   user
-    // );
-    setEventDeleted(true);
-    // setAllEvents(eventsList);
-    close();
+  const handleDeleteEvent = async () => {
+    try {
+      const user = state.userId;
+      const response = await fetch(
+        `http://localhost:4000/deleteEvent?user=${user}&event=${eventTBDeleted}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      console.log("new event list was fetched", responseJson);
+      setAllEvents(responseJson);
+      close();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

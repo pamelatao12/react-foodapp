@@ -4,7 +4,7 @@ import Popover, { ArrowContainer } from "react-tiny-popover";
 import Moment from "react-moment";
 import DeleteEvent from "./deleteEvent";
 
-const EventCard = ({ event, isDeleteModalOpen, setIsDeleteModalOpen }) => {
+const EventCard = ({ event, eventUID, setAllEvents }) => {
   const images = [
     "food1.jpg",
     "food2.jpg",
@@ -16,6 +16,9 @@ const EventCard = ({ event, isDeleteModalOpen, setIsDeleteModalOpen }) => {
     "food8.jpg",
     "food9.jpg"
   ];
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [eventTBDeleted, setEventTBDeleted] = useState(undefined);
 
   console.log(event);
 
@@ -88,6 +91,12 @@ const EventCard = ({ event, isDeleteModalOpen, setIsDeleteModalOpen }) => {
       <button className={styles.deleteButton} onClick={openDeleteEventModal}>
         &times;
       </button>
+      <DeleteEvent
+        open={isDeleteModalOpen}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
+        eventTBDeleted={eventUID}
+        setAllEvents={setAllEvents}
+      />
       <div className={styles.eventDate}>
         <h1 className={styles.dateHeader}>
           <Moment filter={toUpperCaseFilter} format="dddd">

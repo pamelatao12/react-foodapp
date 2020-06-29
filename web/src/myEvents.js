@@ -14,7 +14,6 @@ const MyEvents = () => {
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
   const [pastEventsTab, setPastEventsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const [allEvents, setAllEvents] = useState(undefined);
 
@@ -119,11 +118,6 @@ const MyEvents = () => {
             setIsModalOpen={setIsModalOpen}
             setAllEvents={setAllEvents}
           />
-          <DeleteEvent
-            open={isDeleteModalOpen}
-            setIsDeleteModalOpen={setIsDeleteModalOpen}
-            setAllEvents={setAllEvents}
-          />
         </div>
         <div className={styles.eventCards}>
           {Object.keys(allEvents).map((event, i) => {
@@ -131,8 +125,8 @@ const MyEvents = () => {
               <EventCard
                 key={i}
                 event={allEvents[event]}
-                isDeleteModalOpen={isDeleteModalOpen}
-                setIsDeleteModalOpen={setIsDeleteModalOpen}
+                eventUID={event}
+                setAllEvents={setAllEvents}
               />
             );
           })}

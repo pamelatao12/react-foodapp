@@ -45,9 +45,17 @@ const addEventToUserRecord = async (eventId, eventRecord, user) => {
   }
 };
 
+// deletes event from user record and returns updated list of events
+const deleteEvent = async (req, res) => {
+  const { user, event } = req.query;
+  await database.remove(`users/${user}/events/${event}`);
+  res.send((await database.read(`users/${user}/events`)).val());
+};
+
 const initializeEventRoutes = router => {
   router.get("/event", createEvent);
   router.get("/eventList", getUserEventsList);
+  router.get("/deleteEvent", deleteEvent);
 };
 
 exports.initializeEventRoutes = initializeEventRoutes;
