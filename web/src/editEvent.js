@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import AddEventForm from "./addEventForm";
+import moment from "moment";
 import {
   Modal,
   ModalHeader,
@@ -27,7 +28,10 @@ const EditEvent = ({
 
   const { state } = useContext(AuthenticationContext);
 
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState(() => {
+    const dateObject = moment(event.date).toISOString();
+    return new Date(dateObject);
+  });
   const [title, setTitle] = useState(event.title);
   const [notes, setNotes] = useState(event.notes);
   const [location, setLocation] = useState(event.location);
