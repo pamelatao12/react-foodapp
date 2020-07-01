@@ -22,6 +22,7 @@ const set = async (path, payload) => {
   await ref.set(payload);
 };
 
+// removes data at specified path
 const remove = async path => {
   const ref = firebaseAdmin.database().ref(path);
   await ref.remove();

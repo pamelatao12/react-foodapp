@@ -11,6 +11,15 @@ import { AuthenticationContext } from "./common/authentication/context";
 const MyEvents = () => {
   const { getEvents, state } = useContext(AuthenticationContext);
 
+  const [options, setOptions] = useState([
+    { id: "Friend", label: "Friend" },
+    { id: "Friend2", label: "Friend2" },
+    { id: "FirstLast", label: "FirstLast" },
+    { id: "Name", label: "Name" },
+    { id: "Atlanta", label: "Atlanta" },
+    { id: "SanFrancisco", label: "San Francisco" }
+  ]);
+
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
   const [pastEventsTab, setPastEventsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -117,6 +126,8 @@ const MyEvents = () => {
             open={isModalOpen}
             setIsModalOpen={setIsModalOpen}
             setAllEvents={setAllEvents}
+            options={options}
+            setOptions={setOptions}
           />
         </div>
         <div className={styles.eventCards}>
@@ -127,6 +138,8 @@ const MyEvents = () => {
                 event={allEvents[event]}
                 eventUID={event}
                 setAllEvents={setAllEvents}
+                options={options}
+                setOptions={setOptions}
               />
             );
           })}

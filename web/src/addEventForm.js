@@ -18,9 +18,14 @@ const AddEventForm = ({
   location,
   setLocation,
   value,
-  setValue
+  setValue,
+  options,
+  setOptions
 }) => {
   const [css, theme] = useStyletron();
+
+  console.log("event date", new Date(date));
+  console.log("event guests", value);
 
   return (
     <div className={css({})}>
@@ -98,14 +103,7 @@ const AddEventForm = ({
       <Select
         creatable
         multi
-        options={[
-          { id: "Friend", label: "Friend" },
-          { id: "Friend2", label: "Friend2" },
-          { id: "FirstLast", label: "FirstLast" },
-          { id: "Name", label: "Name" },
-          { id: "Atlanta", label: "Atlanta" },
-          { id: "SanFrancisco", label: "San Francisco" }
-        ]}
+        options={options}
         labelKey="label"
         valueKey="id"
         onChange={({ value }) => setValue(value)}

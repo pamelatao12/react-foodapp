@@ -12,7 +12,13 @@ import { KIND as ButtonKind } from "baseui/button";
 import AddEventForm from "./addEventForm";
 import { AuthenticationContext } from "./common/authentication/context";
 
-const AddEvent = ({ open, setIsModalOpen, setAllEvents }) => {
+const AddEvent = ({
+  open,
+  setIsModalOpen,
+  setAllEvents,
+  options,
+  setOptions
+}) => {
   const close = () => {
     setIsModalOpen(false);
   };
@@ -89,6 +95,8 @@ const AddEvent = ({ open, setIsModalOpen, setAllEvents }) => {
           setValue={setValue}
           notes={notes}
           setNotes={setNotes}
+          options={options}
+          setOptions={setOptions}
         />
       </ModalBody>
       <ModalFooter>

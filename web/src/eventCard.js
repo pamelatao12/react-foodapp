@@ -3,8 +3,9 @@ import styles from "./eventCard.module.css";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 import Moment from "react-moment";
 import DeleteEvent from "./deleteEvent";
+import EditEvent from "./editEvent";
 
-const EventCard = ({ event, eventUID, setAllEvents }) => {
+const EventCard = ({ event, eventUID, setAllEvents, options, setOptions }) => {
   const images = [
     "food1.jpg",
     "food2.jpg",
@@ -19,6 +20,8 @@ const EventCard = ({ event, eventUID, setAllEvents }) => {
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [eventTBDeleted, setEventTBDeleted] = useState(undefined);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [eventTBEdited, setEventTBEdited] = useState(undefined);
 
   console.log(event);
 
@@ -35,6 +38,10 @@ const EventCard = ({ event, eventUID, setAllEvents }) => {
 
   const openDeleteEventModal = () => {
     setIsDeleteModalOpen(true);
+  };
+
+  const openEditEventModal = () => {
+    setIsEditModalOpen(true);
   };
 
   const votePopover = (
@@ -87,7 +94,18 @@ const EventCard = ({ event, eventUID, setAllEvents }) => {
         className={styles.topHalf}
         style={{ backgroundImage: `url("/${changeBackgroundImg()}")` }}
       ></div>
-      <button className={styles.editButton}>Edit</button>
+      <button className={styles.editButton} onClick={openEditEventModal}>
+        Edit
+      </button>
+      <EditEvent
+        open={isEditModalOpen}
+        setIsEditModalOpen={setIsEditModalOpen}
+        eventTBEdited={eventUID}
+        setAllEvents={setAllEvents}
+        event={event}
+        options={options}
+        setOptions={setOptions}
+      />
       <button className={styles.deleteButton} onClick={openDeleteEventModal}>
         &times;
       </button>
