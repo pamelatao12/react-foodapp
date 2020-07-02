@@ -50,8 +50,12 @@ const EditEvent = ({
   const handleEditEvent = async () => {
     try {
       const user = state.userId;
+      const guestList = [];
+      value.map(guest => {
+        guestList.push(guest.id);
+      });
       const response = await fetch(
-        `http://localhost:4000/editEvent?user=${user}&event=${eventTBEdited}`,
+        `http://localhost:4000/editEvent?user=${user}&event=${eventTBEdited}&title=${title}&date=${date}&notes=${notes}&guests=${guestList}&location=${location}`,
         {
           headers: {
             "Content-Type": "application/json",

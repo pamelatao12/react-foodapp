@@ -52,10 +52,24 @@ const deleteEvent = async (req, res) => {
   res.send((await database.read(`users/${user}/events`)).val());
 };
 
+const updateEvent = async (req, res) => {
+  const { user, event, title, date, location, guests, notes } = req.query;
+  console.log("guests", guests);
+  await database.set(`users/${user}/events/${event}`, {
+    title: title,
+    date: date,
+    location: location,
+    guests: guests,
+    notes: notes
+  });
+  res.send((await database.read(`users/${user}/events`)).val());
+};
+
 const initializeEventRoutes = router => {
   router.get("/event", createEvent);
   router.get("/eventList", getUserEventsList);
   router.get("/deleteEvent", deleteEvent);
+  router.get("/editEvent", updateEvent);
 };
 
 exports.initializeEventRoutes = initializeEventRoutes;

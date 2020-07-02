@@ -116,29 +116,6 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   };
 
-  const createEvent = async (title, date, location, value, notes, user) => {
-    try {
-      const guestList = [];
-      value.map(guest => {
-        guestList.push(guest.id);
-      });
-      const response = await fetch(
-        `http://localhost:4000/event?title=${title}&date=${date}&location=${location}&guests=${guestList}&notes=${notes}&user=${user}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          }
-        }
-      );
-      const responseJson = await response.json();
-      console.log("event data was fetched", responseJson);
-      return responseJson;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <AuthenticationContext.Provider
       value={{
@@ -146,8 +123,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         state,
         logIn,
         createAccount,
-        signOut,
-        createEvent
+        signOut
       }}
     >
       {children}
