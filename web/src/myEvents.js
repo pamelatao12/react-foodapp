@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import styles from "./myEvents.module.css";
+import moment from "moment";
 import Header from "./header";
 import EventCard from "./eventCard";
 import AddEvent from "./addEvent";
@@ -26,24 +27,22 @@ const MyEvents = () => {
 
   const [allEvents, setAllEvents] = useState(undefined);
 
-  const [upcomingEvents, setUpcomingEvents] = useState(undefined);
-  const [pastEvents, setPastEvents] = useState({
-    event1: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    },
-    event2: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    },
-    event3: {
-      name: "Dinner with David",
-      date: "05102020",
-      time: "06:30 PM"
-    }
-  });
+  const [upcomingEvents, setUpcomingEvents] = useState({});
+  const [pastEvents, setPastEvents] = useState({});
+
+  const setUpcomingAndPastEvents = data => {
+    const today = new Date();
+    console.log(data);
+    Object.keys(data).map(event => {
+      const eventDate = new Date(moment(data[event].date).toISOString());
+      if (eventDate < today) {
+        setPastEvents({ ...pastEvents, event: data[event] });
+      } else {
+        console.log("adding upcoming event", event, data[event]);
+        setUpcomingEvents({ ...upcomingEvents, event: data[event] });
+      }
+    });
+  };
 
   const fetchEvents = async user => {
     try {
@@ -59,6 +58,7 @@ const MyEvents = () => {
       const responseJson = await response.json();
       console.log("event list was fetched", responseJson);
       setAllEvents(responseJson);
+      // setUpcomingAndPastEvents(responseJson);
       //split events in past and future events
     } catch (error) {
       console.log(error);
@@ -81,7 +81,7 @@ const MyEvents = () => {
     fetchEvents(user);
   }, []);
 
-  if (!allEvents && !upcomingEvents) {
+  if (!allEvents) {
     return (
       <>
         <div className={styles.eventPageWrapper}>
@@ -132,16 +132,23 @@ const MyEvents = () => {
         </div>
         <div className={styles.eventCards}>
           {Object.keys(allEvents).map((event, i) => {
-            return (
-              <EventCard
-                key={i}
-                event={allEvents[event]}
-                eventUID={event}
-                setAllEvents={setAllEvents}
-                options={options}
-                setOptions={setOptions}
-              />
+            const today = new Date();
+            const eventDate = new Date(
+              moment(allEvents[event].date).toISOString()
             );
+            console.log(today, eventDate, eventDate >= today);
+            if (eventDate >= today) {
+              return (
+                <EventCard
+                  key={i}
+                  event={allEvents[event]}
+                  eventUID={event}
+                  setAllEvents={setAllEvents}
+                  options={options}
+                  setOptions={setOptions}
+                />
+              );
+            }
           })}
         </div>
       </div>
@@ -161,8 +168,23 @@ const MyEvents = () => {
           </button>
         </div>
         <div className={styles.eventCards}>
-          {Object.keys(pastEvents).map(event => {
-            return <EventCard />;
+          {Object.keys(allEvents).map((event, i) => {
+            const today = new Date();
+            const eventDate = new Date(
+              moment(allEvents[event].date).toISOString()
+            );
+            if (eventDate < today) {
+              return (
+                <EventCard
+                  key={i}
+                  event={allEvents[event]}
+                  eventUID={event}
+                  setAllEvents={setAllEvents}
+                  options={options}
+                  setOptions={setOptions}
+                />
+              );
+            }
           })}
         </div>
       </div>

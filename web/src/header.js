@@ -24,14 +24,12 @@ const Header = () => {
         <StatefulPopover
           content={() => (
             <StatefulMenu
-              items={[
-                { label: "My Account", href: "//www.example.com/apple" },
-                { label: "Sign Out", href: "//www.example.com/apple" }
-              ]}
+              items={[{ label: "My Account" }, { label: "Sign Out" }]}
               onItemSelect={({ item }) => {
-                console.log("here is the item:", item.label);
                 if (item.label === "Sign Out") {
                   signOut();
+                } else if (item.label === "My Account") {
+                  //todo: navigate to account page
                 }
               }}
             />
