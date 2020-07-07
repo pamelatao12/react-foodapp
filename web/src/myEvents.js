@@ -27,23 +27,6 @@ const MyEvents = () => {
 
   const [allEvents, setAllEvents] = useState(undefined);
 
-  const [upcomingEvents, setUpcomingEvents] = useState({});
-  const [pastEvents, setPastEvents] = useState({});
-
-  const setUpcomingAndPastEvents = data => {
-    const today = new Date();
-    console.log(data);
-    Object.keys(data).map(event => {
-      const eventDate = new Date(moment(data[event].date).toISOString());
-      if (eventDate < today) {
-        setPastEvents({ ...pastEvents, event: data[event] });
-      } else {
-        console.log("adding upcoming event", event, data[event]);
-        setUpcomingEvents({ ...upcomingEvents, event: data[event] });
-      }
-    });
-  };
-
   const fetchEvents = async user => {
     try {
       const response = await fetch(
@@ -58,15 +41,9 @@ const MyEvents = () => {
       const responseJson = await response.json();
       console.log("event list was fetched", responseJson);
       setAllEvents(responseJson);
-      // setUpcomingAndPastEvents(responseJson);
-      //split events in past and future events
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const eventsList = () => {
-    // todo: split events into past and future events
   };
 
   const handleEventClick = () => {
@@ -166,6 +143,19 @@ const MyEvents = () => {
           <button className={styles.eventH2Active} onClick={handleEventClick}>
             Past Events
           </button>
+          <button
+            className={styles.addEventBtn}
+            onClick={() => setIsModalOpen(!isModalOpen)}
+          >
+            ➕ Add Event
+          </button>
+          <AddEvent
+            open={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            setAllEvents={setAllEvents}
+            options={options}
+            setOptions={setOptions}
+          />
         </div>
         <div className={styles.eventCards}>
           {Object.keys(allEvents).map((event, i) => {
