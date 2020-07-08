@@ -11,17 +11,12 @@ import {
 import { KIND as ButtonKind } from "baseui/button";
 import { AuthenticationContext } from "./common/authentication/context";
 
-const DeleteEvent = ({
-  open,
-  setIsDeleteModalOpen,
-  eventTBDeleted,
-  setAllEvents
-}) => {
+const DeleteEvent = ({ open, setIsDeleteModalOpen, eventTBDeleted }) => {
   const close = () => {
     setIsDeleteModalOpen(false);
   };
 
-  const { state } = useContext(AuthenticationContext);
+  const { state, setAllEvents } = useContext(AuthenticationContext);
 
   const handleDeleteEvent = async () => {
     try {

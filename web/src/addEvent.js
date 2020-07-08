@@ -12,18 +12,12 @@ import { KIND as ButtonKind } from "baseui/button";
 import AddEventForm from "./addEventForm";
 import { AuthenticationContext } from "./common/authentication/context";
 
-const AddEvent = ({
-  open,
-  setIsModalOpen,
-  setAllEvents,
-  options,
-  setOptions
-}) => {
+const AddEvent = ({ open, setIsModalOpen, options, setOptions }) => {
   const close = () => {
     setIsModalOpen(false);
   };
 
-  const { state } = useContext(AuthenticationContext);
+  const { state, setAllEvents } = useContext(AuthenticationContext);
 
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState("");

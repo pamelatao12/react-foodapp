@@ -10,7 +10,9 @@ import firebase from "firebase";
 import { AuthenticationContext } from "./common/authentication/context";
 
 const MyEvents = () => {
-  const { getEvents, state } = useContext(AuthenticationContext);
+  const { state, setState, allEvents, setAllEvents } = useContext(
+    AuthenticationContext
+  );
 
   const [options, setOptions] = useState([
     { id: "Friend", label: "Friend" },
@@ -24,27 +26,8 @@ const MyEvents = () => {
   const [upcomingEventsTab, setUpcomingEventsActive] = useState(true);
   const [pastEventsTab, setPastEventsActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [allEvents, setAllEvents] = useState(undefined);
-
-  const fetchEvents = async user => {
-    try {
-      const response = await fetch(
-        `http://localhost:4000/eventList?user=${user}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          }
-        }
-      );
-      const responseJson = await response.json();
-      console.log("event list was fetched", responseJson);
-      setAllEvents(responseJson);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  console.log(allEvents);
+  // const [allEvents, setAllEvents] = useState(undefined);
 
   const handleEventClick = () => {
     setUpcomingEventsActive(!upcomingEventsTab);
@@ -54,9 +37,9 @@ const MyEvents = () => {
   const user = state.userId;
   console.log("user: ", user);
 
-  useEffect(() => {
-    fetchEvents(user);
-  }, []);
+  // useEffect(() => {
+  //   fetchEvents(user);
+  // }, []);
 
   if (!allEvents) {
     return (
@@ -102,7 +85,6 @@ const MyEvents = () => {
           <AddEvent
             open={isModalOpen}
             setIsModalOpen={setIsModalOpen}
-            setAllEvents={setAllEvents}
             options={options}
             setOptions={setOptions}
           />
@@ -120,7 +102,6 @@ const MyEvents = () => {
                   key={i}
                   event={allEvents[event]}
                   eventUID={event}
-                  setAllEvents={setAllEvents}
                   options={options}
                   setOptions={setOptions}
                 />
@@ -152,7 +133,6 @@ const MyEvents = () => {
           <AddEvent
             open={isModalOpen}
             setIsModalOpen={setIsModalOpen}
-            setAllEvents={setAllEvents}
             options={options}
             setOptions={setOptions}
           />
@@ -169,7 +149,6 @@ const MyEvents = () => {
                   key={i}
                   event={allEvents[event]}
                   eventUID={event}
-                  setAllEvents={setAllEvents}
                   options={options}
                   setOptions={setOptions}
                 />

@@ -32,8 +32,30 @@ export const AuthenticationContextProvider = ({ children }) => {
     firebaseUser: undefined,
     hasFirebaseLoaded: false,
     isLoggedIn: false,
-    userId: undefined
+    userId: undefined,
+    events: undefined
   });
+
+  const [allEvents, setAllEvents] = useState(undefined);
+
+  const fetchEvents = async user => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/eventList?user=${user}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        }
+      );
+      const responseJson = await response.json();
+      console.log("event list was fetched", responseJson);
+      setAllEvents(responseJson);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onAuthStateChanged = async firebaseUser => {
     const authenticationToken = firebaseUser
@@ -48,6 +70,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       isLoggedIn: !!firebaseUser,
       userId: firebaseUser && firebaseUser.uid
     }));
+    await fetchEvents(firebaseUser && firebaseUser.uid);
   };
 
   useEffect(() => {
@@ -123,7 +146,9 @@ export const AuthenticationContextProvider = ({ children }) => {
         state,
         logIn,
         createAccount,
-        signOut
+        signOut,
+        allEvents,
+        setAllEvents
       }}
     >
       {children}

@@ -17,7 +17,6 @@ const EditEvent = ({
   open,
   setIsEditModalOpen,
   eventTBEdited,
-  setAllEvents,
   event,
   options,
   setOptions
@@ -26,7 +25,7 @@ const EditEvent = ({
     setIsEditModalOpen(false);
   };
 
-  const { state } = useContext(AuthenticationContext);
+  const { state, setAllEvents } = useContext(AuthenticationContext);
 
   const [date, setDate] = useState(() => {
     const dateObject = moment(event.date).toISOString();
