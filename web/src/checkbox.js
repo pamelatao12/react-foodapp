@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Checkbox, LABEL_PLACEMENT } from "baseui/checkbox";
 
-const CheckBox = ({ checked }) => {
+const CheckBox = ({ checked, label, eventID }) => {
   const [isChecked, setIsChecked] = React.useState(checked);
   return (
     <Checkbox
@@ -9,7 +9,7 @@ const CheckBox = ({ checked }) => {
       onChange={e => setIsChecked(!isChecked)}
       labelPlacement={LABEL_PLACEMENT.right}
     >
-      Event 1
+      {label}
     </Checkbox>
   );
 };

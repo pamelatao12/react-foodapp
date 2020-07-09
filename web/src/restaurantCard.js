@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
 import Rating from "./rating";
@@ -7,8 +7,11 @@ import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { Input } from "baseui/input";
 import { Block } from "baseui/block";
 import CheckBox from "./checkbox";
+import { AuthenticationContext } from "./common/authentication/context";
 
 const RestaurantCard = ({ details, index }) => {
+  const { state, allEvents } = useContext(AuthenticationContext);
+
   const [restaurantReview, setReviews] = useState(details.reviews);
   const [loading, setLoading] = useState(true);
 
@@ -102,7 +105,14 @@ const RestaurantCard = ({ details, index }) => {
             <Block padding={"20px"}>
               Add to event:
               <br />
-              <CheckBox checked={false} />
+              {Object.keys(allEvents).map((event, i) => (
+                <CheckBox
+                  checked={false}
+                  label={allEvents[event].title}
+                  eventID={event}
+                  key={i}
+                />
+              ))}
             </Block>
           )}
           showArrow
