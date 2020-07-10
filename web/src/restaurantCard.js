@@ -7,6 +7,7 @@ import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { Input } from "baseui/input";
 import { Block } from "baseui/block";
 import CheckBox from "./checkbox";
+import { LayersManager } from "baseui/layer";
 import { AuthenticationContext } from "./common/authentication/context";
 
 const RestaurantCard = ({ details, index }) => {
@@ -100,30 +101,34 @@ const RestaurantCard = ({ details, index }) => {
   return (
     <>
       <div className="restaurantActionButtons">
-        <StatefulPopover
-          content={() => (
-            <Block padding={"20px"}>
-              Add to event:
-              <br />
-              {Object.keys(allEvents).map((event, i) => (
-                <CheckBox
-                  checked={false}
-                  label={allEvents[event].title}
-                  eventID={event}
-                  key={i}
-                />
-              ))}
-            </Block>
-          )}
-          showArrow
-          dismissOnClickOutside
-          placement={PLACEMENT.bottom}
-        >
-          <button className="addButton">+</button>
-        </StatefulPopover>
-
-        <button className="heartButton">&#9829;</button>
+        <LayersManager zIndex={2}>
+          <StatefulPopover
+            content={() => (
+              <Block padding={"20px"}>
+                Add to event:
+                <br />
+                {Object.keys(allEvents).map((event, i) => (
+                  <div className="checkbox" key={i}>
+                    <CheckBox
+                      checked={false}
+                      label={allEvents[event].title}
+                      eventID={event}
+                      key={i}
+                    />
+                  </div>
+                ))}
+              </Block>
+            )}
+            showArrow
+            dismissOnClickOutside
+            placement={PLACEMENT.bottom}
+          >
+            <button className="addButton">+</button>
+          </StatefulPopover>
+          <button className="heartButton">&#9829;</button>
+        </LayersManager>
       </div>
+
       <Collapsible
         classParentString="collapsibleRestaurant"
         trigger={triggerElement}
