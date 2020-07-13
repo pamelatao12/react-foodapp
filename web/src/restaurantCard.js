@@ -110,7 +110,11 @@ const RestaurantCard = ({ details, index }) => {
                 {Object.keys(allEvents).map((event, i) => (
                   <div className="checkbox" key={i}>
                     <CheckBox
-                      checked={false}
+                      checked={
+                        allEvents[event].restaurants
+                          ? allEvents[event].restaurants.includes(details.alias)
+                          : false
+                      }
                       restaurantID={details.alias}
                       label={allEvents[event].title}
                       eventID={event}
