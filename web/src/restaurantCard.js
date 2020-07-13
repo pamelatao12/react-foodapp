@@ -111,6 +111,7 @@ const RestaurantCard = ({ details, index }) => {
                   <div className="checkbox" key={i}>
                     <CheckBox
                       checked={false}
+                      restaurantID={details.alias}
                       label={allEvents[event].title}
                       eventID={event}
                       key={i}

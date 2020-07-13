@@ -65,11 +65,36 @@ const updateEvent = async (req, res) => {
   res.send((await database.read(`users/${user}/events`)).val());
 };
 
+const addRestaurantToEvent = async (req, res) => {
+  const { user, event, restaurant } = req.query;
+  console.log(event);
+  const eventDetails = (await database.read(
+    `users/${user}/events/${event}`
+  )).val();
+  let restaurantsList = eventDetails.restaurants;
+  if (!restaurantsList) {
+    restaurantsList = restaurant;
+  } else {
+    restaurantsList += "," + restaurant;
+  }
+  await database.set(`users/${user}/events/${event}`, {
+    ...eventDetails,
+    restaurants: restaurantsList
+  });
+  res.send((await database.read(`users/${user}/events`)).val());
+};
+
+const removeRestaurantToEvent = async (req, res) => {
+  const { user, event, restaurant } = req.query;
+};
+
 const initializeEventRoutes = router => {
   router.get("/event", createEvent);
   router.get("/eventList", getUserEventsList);
   router.get("/deleteEvent", deleteEvent);
   router.get("/editEvent", updateEvent);
+  router.get("/addrestauranttoevent", addRestaurantToEvent);
+  router.get("/removerestauranttoevent", removeRestaurantToEvent);
 };
 
 exports.initializeEventRoutes = initializeEventRoutes;
