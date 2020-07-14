@@ -29,9 +29,10 @@ const CheckBox = ({ checked, label, eventID, restaurantID }) => {
       }
     } else {
       // remove restaurant from event
+      console.log("removing from event");
       try {
         const response = await fetch(
-          `http://localhost:4000/removerestauranttoevent?event=${eventID}&restaurant=${restaurantID}`,
+          `http://localhost:4000/removerestaurantfromevent?user=${state.userId}&event=${eventID}&restaurant=${restaurantID}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -40,6 +41,8 @@ const CheckBox = ({ checked, label, eventID, restaurantID }) => {
           }
         );
         const responseJson = await response.json();
+        console.log("removed from event");
+
         setAllEvents(responseJson);
       } catch (error) {
         console.log(error);
