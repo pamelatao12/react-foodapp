@@ -8,6 +8,7 @@ import { Input } from "baseui/input";
 import { Block } from "baseui/block";
 import CheckBox from "./checkbox";
 import { LayersManager } from "baseui/layer";
+import moment from "moment";
 import { AuthenticationContext } from "./common/authentication/context";
 
 const RestaurantCard = ({ details, index }) => {
@@ -107,21 +108,31 @@ const RestaurantCard = ({ details, index }) => {
               <Block padding={"20px"}>
                 Add to event:
                 <br />
-                {Object.keys(allEvents).map((event, i) => (
-                  <div className="checkbox" key={i}>
-                    <CheckBox
-                      checked={
-                        allEvents[event].restaurants
-                          ? allEvents[event].restaurants.includes(details.alias)
-                          : false
-                      }
-                      restaurantID={details.alias}
-                      label={allEvents[event].title}
-                      eventID={event}
-                      key={i}
-                    />
-                  </div>
-                ))}
+                {Object.keys(allEvents).map((event, i) => {
+                  const today = new Date();
+                  const eventDate = new Date(
+                    moment(allEvents[event].date).toISOString()
+                  );
+                  if (eventDate >= today) {
+                    return (
+                      <div className="checkbox" key={i}>
+                        <CheckBox
+                          checked={
+                            allEvents[event].restaurants
+                              ? allEvents[event].restaurants.includes(
+                                  details.alias
+                                )
+                              : false
+                          }
+                          restaurantID={details.alias}
+                          label={allEvents[event].title}
+                          eventID={event}
+                          key={i}
+                        />
+                      </div>
+                    );
+                  }
+                })}
               </Block>
             )}
             showArrow
