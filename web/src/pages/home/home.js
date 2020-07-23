@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 // import logo from "./logo.svg";
 import styles from "./home.module.css";
 import Header from "./header";
-import NavBar from "./navBar";
 import SearchCard from "./searchCard";
 import Carousel from "./carousel/carousel";
 import Calendar from "./homepageEvents/calendar";
@@ -56,7 +55,6 @@ const Home = () => {
     <div className={styles.App}>
       <SearchCard img={changeBackgroundImg()} />
       <Header />
-      {/* <NavBar /> */}
       <Carousel restaurants={suggestedRestaurants} />
       <Calendar />
     </div>
