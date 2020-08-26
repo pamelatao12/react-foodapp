@@ -1,5 +1,5 @@
 import React from "react";
-import CarouselSingle from "./carouselSingle";
+import CarouselSingle from "./carouselSingle/CarouselSingle";
 import styles from "./carouselSet.module.css";
 
 // const CarouselSet = ({ viewSet }) => {

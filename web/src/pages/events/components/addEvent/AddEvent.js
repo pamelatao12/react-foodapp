@@ -9,8 +9,8 @@ import {
   ROLE
 } from "baseui/modal";
 import { KIND as ButtonKind } from "baseui/button";
-import AddEventForm from "./addEventForm";
-import { AuthenticationContext } from "./common/authentication/context";
+import AddEventForm from "../addEventForm/AddEventForm";
+import { AuthenticationContext } from "../../../../common/authentication/context";
 
 const AddEvent = ({ open, setIsModalOpen, options, setOptions }) => {
   const close = () => {

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import styles from "../index.module.scss";
+import styles from "../login.module.scss";
 import firebase from "firebase";
-import { AuthenticationContext } from "../common/authentication/context";
+import { AuthenticationContext } from "../../../common/authentication/context";
 import { Link } from "react-router-dom";
 import CreateAccountConfirmation from "./createAccountConfirmation";
 

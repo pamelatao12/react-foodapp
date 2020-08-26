@@ -9,7 +9,7 @@ import {
   ROLE
 } from "baseui/modal";
 import { KIND as ButtonKind } from "baseui/button";
-import { AuthenticationContext } from "./common/authentication/context";
+import { AuthenticationContext } from "../../../../../common/authentication/context";
 
 const DeleteEvent = ({ open, setIsDeleteModalOpen, eventTBDeleted }) => {
   const close = () => {

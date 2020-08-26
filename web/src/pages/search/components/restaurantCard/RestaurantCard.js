@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
-import Rating from "./rating";
+import Rating from "../../../../rating";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { Input } from "baseui/input";
 import { Block } from "baseui/block";
-import CheckBox from "./checkbox";
+import CheckBox from "./checkbox/Checkbox";
 import { LayersManager } from "baseui/layer";
 import moment from "moment";
-import { AuthenticationContext } from "./common/authentication/context";
+import { AuthenticationContext } from "../../../../common/authentication/context";
 
 const RestaurantCard = ({ details, index }) => {
   const { state, allEvents } = useContext(AuthenticationContext);

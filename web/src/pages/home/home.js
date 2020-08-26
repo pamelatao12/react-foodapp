@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 // import logo from "./logo.svg";
 import styles from "./home.module.css";
-import Header from "./header";
-import SearchCard from "./searchCard";
-import Carousel from "./carousel/carousel";
-import Calendar from "./homepageEvents/calendar";
+import Header from "../../header";
+import SearchCard from "./components/searchCard/SearchCard";
+import Carousel from "./components/carousel/Carousel";
+import Calendar from "./components/calendar/Calendar";
 
 const Home = () => {
   const images = [

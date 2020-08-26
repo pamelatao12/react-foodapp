@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Checkbox, LABEL_PLACEMENT } from "baseui/checkbox";
-import { AuthenticationContext } from "./common/authentication/context";
+import { AuthenticationContext } from "../../../../../common/authentication/context";
 
 const CheckBox = ({ checked, label, eventID, restaurantID }) => {
   const { state, setAllEvents } = useContext(AuthenticationContext);

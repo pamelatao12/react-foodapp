@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ProtectedRoute from "./common/components/ProtectedRoute";
-import Home from "./home";
-import SearchPage from "./searchPage";
-import MyEvents from "./myEvents";
-import SignedOutPage from "./signedOut";
-import CreateAccount from "./signedOut/createAccount";
+import Home from "./pages/home/Home";
+import SearchPage from "./pages/search/SearchPage";
+import MyEvents from "./pages/events/MyEvents";
+import Login from "./pages/login/Login";
+import CreateAccount from "./pages/login/createAccount/CreateAccount";
 import { AuthenticationContextProvider } from "./common/authentication/context-provider";
 import { ThemeInitializer } from "./themeInitializer";
 
@@ -35,7 +35,7 @@ const AppRouter = () => {
           <Home />
         </Route>
         <Route path="/login">
-          <SignedOutPage />
+          <Login />
         </Route>
         <Route path="/createAccount">
           <CreateAccount />

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import AddEventForm from "./addEventForm";
+import AddEventForm from "./../../addEventForm/AddEventForm";
 import moment from "moment";
 import {
   Modal,
@@ -11,7 +11,7 @@ import {
   ROLE
 } from "baseui/modal";
 import { KIND as ButtonKind } from "baseui/button";
-import { AuthenticationContext } from "./common/authentication/context";
+import { AuthenticationContext } from "../../../../../common/authentication/context";
 
 const EditEvent = ({
   open,

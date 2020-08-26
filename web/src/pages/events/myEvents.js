@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import styles from "./myEvents.module.css";
 import moment from "moment";
-import Header from "./header";
-import EventCard from "./components/eventCard/eventCard";
-import AddEvent from "./components/addEvent/addEvent";
-import DeleteEvent from "./components/deleteEvent/deleteEvent";
+import Header from "../../header";
+import EventCard from "./components/eventCard/EventCard";
+import AddEvent from "./components/addEvent/AddEvent";
+import DeleteEvent from "./components/eventCard/deleteEvent/DeleteEvent";
 import { Link, useLocation } from "react-router-dom";
 import firebase from "firebase";
-import { AuthenticationContext } from "./common/authentication/context";
+import { AuthenticationContext } from "../../common/authentication/context";
 
 const MyEvents = () => {
   const { state, setState, allEvents, setAllEvents } = useContext(

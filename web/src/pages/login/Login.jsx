@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import styles from "./index.module.scss";
-import { AuthenticationContext } from "../common/authentication/context";
-import CreateAccount from "./createAccount";
+import styles from "./login.module.scss";
+import { AuthenticationContext } from "../../common/authentication/context";
+import CreateAccount from "./createAccount/CreateAccount";
 import { Link } from "react-router-dom";
 
-const SignedOutPage = () => {
+const Login = () => {
   const [input, setInput] = useState({});
   const { logIn } = useContext(AuthenticationContext);
 
@@ -82,4 +82,4 @@ const SignedOutPage = () => {
   );
 };
 
-export default SignedOutPage;
+export default Login;

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./searchPage.module.css";
-import NavBar from "./navBar";
-import SearchBar from "./searchBar";
-import Header from "./header";
-import Filter from "./filter";
-import RestaurantCard from "./restaurantCard";
-import SortDropdown from "./sortDropdown";
+import SearchBar from "../../searchBar";
+import Header from "../../header";
+import Filter from "./components/filter/Filter";
+import RestaurantCard from "./components/restaurantCard/RestaurantCard";
+import SortDropdown from "./components/sortDropdown/SortDropdown";
 import { Link, useLocation } from "react-router-dom";
 import queryString from "query-string";
 
@@ -57,7 +56,6 @@ const SearchPage = () => {
     >
       <div className={styles.headerWrapper}>
         <Header />
-        {/* <NavBar /> */}
         <Link to="/" className={styles.homeLogoButton}>
           <img className={styles.siteLogo} src="./logo.png" alt="logo" />
         </Link>

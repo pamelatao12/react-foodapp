@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styles from "./eventCard.module.css";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 import Moment from "react-moment";
-import DeleteEvent from "./deleteEvent";
-import EditEvent from "./editEvent";
+import DeleteEvent from "./deleteEvent/DeleteEvent";
+import EditEvent from "./editEvent/EditEvent";
 
 const EventCard = ({ event, eventUID, options, setOptions }) => {
   const images = [

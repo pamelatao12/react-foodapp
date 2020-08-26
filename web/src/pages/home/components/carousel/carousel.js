@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import CarouselSet from "./carouselSet";
+import CarouselSet from "./carouselSet/CarouselSet";
 import "./carousel.css";
 
 const Carousel = restaurants => {

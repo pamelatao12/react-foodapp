@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./calendar.module.css";
-import EventPanel from "./eventPanel";
+import EventPanel from "./eventPanel/EventPanel";
 
 const Calendar = () => {
   const [state, setState] = useState({

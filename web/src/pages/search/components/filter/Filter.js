@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./filter.module.css";
-import SearchCriteria from "./searchCriteria";
+import SearchCriteria from "../searchCriteria/SearchCriteria";
 
 const Filter = () => {
   return (
