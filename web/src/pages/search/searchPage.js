@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./searchPage.module.css";
-import SearchBar from "../../searchBar";
-import Header from "../../header";
+import SearchBar from "../../common/components/searchBar/SearchBar";
+import Header from "../../common/components/header/Header";
 import Filter from "./components/filter/Filter";
 import RestaurantCard from "./components/restaurantCard/RestaurantCard";
 import SortDropdown from "./components/sortDropdown/SortDropdown";

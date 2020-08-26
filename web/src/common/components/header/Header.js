@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styles from "./header.module.css";
 import { Link } from "react-router-dom";
-import { AuthenticationContext } from "./common/authentication/context";
+import { AuthenticationContext } from "../../authentication/context";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { Input } from "baseui/input";
 import { Block } from "baseui/block";

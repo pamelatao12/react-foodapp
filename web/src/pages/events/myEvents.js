@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import styles from "./myEvents.module.css";
 import moment from "moment";
-import Header from "../../header";
+import Header from "../../common/components/header/Header";
 import EventCard from "./components/eventCard/EventCard";
 import AddEvent from "./components/addEvent/AddEvent";
 import DeleteEvent from "./components/eventCard/deleteEvent/DeleteEvent";

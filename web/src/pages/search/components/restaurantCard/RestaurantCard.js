@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./restaurantCard.css";
 import Collapsible from "react-collapsible";
-import Rating from "../../../../rating";
+import Rating from "../../../../common/components/rating/Rating";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { Input } from "baseui/input";

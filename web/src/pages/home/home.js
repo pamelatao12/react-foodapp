@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import logo from "./logo.svg";
 import styles from "./home.module.css";
-import Header from "../../header";
+import Header from "../../common/components/header/Header";
 import SearchCard from "./components/searchCard/SearchCard";
 import Carousel from "./components/carousel/Carousel";
 import Calendar from "./components/calendar/Calendar";

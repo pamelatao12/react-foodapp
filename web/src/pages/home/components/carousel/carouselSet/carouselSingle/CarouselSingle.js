@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./carouselSingle.module.css";
-import Rating from "../../../../../../rating.js";
+import Rating from "../../../../../../common/components/rating/Rating";
 import { Link, useHistory } from "react-router-dom";
 
 const CarouselSingle = ({ restaurant }) => {

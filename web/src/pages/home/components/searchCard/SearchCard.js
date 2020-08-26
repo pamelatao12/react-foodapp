@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "../../../../searchBar";
+import SearchBar from "../../../../common/components/searchBar/SearchBar";
 import styles from "./searchCard.module.css";
 
 const SearchCard = ({ img }) => {
